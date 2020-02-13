@@ -1,6 +1,7 @@
 import pickle
 
 from sklearn import svm
+from sklearn.naive_bayes import MultinomialNB
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.pipeline import make_pipeline
 from sklearn.metrics import classification_report
@@ -21,30 +22,36 @@ def read_data(path):
 def main():
     # read data
     print("start read data")
-    path = "/Users/yining/Work/Capstone/TestAPI/patent_200k_reparse_1.p"
-    data = read_data(path)
+    path = "/home/ubuntu/capstone/data/patent_200k_reparse_1.p"
+    data = read_data(path)[:10]
     class_hierarchy, samples, labels = build_tree_and_labels_from_data(data)
     print("finish read data")
+
+    print("class_hierarchy: ", class_hierarchy)
+
+    print("labels: ", labels)
 
     # build model
     print("start build model")
     base_estimator = make_pipeline(
-        TruncatedSVD(n_components=24),
-        svm.SVC(
-            gamma=0.001,
-            kernel="rbf",
-            probability=True
-        )
+        MultinomialNB()
+        # TruncatedSVD(n_components=24),
+        # svm.SVC(
+        #     gamma=0.001,
+        #     kernel="rbf",
+        #     probability=True
+        # )
     )
 
-    bigram_vectorizer = CountVectorizer(ngram_range=(1, 2), token_pattern=r'\b\w+\b', min_df=1)
+    # will try different feature extractor
+    bigram_vectorizer = CountVectorizer(
+        ngram_range=(1, 2), token_pattern=r'\b\w+\b', min_df=1)
     mlb = MultiLabelBinarizer()
     clf = HierarchicalClassifier(
         base_estimator=base_estimator,
         class_hierarchy=class_hierarchy,
         mlb=mlb
     )
-
 
     X = bigram_vectorizer.fit_transform(samples)
     y = mlb.fit_transform(labels)
@@ -63,11 +70,20 @@ def main():
     print("shape of X_test", X_test.shape)
     print("shape of y_train", y_train.shape)
     print("shape of y_test", y_test.shape)
+
+    # print("X_train", X_train)
+    # print("X_test", X_test)
+    # print("y_train", y_train)
+    # print("y_test", y_test)
     print("start training")
     clf.fit(X_train, y_train)
 
     print("start predicting")
     y_pred = clf.predict(X_test)
+
+    print("y_test :", y_test[0])
+    print("y_pred :", y_pred[0])
+    print("y_pred :", y_pred)
 
     print("Classification Report:\n", classification_report(y_test, y_pred))
 
@@ -77,7 +93,8 @@ def test():
     data = read_data(path)
     class_hierarchy, samples, labels = build_tree_and_labels_from_data(data)
 
-    bigram_vectorizer = CountVectorizer(ngram_range=(1, 2), token_pattern=r'\b\w+\b', min_df=1)
+    bigram_vectorizer = CountVectorizer(
+        ngram_range=(1, 2), token_pattern=r'\b\w+\b', min_df=1)
 
     X = bigram_vectorizer.fit_transform(samples)
 
