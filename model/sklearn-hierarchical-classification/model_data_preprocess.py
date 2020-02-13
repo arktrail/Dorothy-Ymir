@@ -78,17 +78,22 @@ def build_tree_and_labels_from_data(data):
         cpc_classifications_labels = []
         for cpc_code in d[CPC_CODES]:
             cpc_classification_labels = [
-                cpc_code[cpc_field_slice_dict['grant'][3][1][0]: cpc_field_slice_dict['grant'][3][1][1]],
-                cpc_code[cpc_field_slice_dict['grant'][4][1][0]: cpc_field_slice_dict['grant'][4][1][1]],
-                cpc_code[cpc_field_slice_dict['grant'][5][1][0]: cpc_field_slice_dict['grant'][5][1][1]],
-                cpc_code[cpc_field_slice_dict['grant'][6][1][0]: cpc_field_slice_dict['grant'][6][1][1]].strip(),
-                cpc_code[cpc_field_slice_dict['grant'][7][1][0]: cpc_field_slice_dict['grant'][7][1][1]].strip(),
+                cpc_code[cpc_field_slice_dict['grant'][3][1][0]
+                    : cpc_field_slice_dict['grant'][3][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][4][1][0]
+                    : cpc_field_slice_dict['grant'][4][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][5][1][0]
+                    : cpc_field_slice_dict['grant'][5][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][6][1][0]
+                    : cpc_field_slice_dict['grant'][6][1][1]].strip(),
+                cpc_code[cpc_field_slice_dict['grant'][7][1][0]
+                    : cpc_field_slice_dict['grant'][7][1][1]].strip(),
             ]
 
             # build tree
             class_hierarchy[ROOT].add(cpc_classification_labels[0])
 
-            for idx in range(len(cpc_classification_labels) - 1):
+            for idx in range(len(cpc_classification_labels)):
                 current_level = "".join(cpc_classification_labels[0:idx])
                 next_level = "".join(cpc_classification_labels[0:idx + 1])
                 if current_level not in class_hierarchy.keys():
@@ -101,7 +106,11 @@ def build_tree_and_labels_from_data(data):
 
         data_labels.append(cpc_classifications_labels)
 
-    # # change set to list
-    # class_hierarchy = {k}
+    # change set to list
+    if '' in class_hierarchy.keys():
+        del class_hierarchy['']
+
+    for k, v in class_hierarchy.items():
+        class_hierarchy[k] = list(v)
 
     return class_hierarchy, data_samples, data_labels
