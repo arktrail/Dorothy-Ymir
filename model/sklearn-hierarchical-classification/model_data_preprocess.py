@@ -6,9 +6,16 @@ ABSTRACTION = "abstraction"
 CLAIMS = "claims"
 BRIEF_SUMMARY = "brief_summary"
 DESCRIPTION = "description"
+SECTION = "section"
+CLASS = "class"
+SUB_CLASS = "sub_class"
+GROUP = "group"
+SUB_GROUP = "sub_group"
+
 
 __all__ = [
-    'build_tree_and_labels_from_data'
+    'build_tree_and_labels_from_data',
+    'build_tree_and_labels_from_data_multiple_label'
 ]
 
 
@@ -69,37 +76,43 @@ def build_tree_and_labels_from_data(data):
     class_hierarchy = {ROOT: set()}
     data_labels = []
     data_samples = []
+    subclass_nodes = set()
 
     for d in data:
         # concat the texts into one single one
         data_samples.append(".".join([d[TITLE], d[ABSTRACTION]]))
 
         # extract labels from cpc codes
-        cpc_classifications_labels = []
+        cpc_classifications_labels = set()
         for cpc_code in d[CPC_CODES]:
             cpc_classification_labels = [
-                cpc_code[cpc_field_slice_dict['grant'][3][1][0]                         : cpc_field_slice_dict['grant'][3][1][1]],
-                cpc_code[cpc_field_slice_dict['grant'][4][1][0]                         : cpc_field_slice_dict['grant'][4][1][1]],
-                cpc_code[cpc_field_slice_dict['grant'][5][1][0]                         : cpc_field_slice_dict['grant'][5][1][1]],
-                cpc_code[cpc_field_slice_dict['grant'][6][1][0]                         : cpc_field_slice_dict['grant'][6][1][1]].strip(),
-                cpc_code[cpc_field_slice_dict['grant'][7][1][0]                         : cpc_field_slice_dict['grant'][7][1][1]].strip(),
+                cpc_code[cpc_field_slice_dict['grant'][3][1][0]
+                    : cpc_field_slice_dict['grant'][3][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][4][1][0]
+                    : cpc_field_slice_dict['grant'][4][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][5][1][0]
+                    : cpc_field_slice_dict['grant'][5][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][6][1][0]
+                    : cpc_field_slice_dict['grant'][6][1][1]].strip(),
+                cpc_code[cpc_field_slice_dict['grant'][7][1][0]
+                    : cpc_field_slice_dict['grant'][7][1][1]].strip(),
             ]
 
             # build tree
             class_hierarchy[ROOT].add(cpc_classification_labels[0])
 
             for idx in range(len(cpc_classification_labels) - 2):
-                current_level = "".join(cpc_classification_labels[0:idx])
-                next_level = "".join(cpc_classification_labels[0:idx + 1])
+                current_level = ".".join(cpc_classification_labels[0:idx])
+                next_level = ".".join(cpc_classification_labels[0:idx + 1])
                 if current_level not in class_hierarchy.keys():
                     class_hierarchy[current_level] = set()
                 class_hierarchy[current_level].add(
                     next_level)
 
-            cpc_classifications_labels.append(
-                "".join(cpc_classification_labels[0:3]))
+            cpc_classifications_labels.add(
+                ".".join(cpc_classification_labels[0:3]))
 
-        data_labels.append(cpc_classifications_labels)
+        data_labels.append(list(cpc_classifications_labels))
 
     # change set to list
     if '' in class_hierarchy.keys():
@@ -108,4 +121,88 @@ def build_tree_and_labels_from_data(data):
     for k, v in class_hierarchy.items():
         class_hierarchy[k] = list(v)
 
-    return class_hierarchy, data_samples, data_labels
+    return class_hierarchy, data_samples, data_labels, subclass_nodes
+
+
+def build_tree_and_labels_from_data_multiple_label(data):
+    '''
+    build tree for usage of sklearn hierarchical classification
+    :param data:  a list of dict, read from pre-processed dataset
+    :return: tree
+        r"""Test that a nontrivial hierarchy leaf classification behaves as expected.
+    1
+    2     We build the following class hierarchy along with data from the handwritten digits dataset:
+    3
+    4             <ROOT>
+    5            /      \
+    6           A        B
+    7          / \       |  \
+    8         1   7      C   9
+    9                  /   \
+    10                 3     8
+    11
+    12     """
+    13     class_hierarchy = {
+    14         ROOT: ["A", "B"],
+    15         "A": ["1", "7"],
+    16         "B": ["C", "9"],
+    17         "C": ["3", "8"],
+    '''
+    cpc_field_slice_dict = _build_cpc_field_slice_dicts()
+
+    class_hierarchy = {ROOT: set()}
+    data_labels = []
+    data_samples = []
+    all_labels = {SECTION: set(), CLASS: set(), SUB_CLASS: set(), GROUP: set(), SUB_GROUP: set()}
+
+    for d in data:
+        # concat the texts into one single one
+        data_samples.append(".".join([d[TITLE], d[ABSTRACTION]]))
+
+        # extract labels from cpc codes
+        cpc_classifications_labels = set()
+        for cpc_code in d[CPC_CODES]:
+            cpc_classification_labels = [
+                cpc_code[cpc_field_slice_dict['grant'][3][1][0]
+                    : cpc_field_slice_dict['grant'][3][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][4][1][0]
+                    : cpc_field_slice_dict['grant'][4][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][5][1][0]
+                    : cpc_field_slice_dict['grant'][5][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][6][1][0]
+                    : cpc_field_slice_dict['grant'][6][1][1]].strip(),
+                cpc_code[cpc_field_slice_dict['grant'][7][1][0]
+                    : cpc_field_slice_dict['grant'][7][1][1]].strip(),
+            ]
+
+            # build tree
+            class_hierarchy[ROOT].add(cpc_classification_labels[0])
+
+            for idx in range(len(cpc_classification_labels) - 2):
+                current_level = ".".join(cpc_classification_labels[0:idx])
+                next_level = ".".join(cpc_classification_labels[0:idx + 1])
+                if current_level not in class_hierarchy.keys():
+                    class_hierarchy[current_level] = set()
+                class_hierarchy[current_level].add(
+                    next_level)
+
+                cpc_classifications_labels.add(
+                    next_level)
+
+            # get all labels:
+            all_labels[SECTION].add(cpc_classification_labels[0])
+            all_labels[CLASS].add(".".join(cpc_classification_labels[0:2]))
+            all_labels[SUB_CLASS].add(".".join(cpc_classification_labels[0:3]))
+            all_labels[GROUP].add(".".join(cpc_classification_labels[0:4]))
+            all_labels[SUB_GROUP].add(".".join(cpc_classification_labels[0:5]))
+
+        data_labels.append(list(cpc_classifications_labels))
+
+    # change set to list
+    if '' in class_hierarchy.keys():
+        del class_hierarchy['']
+
+    for k, v in class_hierarchy.items():
+        class_hierarchy[k] = list(v)
+
+    return class_hierarchy, data_samples, data_labels, all_labels
