@@ -1,0 +1,6 @@
+model/HFT-CNN/CNN/*
+model/HFT-CNN/Word_embedding/*
+*.pkl
+*.npz
+*.pyc
+*.p
