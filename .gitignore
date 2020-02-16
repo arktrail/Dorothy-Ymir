@@ -4,3 +4,9 @@ model/HFT-CNN/Word_embedding/*
 *.npz
 *.pyc
 *.p
+
+**/.vscode
+**/.idea
+**/.env
+
+**/.DS_Store
