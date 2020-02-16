@@ -16,8 +16,8 @@ def eval_top1_exist(y_pred, y_test, mlb_classes, labels):
 
     y_pred_one_hot = np.zeros_like(y_pred_leaves)
     y_pred_one_hot[np.arange(len(y_pred_leaves)), y_pred_leaves.argmax(1)] = 1
-    print("y_pred_one_hot", y_pred_one_hot)
-    print("y_test_leaves", y_test_leaves)
+    #  print("y_pred_one_hot", y_pred_one_hot)
+    #  print("y_test_leaves", y_test_leaves)
     correct = np.sum(np.minimum(y_pred_one_hot, y_test_leaves))
     total = y_test.shape[0]
     print("correct", correct, "total", total)
