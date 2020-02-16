@@ -8,5 +8,7 @@ model/HFT-CNN/Word_embedding/*
 **/.vscode
 **/.idea
 **/.env
+**/__pycache__
+**/.ipynb_checkpoints
 
 **/.DS_Store
