@@ -1,9 +1,0 @@
-# gpu: 0
-# unit: 1024
-# batch-size: 100
-# epoch: 40
-# number of category: 579
-# embedding dimension: 300
-# current layer: 3rd
-# model-type: CNN-Hierarchy
-
