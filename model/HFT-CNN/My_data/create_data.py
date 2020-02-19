@@ -36,7 +36,7 @@ def _build_cpc_field_slice_dicts():
         [(k, (v[0] + 3, v[1] + 3)) for k, v in g[3:]]
     return {'grant': g, 'application': a}
 
-def build_tree_and_labels_from_data(data_path):
+def build_tree_and_labels_from_data(data):
     '''
     build tree for usage of sklearn hierarchical classification
     :param data:  a list of dict, read from pre-processed dataset
@@ -62,45 +62,48 @@ def build_tree_and_labels_from_data(data_path):
     data_samples = []
     hierachy_text_list = []
 
-    file_list = [i for i in os.listdir(data_path) if i.endswith(".p")]
-    for file_name in tqdm(file_list):
-        data = read_data(file_name)
-        for cur_d in data:
-            # concat the texts into one single one
-            # data_samples.append(".".join([cur_d[TITLE], cur_d[ABSTRACTION]]))
-            data_samples.append(cur_d[TITLE])
+    for cur_d in tqdm(data):
+        # concat the texts into one single one
+        # data_samples.append(".".join([cur_d[TITLE], cur_d[ABSTRACTION]]))
+        data_samples.append(cur_d[TITLE])
+        
+        # extract labels from cpc codes
+        cpc_classifications_labels_set = set()
+        for cpc_code in cur_d[CPC_CODES]:
+            cpc_classification_labels = [
+                cpc_code[cpc_field_slice_dict['grant'][SECTION][1][0] : cpc_field_slice_dict['grant'][SECTION][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][CLASS][1][0] : cpc_field_slice_dict['grant'][CLASS][1][1]],
+                cpc_code[cpc_field_slice_dict['grant'][SUBCLASS][1][0] : cpc_field_slice_dict['grant'][SUBCLASS][1][1]],
+                # cpc_code[cpc_field_slice_dict['grant'][6][1][0] : cpc_field_slice_dict['grant'][6][1][1]].strip(),
+                # cpc_code[cpc_field_slice_dict['grant'][7][1][0] : cpc_field_slice_dict['grant'][7][1][1]].strip(),
+            ]
+
+            cur_hierachy_list = []
+            for i in range(len(cpc_classification_labels)):
+                if i == 0:
+                    cur_hierachy_list.append(cpc_classification_labels[i])
+                else:
+                    cur_level_label = cur_hierachy_list[i-1].split("<")[-1] + "@" + cpc_classification_labels[i]
+                    cur_hierachy_list.append(cur_hierachy_list[i-1] + "<" + cur_level_label)
             
-            # extract labels from cpc codes
-            cpc_classifications_labels_set = set()
-            for cpc_code in cur_d[CPC_CODES]:
-                cpc_classification_labels = [
-                    cpc_code[cpc_field_slice_dict['grant'][SECTION][1][0] : cpc_field_slice_dict['grant'][SECTION][1][1]],
-                    cpc_code[cpc_field_slice_dict['grant'][CLASS][1][0] : cpc_field_slice_dict['grant'][CLASS][1][1]],
-                    cpc_code[cpc_field_slice_dict['grant'][SUBCLASS][1][0] : cpc_field_slice_dict['grant'][SUBCLASS][1][1]],
-                    # cpc_code[cpc_field_slice_dict['grant'][6][1][0] : cpc_field_slice_dict['grant'][6][1][1]].strip(),
-                    # cpc_code[cpc_field_slice_dict['grant'][7][1][0] : cpc_field_slice_dict['grant'][7][1][1]].strip(),
-                ]
+            cur_label_list = [label.split("<")[-1] for label in cur_hierachy_list]
+            cpc_classifications_labels_set.add(','.join(cur_label_list))
+            hierachy_text_list.extend(cur_hierachy_list)
 
-                cur_hierachy_list = []
-                for i in range(len(cpc_classification_labels)):
-                    if i == 0:
-                        cur_hierachy_list.append(cpc_classification_labels[i])
-                    else:
-                        cur_level_label = cur_hierachy_list[i-1].split("<")[-1] + "@" + cpc_classification_labels[i]
-                        cur_hierachy_list.append(cur_hierachy_list[i-1] + "<" + cur_level_label)
-                
-                cur_label_list = [label.split("<")[-1] for label in cur_hierachy_list]
-                cpc_classifications_labels_set.add(','.join(cur_label_list))
-                hierachy_text_list.extend(cur_hierachy_list)
-
-            cpc_classifications_labels = []
-            for label_string in cpc_classifications_labels_set:
-                cpc_classifications_labels.extend(label_string.split(','))
-            data_labels.append(cpc_classifications_labels)
+        cpc_classifications_labels = []
+        for label_string in cpc_classifications_labels_set:
+            cpc_classifications_labels.extend(label_string.split(','))
+        data_labels.append(cpc_classifications_labels)
 
     return hierachy_text_list, data_samples, data_labels
 
 def read_data(path):
+    data = []
+    if isinstance(path, list):
+        print("read data from list {}".format(len(path)))
+        for p in tqdm(path):
+            data += pickle.load(open(p, "rb"))
+        return data
     return pickle.load(open(path, "rb"))
 
 def shuffle_list(*ls):
@@ -120,7 +123,10 @@ def main():
     # data = read_data("./patent_200k_reparse_1.p")
     data_path = "./"
     tree_path = "../Tree/CPC.tree"
-    hierachy_text_list, data_samples, data_labels = build_tree_and_labels_from_data(data_path)
+    file_list = [i for i in os.listdir(data_path) if i.endswith(".p")]
+    data = read_data(file_list)
+
+    hierachy_text_list, data_samples, data_labels = build_tree_and_labels_from_data(data)
     no_dup_hierachy_text_list = list(set(hierachy_text_list))
     no_dup_hierachy_text_list.sort(key=hierachy_text_list.index)
 
