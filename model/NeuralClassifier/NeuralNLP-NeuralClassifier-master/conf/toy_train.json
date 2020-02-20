@@ -2,27 +2,27 @@
   "task_info":{
     "label_type": "multi_label",
     "hierarchical": true,
-    "hierar_taxonomy": "data/rcv1.taxonomy",
+    "hierar_taxonomy": "data/cpc.taxonomy",
     "hierar_penalty": 0.000001
   },
   "device": "cuda",
   "model_name": "TextCNN",
-  "checkpoint_dir": "checkpoint_dir_rcv1",
-  "model_dir": "trained_model_rcv1",
+  "checkpoint_dir": "checkpoint_dir_cpc",
+  "model_dir": "trained_model_cpc",
   "data": {
     "train_json_files": [
-      "data/rcv1_train.json"
+      "data/train.json"
     ],
     "validate_json_files": [
-      "data/rcv1_dev.json"
+      "data/dev.json"
     ],
     "test_json_files": [
-      "data/rcv1_test.json"
+      "data/test.json"
     ],
     "generate_dict_using_json_files": true,
     "generate_dict_using_all_json_files": true,
     "generate_dict_using_pretrained_embedding": false,
-    "dict_dir": "dict_rcv1",
+    "dict_dir": "dict_cpc",
     "num_worker": 4
   },
   "feature": {
@@ -103,13 +103,13 @@
     "cell_hidden_dropout": 0.1
   },
   "eval": {
-    "text_file": "data/rcv1_test.json",
+    "text_file": "data/test.json",
     "threshold": 0.5,
     "dir": "eval_dir",
     "batch_size": 1024,
     "is_flat": true,
     "top_k": 100,
-    "model_dir": "checkpoint_dir_rcv1/TextCNN_best"
+    "model_dir": "checkpoint_dir/TextCNN_best"
   },
   "TextVDCNN": {
     "vdcnn_depth": 9,
@@ -150,7 +150,7 @@
     "hidden_size": 64
   },
   "log": {
-    "logger_file": "log_test_rcv1_hierar",
+    "logger_file": "log_test_cpc_hierar",
     "log_level": "warn"
   }
 }
