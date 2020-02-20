@@ -7,6 +7,20 @@ from pipline_filters.string_filters import *
 from datafile_loader import *
 
 
+def get_objects_documents_by_ids(document_ids):
+    '''
+    Download documents from API by document_ids
+    :param document_id:  ids for documents
+    :return:
+    '''
+    a = slumber.API('http://localhost:8000/api/v0')
+    par = {'username': 'capstone2020', 'api_key': '48f0580836eaf85e7af82c57a0e7391a7e06530f'}
+    patent = a.patent.get(document_id__in=document_ids, **par, full_document=True)
+    # patent = a.patent.get(document_id='US20140127591A1', **par, full_document=True)
+    if len(patent['objects']) == 0:
+        return {}
+    return [obj['document'] for obj in patent['objects']]
+
 def get_objects_document(document_id):
     '''
     Download document from API
@@ -99,7 +113,7 @@ def build_instance(s, cpc_codes):
     return data
 
 
-def worder(document_mcf, cpc_codes):
+def worker(document_mcf, cpc_codes):
     '''
     intend to work for multiprocessing
     :param document_mcf:
@@ -147,7 +161,7 @@ def main():
         for document_mcf in document_mcfs_chunk:
             document_id = get_document_id(document_mcf)
             cpc_codes = groupby_dict[document_id]
-            rl.append(worder(document_id, cpc_codes))
+            rl.append(worker(document_id, cpc_codes))
             c += 1
             if c % 100 == 0:
                 print(c)
@@ -156,6 +170,12 @@ def main():
         save_chunk_file_name = "patent_200k_reparse_{}.p".format(idx)
         pickle.dump(rl, open(save_chunk_file_name, "wb"))
 
+
+def download_by_number(num):
+    pass
+
+def download_by_ids(document_ids):
+    pass
 
 if __name__ == '__main__':
     main()
