@@ -19,4 +19,4 @@ mkdir -p CNN/LOG
 mkdir -p CNN/RESULT
 mkdir -p Word_embedding
 
-python train.py ${Train} ${Test} ${Valid} ${EmbeddingWeightsPath} ${ModelType} ${TreefilePath} ${USE_WORDS}
+python Dorothy-Ymir/model/HFT-CNN/train.py ${Train} ${Test} ${Valid} ${EmbeddingWeightsPath} ${ModelType} ${TreefilePath} ${USE_WORDS}
