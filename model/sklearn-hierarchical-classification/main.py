@@ -18,6 +18,12 @@ from model_data_preprocess import SUB_CLASS
 
 from model_evaluation import eval_top1_exist
 
+# ignore warnings
+import warnings
+def warn(*args, **kwargs):
+    pass
+warnings.warn = warn
+
 RANDOM_STATE = 42
 
 
@@ -133,6 +139,10 @@ if __name__ == "__main__":
             "/home/ubuntu/capstone/data/patent_2M_reparse_7.p",
             "/home/ubuntu/capstone/data/patent_2M_reparse_8.p",
             "/home/ubuntu/capstone/data/patent_2M_reparse_9.p",
+            "/home/ubuntu/capstone/data/patent_2M_reparse_10.p",
+            "/home/ubuntu/capstone/data/patent_2M_reparse_11.p",
+            "/home/ubuntu/capstone/data/patent_2M_reparse_12.p",
+            "/home/ubuntu/capstone/data/patent_2M_reparse_13.p"
             ]
    
     main(dataFilePaths)
