@@ -1,5 +1,4 @@
-{
-  "task_info":{
+sk_info":{
     "label_type": "multi_label",
     "hierarchical": true,
     "hierar_taxonomy": "data/cpc.taxonomy",
@@ -11,15 +10,6 @@
   "model_dir": "trained_model_cpc",
   "data": {
     "train_json_files": [
-<<<<<<< HEAD
-      "../../../../data/train.json"
-    ],
-    "validate_json_files": [
-      "../../../../data/valid.json"
-    ],
-    "test_json_files": [
-      "../../../../data/test.json"
-=======
       "data/train.json"
     ],
     "validate_json_files": [
@@ -27,7 +17,6 @@
     ],
     "test_json_files": [
       "data/test.json"
->>>>>>> 595e0dfa77d112979bdba2c4f80cff93b2f4a78e
     ],
     "generate_dict_using_json_files": true,
     "generate_dict_using_all_json_files": true,
@@ -113,11 +102,7 @@
     "cell_hidden_dropout": 0.1
   },
   "eval": {
-<<<<<<< HEAD
-    "text_file": "../../../../data/test.json",
-=======
     "text_file": "data/test.json",
->>>>>>> 595e0dfa77d112979bdba2c4f80cff93b2f4a78e
     "threshold": 0.5,
     "dir": "eval_dir",
     "batch_size": 1024,
