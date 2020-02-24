@@ -1,0 +1,10 @@
+  0%|          | 0/13 [00:00<?, ?it/s]  0%|          | 0/13 [00:00<?, ?it/s]
+read data from list 13
+Traceback (most recent call last):
+  File "/pylon5/sez3a3p/yyn1228/Dorothy-Ymir/model/HFT-CNN/create_data.py", line 184, in <module>
+    main()
+  File "/pylon5/sez3a3p/yyn1228/Dorothy-Ymir/model/HFT-CNN/create_data.py", line 131, in main
+    train_data = read_data(train_file_list)
+  File "/pylon5/sez3a3p/yyn1228/Dorothy-Ymir/model/HFT-CNN/create_data.py", line 105, in read_data
+    data += pickle.load(open(p, "rb"))
+FileNotFoundError: [Errno 2] No such file or directory: '../../../data/patent_2M_reparse_0.p'
