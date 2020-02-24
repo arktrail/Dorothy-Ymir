@@ -1,5 +1,4 @@
-{
-  "task_info":{
+sk_info":{
     "label_type": "multi_label",
     "hierarchical": true,
     "hierar_taxonomy": "data/cpc.taxonomy",
