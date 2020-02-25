@@ -1,7 +1,8 @@
-sk_info":{
+{
+  "task_info":{
     "label_type": "multi_label",
     "hierarchical": true,
-    "hierar_taxonomy": "data/cpc.taxonomy",
+    "hierar_taxonomy": "cpc.taxonomy",
     "hierar_penalty": 0.000001
   },
   "device": "cuda",
@@ -13,7 +14,7 @@ sk_info":{
       "data/train.json"
     ],
     "validate_json_files": [
-      "data/dev.json"
+      "data/valid.json"
     ],
     "test_json_files": [
       "data/test.json"
@@ -108,7 +109,7 @@ sk_info":{
     "batch_size": 1024,
     "is_flat": true,
     "top_k": 100,
-    "model_dir": "checkpoint_dir/TextCNN_best"
+    "model_dir": "checkpoint_dir_cpc/TextCNN_best"
   },
   "TextVDCNN": {
     "vdcnn_depth": 9,
