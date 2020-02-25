@@ -1,12 +1,10 @@
 import nltk
-
 import pickle
 import pandas as pd
 from nltk.tokenize import word_tokenize
 import string
 import json
 import os
-
 
 cpc_field_slice_dict = {'kind':                (0 ,2 ),   
                         'application_number':  (2 ,10),  
@@ -21,7 +19,6 @@ cpc_field_slice_dict = {'kind':                (0 ,2 ),
                         'cpc_value_code':      (42,43), 
                         'cpc_set_group':       (43,46), 
                         'cpc_set_rank':        (46,48)}
-
 
 def extract_labels(cpc_codes, label_columns):
     labels = set()
@@ -80,34 +77,34 @@ def get_json_list(output_directory, start_index, end_index, base_name):
     return [os.path.join(output_directory, base_name.format(i)) for i in range(start_index, end_index+1)]
 
 
-input_directory = "data/raw_data"
-output_directory = "data"
+if __name__ == '__main__':
 
-# text_column values: ['title', 'abstraction', 'claims', 'brief_summary', 'description']
-text_columns = ['title', 'abstraction', 'claims']
+    input_directory = sys.argv[1]
+    output_directory = os.path.join(input_directory, "processed_data")
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
 
-# label_columns values: ['cpc_section', 'cpc_class', 'cpc_subclass', 'cpc_main_group', 'cpc_subgroup']
-label_columns = ['cpc_section', 'cpc_class', 'cpc_subclass']
+    # text_column values: ['title', 'abstraction', 'claims', 'brief_summary', 'description']
+    text_columns = ['title', 'abstraction', 'claims']
 
+    # label_columns values: ['cpc_section', 'cpc_class', 'cpc_subclass', 'cpc_main_group', 'cpc_subgroup']
+    label_columns = ['cpc_section', 'cpc_class', 'cpc_subclass']
 
-train_start_index = 0
-train_end_index = 12
-valid_start_index = 16
-valid_end_index = 17
-test_start_index = 13
-test_end_index = 15
-base_name = "post_patent_2M_reparse_{}.p"
+    train_start_index = 0
+    train_end_index = 12
+    valid_start_index = 16
+    valid_end_index = 17
+    test_start_index = 13
+    test_end_index = 15
+    base_name = "post_patent_2M_reparse_{}.p"
 
-process_API_data_folder(input_directory, output_directory)
+    process_API_data_folder(input_directory, output_directory)
 
+    train_json_list = get_json_list(output_directory, train_start_index, train_end_index, base_name)
+    valid_json_list = get_json_list(output_directory, valid_start_index, valid_end_index, base_name)
+    test_json_list = get_json_list(output_directory, test_start_index, test_end_index, base_name)
 
-
-train_json_list = get_json_list(output_directory, train_start_index, train_end_index, base_name)
-valid_json_list = get_json_list(output_directory, valid_start_index, valid_end_index, base_name)
-test_json_list = get_json_list(output_directory, test_start_index, test_end_index, base_name)
-
-
-combine_json(train_json_list, os.path.join(output_directory, "train.json"))
-combine_json(valid_json_list, os.path.join(output_directory, "valid.json"))
-combine_json(test_json_list, os.path.join(output_directory, "test.json"))
+    combine_json(train_json_list, os.path.join(output_directory, "train.json"))
+    combine_json(valid_json_list, os.path.join(output_directory, "valid.json"))
+    combine_json(test_json_list, os.path.join(output_directory, "test.json"))
 
