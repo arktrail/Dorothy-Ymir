@@ -5,6 +5,7 @@ from nltk.tokenize import word_tokenize
 import string
 import json
 import os
+import sys
 
 cpc_field_slice_dict = {'kind':                (0 ,2 ),   
                         'application_number':  (2 ,10),  
@@ -43,7 +44,7 @@ def process_single_API_data(input_path, output_path):
     df_text = pd.DataFrame(df['cpc_codes'].apply(extract_labels, args=(label_columns,)))
     df_text['doc_token'] = df[text_columns].agg(' '.join, axis=1).apply(tokenize)
     df_text.columns = ['doc_label', 'doc_token']
-    df_text.to_json(output_path, orient='records')
+    df_text.to_json(output_path, orient='records', lines=True)
 
 
 def process_API_data_folder(input_directory, output_directory):
@@ -59,18 +60,12 @@ def process_API_data_folder(input_directory, output_directory):
 
 def combine_json(json_list, output_file):
     with open(output_file, "w") as outfile:
-        first = True
         for input_path in json_list:
             with open(input_path) as infile:
                 print("opened {}".format(input_path))
-                if first:
-                    outfile.write('[')
-                    first = False
-                else:
-                    outfile.write(',')
-                outfile.write(infile.read().strip()[1:-1])
+                outfile.write(infile.read())
+                outfile.write('\n')
             os.remove(input_path)
-        outfile.write(']')
 
 
 def get_json_list(output_directory, start_index, end_index, base_name):
