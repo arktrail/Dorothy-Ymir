@@ -2,6 +2,9 @@ import pickle
 from random import shuffle
 import os
 from tqdm import tqdm
+from stop_words import get_stop_words
+
+stop_words = get_stop_words('en')
 
 CPC_CODES = "cpc_codes"
 TITLE = "title"
@@ -64,8 +67,10 @@ def build_tree_and_labels_from_data(data):
 
     for cur_d in tqdm(data):
         # concat the texts into one single one
-        # data_samples.append(".".join([cur_d[TITLE], cur_d[ABSTRACTION]]))
-        data_samples.append(cur_d[TITLE])
+        text = ".".join([cur_d[TITLE], cur_d[ABSTRACTION]])
+        test = preprocess_text(text)
+        data_samples.append(text)
+        # data_samples.append(cur_d[TITLE])
         
         # extract labels from cpc codes
         cpc_classifications_labels_set = set()
@@ -77,7 +82,6 @@ def build_tree_and_labels_from_data(data):
                 # cpc_code[cpc_field_slice_dict['grant'][6][1][0] : cpc_field_slice_dict['grant'][6][1][1]].strip(),
                 # cpc_code[cpc_field_slice_dict['grant'][7][1][0] : cpc_field_slice_dict['grant'][7][1][1]].strip(),
             ]
-
             cur_hierachy_list = []
             for i in range(len(cpc_classification_labels)):
                 if i == 0:
@@ -88,7 +92,7 @@ def build_tree_and_labels_from_data(data):
             
             cur_label_list = [label.split("<")[-1] for label in cur_hierachy_list]
             cpc_classifications_labels_set.add(','.join(cur_label_list))
-            hierachy_text_list.extend(cur_hierachy_list)
+            # hierachy_text_list.extend(cur_hierachy_list)
 
         cpc_classifications_labels = []
         for label_string in cpc_classifications_labels_set:
@@ -96,6 +100,17 @@ def build_tree_and_labels_from_data(data):
         data_labels.append(cpc_classifications_labels)
 
     return hierachy_text_list, data_samples, data_labels
+
+def preprocess_text(sentence):
+    words = sentence.split(" ")
+    stop_character_list = [".", "/", "(", ")", ",", "\\"]
+    stop_words.extend(stop_character_list)
+    new_sent = []
+    for word in words :
+        if word in stop_words:
+            continue
+        new_sent.append(word)
+    return new_sent
 
 def read_data(path):
     data = []
@@ -123,40 +138,81 @@ def main():
     # data = read_data("./patent_200k_reparse_1.p")
     data_path = "./"
     tree_path = "../Tree/CPC.tree"
-    file_list = [i for i in os.listdir(data_path) if i.endswith(".p")]
-    data = read_data(file_list)
+    file_prefix = ""
+    train_file_list = [file_prefix + "patent_2M_reparse_{}.p".format(i) for i in range(0, 13)]
+    test_file_list = [file_prefix + "patent_2M_reparse_{}.p".format(i) for i in range(13, 16)]
+    valid_file_list = [file_prefix + "patent_2M_reparse_{}.p".format(i) for i in range(16, 18)]
+    
+    train_data = read_data(train_file_list)
+    # test_data = read_data(test_file_list)
+    # valid_data = read_data(valid_file_list)
 
-    hierachy_text_list, data_samples, data_labels = build_tree_and_labels_from_data(data)
-    no_dup_hierachy_text_list = list(set(hierachy_text_list))
-    no_dup_hierachy_text_list.sort(key=hierachy_text_list.index)
+    _, train_data_samples, train_labels = build_tree_and_labels_from_data(train_data)
+    # _, test_data_samples, test_labels = build_tree_and_labels_from_data(test_data)
+    # _, valid_data_samples, valid_labels = build_tree_and_labels_from_data(valid_data)
+    # no_dup_hierachy_text_list = list(set(hierachy_text_list))
+    # no_dup_hierachy_text_list.sort(key=hierachy_text_list.index)
+    # f = open(tree_path, "w")
+    # for hierachy_text in no_dup_hierachy_text_list:
+    #     f.write(hierachy_text)
+    #     f.write("\n")
+    # f.close()
 
-    f = open(tree_path, "w")
-    for hierachy_text in no_dup_hierachy_text_list:
-        f.write(hierachy_text)
-        f.write("\n")
-    f.close()
+    # test_size = int(len(data_labels) * 0.2)
+    # valid_size = int(len(data_labels) * 0.1)
 
-    test_size = int(len(data_labels) * 0.2)
-    valid_size = int(len(data_labels) * 0.1)
+    # shuffled_data, shuffled_labels = shuffle_list(data_samples, data_labels)
+    # test_data = shuffled_data[:test_size]
+    # test_labels = shuffled_labels[:test_size]
 
-    shuffled_data, shuffled_labels = shuffle_list(data_samples, data_labels)
-    test_data = shuffled_data[:test_size]
-    test_labels = shuffled_labels[:test_size]
+    # valid_data = shuffled_data[test_size: test_size+valid_size]
+    # valid_labels = shuffled_labels[test_size: test_size+valid_size]
 
-    valid_data = shuffled_data[test_size: test_size+valid_size]
-    valid_labels = shuffled_labels[test_size: test_size+valid_size]
-
-    train_data = shuffled_data[test_size+valid_size:]
-    train_labels = shuffled_labels[test_size+valid_size:]
-
-    test_data_file_path = "./test_data.txt" 
-    valid_data_file_path = "./valid_data.txt"
+    # train_data = shuffled_data[test_size+valid_size:]
+    # train_labels = shuffled_labels[test_size+valid_size:]
+    
     train_data_file_path = "./train_data.txt"
+    # test_data_file_path = "./test_data.txt" 
+    # valid_data_file_path = "./valid_data.txt"
+    
 
     #average sentence length for test, valid, train is 120, 119, 121
-    write_data_file(test_data_file_path, test_data, test_labels)
-    write_data_file(valid_data_file_path, valid_data, valid_labels)
-    write_data_file(train_data_file_path, train_data, train_labels)
+    # write_data_file(test_data_file_path, train_data_samples, test_labels)
+    # write_data_file(valid_data_file_path, valid_data_samples, valid_labels)
+    write_data_file(train_data_file_path, train_data_samples, train_labels)
+
+# def dfs(hierachy_text_list, cur_label_list, cur_tree, cur_key):
+#     if isinstance(cur_tree, set):
+#         for categ in cur_tree:
+#             cur_level_categ = categ[len(cur_key):]
+#             cur_label_list.append(cur_level_categ)
+
+#             target_format_hierachy_list = []
+#             for i in range(len(cur_label_list)):
+#                 if i == 0:
+#                     target_format_hierachy_list.append(cur_label_list[i])
+#                 else:
+#                     cur_level_label = target_format_hierachy_list[i-1].split("<")[-1] + "@" + cur_label_list[i]
+#                     target_format_hierachy_list.append(target_format_hierachy_list[i-1] + "<" + cur_level_label)
+            
 
 if __name__ == "__main__":
     main()
+    # tree_path = "../Tree/cpc_label_tree.pkl"
+    # tree = pickle.load(open(tree_path, "rb"))
+    # # print(tree["Root"]["A"])
+    # for key in tree["Root"]["A"]["A61"]["A61B"]["A61B   5"]:
+    #     print(key)
+    # print(tree["Root"]["A"]["A61"]["A61B"]["A61B   5"])
+    # print(type(tree["Root"]["A"]["A61"]["A61B"]))
+    # hierachy_text_list = []
+    # for section in tree["Root"]:
+    #     dfs(hierachy_text_list, [], tree["Root"][section], section)
+
+
+
+
+
+
+
+
