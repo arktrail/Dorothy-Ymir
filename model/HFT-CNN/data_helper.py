@@ -13,7 +13,7 @@ from gensim.models.wrappers.fasttext import FastText
 from sklearn.metrics import classification_report, f1_score
 from sklearn.preprocessing import MultiLabelBinarizer
 from tqdm import tqdm
-
+import json
 
 # sequence operation
 # =========================================================
@@ -33,7 +33,17 @@ def clean_str(string):
     string = re.sub(r"\s{2,}", " ", string)
     return string.strip().lower()
 
-
+def convert_format(label):
+    '''
+    :param: String label "H--H02--H02J"
+    :return: a list of labels [H, H@02, H@02@J]
+    '''
+    labels = label.split("--")
+    new_labels = [labels[0]]
+    for i in range(1, len(labels)):
+        prev_len = len(labels[i-1])
+        new_labels.append(new_labels[i-1] + "@" + labels[i][prev_len:])
+    return new_labels
 # read data from text file
 # =========================================================
 def  make_data_list(data, kind_of_data, tree_info, max_sen_len, vocab, catgy, article_id, useWords):
@@ -41,21 +51,38 @@ def  make_data_list(data, kind_of_data, tree_info, max_sen_len, vocab, catgy, ar
     data_list = []
     for line in tqdm(data,desc="Loading " + kind_of_data + " data"):
         tmp_dict = dict()
-        line = line[:-1]
-        tmp_dict['text'] = ' '.join(clean_str(' '.join(line.split("\t")[1].split(" "))).split(" ")[:useWords])
+        line_data = json.loads(line)
+        label_list = line_data["doc_label"]
+        new_label_list = []
+        for label in label_list:
+            new_label_list.extend(convert_format(label))
+        text_list = line_data["doc_token"]
+        
+        tmp_dict['text'] = ' '.join(text_list[:useWords])
         [vocab[word] for word in tmp_dict['text'].split(" ")]
         tmp_dict['num_words'] = len(tmp_dict['text'].split(" "))
         max_sen_len = max(max_sen_len, tmp_dict['num_words'])
         tmp_dict['split'] = kind_of_data
-        tmp_dict['hie_info'] = list(set([tree_info[cat] for cat in line.split("\t")[0].split(",")]))
-        tmp_dict['catgy'] = [cat for cat in line.split("\t")[0].split(",")]
-        [catgy[cat] for cat in line.split("\t")[0].split(",")]
+        tmp_dict['hie_info'] = list(set([tree_info[cat] for cat in new_label_list]))
+        tmp_dict['catgy'] = [cat for cat in new_label_list]
+        [catgy[cat] for cat in new_label_list]
         tmp_dict['id'] = str(article_id)
         article_id += 1
         data_list.append(tmp_dict)
-        #print(data_list)
+        # tmp_dict = dict()
+        # line = line[:-1]
+        # tmp_dict['text'] = ' '.join(clean_str(' '.join(line.split("\t")[1].split(" "))).split(" ")[:useWords])
+        # [vocab[word] for word in tmp_dict['text'].split(" ")]
+        # tmp_dict['num_words'] = len(tmp_dict['text'].split(" "))
+        # max_sen_len = max(max_sen_len, tmp_dict['num_words'])
+        # tmp_dict['split'] = kind_of_data
+        # tmp_dict['hie_info'] = list(set([tree_info[cat] for cat in line.split("\t")[0].split(",")]))
+        # tmp_dict['catgy'] = [cat for cat in line.split("\t")[0].split(",")]
+        # [catgy[cat] for cat in line.split("\t")[0].split(",")]
+        # tmp_dict['id'] = str(article_id)
+        # article_id += 1
+        # data_list.append(tmp_dict)
         del tmp_dict
-    #print(catgy)
     return data_list, max_sen_len, vocab, catgy, article_id
 
 # read data
