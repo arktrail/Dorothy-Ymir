@@ -44,6 +44,8 @@ def process_single_API_data(input_path, output_path):
     df_text = pd.DataFrame(df['cpc_codes'].apply(extract_labels, args=(label_columns,)))
     df_text['doc_token'] = df[text_columns].agg(' '.join, axis=1).apply(tokenize)
     df_text.columns = ['doc_label', 'doc_token']
+    df_text["doc_keyword"] = [[] for _ in range(len(df_text))]
+    df_text["doc_topic"] = [[] for _ in range(len(df_text))]
     df_text.to_json(output_path, orient='records', lines=True)
 
 
@@ -75,12 +77,14 @@ def get_json_list(output_directory, start_index, end_index, base_name):
 if __name__ == '__main__':
 
     input_directory = sys.argv[1]
-    output_directory = os.path.join(input_directory, "processed_data")
+    output_subfolder = sys.argv[2]
+    output_directory = os.path.join(input_directory, output_subfolder)
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
 
     # text_column values: ['title', 'abstraction', 'claims', 'brief_summary', 'description']
-    text_columns = ['title', 'abstraction', 'claims']
+    # text_columns = ['title', 'abstraction', 'claims']
+    text_columns = ['brief_summary']
 
     # label_columns values: ['cpc_section', 'cpc_class', 'cpc_subclass', 'cpc_main_group', 'cpc_subgroup']
     label_columns = ['cpc_section', 'cpc_class', 'cpc_subclass']
