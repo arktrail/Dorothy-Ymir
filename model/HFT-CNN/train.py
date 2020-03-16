@@ -99,21 +99,23 @@ def main():
     tree_file_path = sys.argv[6]
     use_words = int(sys.argv[7])
 
-    f_train = open(train, "r")
-    train_lines = f_train.readlines()
-    f_test = open(test, "r")
-    test_lines = f_test.readlines()
-    f_valid = open(validation, "r")
-    valid_lines = f_valid.readlines()
-    f_train.close()
-    f_test.close()
-    f_valid.close()
+    train_lines = open(train, "r")
+    # train_lines = f_train.readlines()
+    test_lines = open(test, "r")
+    # test_lines = f_test.readlines()
+    valid_lines = open(validation, "r")
+    # valid_lines = f_valid.readlines()
+    
 
     # Building Hierarchical information
     # =========================================================
     category_hie_info_dic = make_labels_hie_info_dic(tree_file_path)
     input_data_dic = data_helper.data_load(train_lines, valid_lines, test_lines, category_hie_info_dic, use_words)
     category_hie_list_dic = make_labels_hie_list_dic(list(input_data_dic["catgy"].keys()), category_hie_info_dic)
+
+    train_lines.close()
+    test_lines.close()
+    valid_lines.close()
     # Loading Word embeddings
     # =========================================================
     print ("-"*50)
