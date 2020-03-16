@@ -22,7 +22,7 @@ import os
 import numpy as np
 
 from dataset.classification_dataset import ClassificationDataset as cDataset
-
+import pickle
 
 class ClassificationEvaluator(object):
     MACRO_AVERAGE = "macro_average"
@@ -238,6 +238,10 @@ class ClassificationEvaluator(object):
                         index = len(label_to_id_maps[i])
                         label_to_id_maps[i][label] = index
                         id_to_label_maps[i][index] = label
+	
+	f = open("label_to_id_maps.pkl", "wb")
+	pickle.dump(dict,f)
+	f.close()
 
         confusion_matrix_list = []
         right_category_count_list = []
