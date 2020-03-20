@@ -11,6 +11,7 @@ CLASS = "class"
 SUB_CLASS = "sub_class"
 GROUP = "group"
 SUB_GROUP = "sub_group"
+SPLIT = "--"
 
 
 __all__ = [
@@ -80,7 +81,7 @@ def build_tree_and_labels_from_data(data):
 
     for d in data:
         # concat the texts into one single one
-        data_samples.append(".".join([d[TITLE], d[ABSTRACTION]]))
+        data_samples.append(SPLIT.join([d[TITLE], d[ABSTRACTION]]))
 
         # extract labels from cpc codes
         cpc_classifications_labels = set()
@@ -102,15 +103,15 @@ def build_tree_and_labels_from_data(data):
             class_hierarchy[ROOT].add(cpc_classification_labels[0])
 
             for idx in range(len(cpc_classification_labels) - 2):
-                current_level = ".".join(cpc_classification_labels[0:idx])
-                next_level = ".".join(cpc_classification_labels[0:idx + 1])
+                current_level = SPLIT.join(cpc_classification_labels[0:idx])
+                next_level = SPLIT.join(cpc_classification_labels[0:idx + 1])
                 if current_level not in class_hierarchy.keys():
                     class_hierarchy[current_level] = set()
                 class_hierarchy[current_level].add(
                     next_level)
 
             cpc_classifications_labels.add(
-                ".".join(cpc_classification_labels[0:3]))
+                SPLIT.join(cpc_classification_labels[0:3]))
 
         data_labels.append(list(cpc_classifications_labels))
 
@@ -153,11 +154,12 @@ def build_tree_and_labels_from_data_multiple_label(data):
     class_hierarchy = {ROOT: set()}
     data_labels = []
     data_samples = []
-    all_labels = {SECTION: set(), CLASS: set(), SUB_CLASS: set(), GROUP: set(), SUB_GROUP: set()}
+    all_labels = {SECTION: set(), CLASS: set(), SUB_CLASS: set(),
+                  GROUP: set(), SUB_GROUP: set()}
 
     for d in data:
         # concat the texts into one single one
-        data_samples.append(".".join([d[TITLE], d[ABSTRACTION]]))
+        data_samples.append(SPLIT.join([d[TITLE], d[ABSTRACTION]]))
 
         # extract labels from cpc codes
         cpc_classifications_labels = set()
@@ -165,13 +167,13 @@ def build_tree_and_labels_from_data_multiple_label(data):
             cpc_classification_labels = [
                 cpc_code[cpc_field_slice_dict['grant'][3][1][0]
                     : cpc_field_slice_dict['grant'][3][1][1]],
-                cpc_code[cpc_field_slice_dict['grant'][4][1][0]
+                cpc_code[cpc_field_slice_dict['grant'][3][1][0]
                     : cpc_field_slice_dict['grant'][4][1][1]],
-                cpc_code[cpc_field_slice_dict['grant'][5][1][0]
+                cpc_code[cpc_field_slice_dict['grant'][3][1][0]
                     : cpc_field_slice_dict['grant'][5][1][1]],
-                cpc_code[cpc_field_slice_dict['grant'][6][1][0]
+                cpc_code[cpc_field_slice_dict['grant'][3][1][0]
                     : cpc_field_slice_dict['grant'][6][1][1]].strip(),
-                cpc_code[cpc_field_slice_dict['grant'][7][1][0]
+                cpc_code[cpc_field_slice_dict['grant'][3][1][0]
                     : cpc_field_slice_dict['grant'][7][1][1]].strip(),
             ]
 
@@ -179,8 +181,8 @@ def build_tree_and_labels_from_data_multiple_label(data):
             class_hierarchy[ROOT].add(cpc_classification_labels[0])
 
             for idx in range(len(cpc_classification_labels) - 2):
-                current_level = ".".join(cpc_classification_labels[0:idx])
-                next_level = ".".join(cpc_classification_labels[0:idx + 1])
+                current_level = SPLIT.join(cpc_classification_labels[0:idx])
+                next_level = SPLIT.join(cpc_classification_labels[0:idx + 1])
                 if current_level not in class_hierarchy.keys():
                     class_hierarchy[current_level] = set()
                 class_hierarchy[current_level].add(
@@ -191,10 +193,12 @@ def build_tree_and_labels_from_data_multiple_label(data):
 
             # get all labels:
             all_labels[SECTION].add(cpc_classification_labels[0])
-            all_labels[CLASS].add(".".join(cpc_classification_labels[0:2]))
-            all_labels[SUB_CLASS].add(".".join(cpc_classification_labels[0:3]))
-            all_labels[GROUP].add(".".join(cpc_classification_labels[0:4]))
-            all_labels[SUB_GROUP].add(".".join(cpc_classification_labels[0:5]))
+            all_labels[CLASS].add(SPLIT.join(cpc_classification_labels[0:2]))
+            all_labels[SUB_CLASS].add(
+                SPLIT.join(cpc_classification_labels[0:3]))
+            all_labels[GROUP].add(SPLIT.join(cpc_classification_labels[0:4]))
+            all_labels[SUB_GROUP].add(
+                SPLIT.join(cpc_classification_labels[0:5]))
 
         data_labels.append(list(cpc_classifications_labels))
 
