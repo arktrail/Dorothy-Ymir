@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
     # text_column values: ['title', 'abstraction', 'claims', 'brief_summary', 'description']
     # text_columns = ['title', 'abstraction', 'claims']
-    text_columns = ['brief_summary']
+    text_columns = ['description']
 
     # label_columns values: ['cpc_section', 'cpc_class', 'cpc_subclass', 'cpc_main_group', 'cpc_subgroup']
     label_columns = ['cpc_section', 'cpc_class', 'cpc_subclass']

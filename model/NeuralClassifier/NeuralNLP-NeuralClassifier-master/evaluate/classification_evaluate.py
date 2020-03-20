@@ -239,9 +239,9 @@ class ClassificationEvaluator(object):
                         label_to_id_maps[i][label] = index
                         id_to_label_maps[i][index] = label
 	
-	f = open("label_to_id_maps.pkl", "wb")
-	pickle.dump(dict,f)
-	f.close()
+        f = open("label_to_id_maps.pkl", "wb")
+        pickle.dump(label_to_id_maps,f)
+        f.close()
 
         confusion_matrix_list = []
         right_category_count_list = []
