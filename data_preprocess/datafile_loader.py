@@ -4,6 +4,7 @@ load data from US_Grang_CPC_MCF files, and compute the corresponding numbers for
 
 import pandas as pd
 import os
+import lmdb
 
 def process_cpc_classification_folder(directory, document_type):
     master_df = []
@@ -60,7 +61,6 @@ def process_cpc_classification_folder(directory, document_type):
         counter += 1
         print("file: %s, counter: %d".format(file_path, counter))
     return pd.concat(master_df, ignore_index=True)
-
 
 def read_from_file(file_name):
     return pd.read_pickle(file_name)

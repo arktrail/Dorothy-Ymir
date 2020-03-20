@@ -1,12 +1,12 @@
 {
-  "task_info":{
+  "task_info": {
     "label_type": "multi_label",
     "hierarchical": true,
     "hierar_taxonomy": "data/cpc.taxonomy",
     "hierar_penalty": 0.000001
   },
   "device": "cuda",
-  "model_name": "TextCNN",
+  "model_name": "TextRCNN",
   "checkpoint_dir": "checkpoint_dir_cpc",
   "model_dir": "trained_model_cpc",
   "data": {
@@ -56,7 +56,7 @@
     "clip_gradients": 100.0,
     "l2_lambda": 0.0,
     "loss_type": "BCEWithLogitsLoss",
-    "sampler": "fixed",
+    "sampler": "learned",
     "num_sampled": 5,
     "visible_device_list": "0",
     "hidden_layer_dropout": 0.5
@@ -89,7 +89,7 @@
   },
   "TextRNN": {
     "hidden_dimension": 64,
-    "rnn_type": "GRU",
+    "rnn_type": "LSTM",
     "num_layers": 1,
     "doc_embedding_type": "Attention",
     "attention_dimension": 16,
@@ -109,7 +109,7 @@
     "batch_size": 1024,
     "is_flat": false,
     "top_k": 100,
-    "model_dir": "checkpoint_dir_cpc/TextCNN_best"
+    "model_dir": "checkpoint_dir_cpc/TextRNN_best"
   },
   "TextVDCNN": {
     "vdcnn_depth": 9,
@@ -123,13 +123,13 @@
   },
   "TextRCNN": {
     "kernel_sizes": [
-        2,
-        3,
-        4
+      2,
+      3,
+      4
     ],
     "num_kernels": 100,
     "top_k_max_pooling": 1,
-    "hidden_dimension":64,
+    "hidden_dimension": 64,
     "rnn_type": "GRU",
     "num_layers": 1,
     "bidirectional": true

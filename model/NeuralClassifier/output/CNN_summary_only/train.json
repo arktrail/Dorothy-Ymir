@@ -2,7 +2,7 @@
   "task_info":{
     "label_type": "multi_label",
     "hierarchical": true,
-    "hierar_taxonomy": "data/cpc.taxonomy",
+    "hierar_taxonomy": "../../NeuralNLP-NeuralClassifier-master/data/cpc.taxonomy",
     "hierar_penalty": 0.000001
   },
   "device": "cuda",
@@ -11,13 +11,13 @@
   "model_dir": "trained_model_cpc",
   "data": {
     "train_json_files": [
-      "../../../../data/processed_data/train.json"
+      "../../../../../data/summary_only/train.json"
     ],
     "validate_json_files": [
-      "../../../../data/processed_data/valid.json"
+      "../../../../../data/summary_only/valid.json"
     ],
     "test_json_files": [
-      "../../../../data/processed_data/test.json"
+      "../../../../../data/summary_only/test.json"
     ],
     "generate_dict_using_json_files": true,
     "generate_dict_using_all_json_files": true,
@@ -49,7 +49,7 @@
   "train": {
     "batch_size": 64,
     "start_epoch": 1,
-    "num_epochs": 5,
+    "num_epochs": 10,
     "num_epochs_static_embedding": 0,
     "decay_steps": 1000,
     "decay_rate": 1.0,
@@ -103,7 +103,7 @@
     "cell_hidden_dropout": 0.1
   },
   "eval": {
-    "text_file": "../../../data/processed_data/test.json",
+    "text_file": "../../../../../data/summary_only/test.json",
     "threshold": 0.0,
     "dir": "eval_dir",
     "batch_size": 1024,
