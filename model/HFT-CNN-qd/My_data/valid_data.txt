@@ -1,0 +1,599 @@
+B,B@01,B@01@J,C,C@10,C@10@G	Method and System for Controlling Presentation of Information to a User Based on the User's Condition
+A,A@61,A@61@K,B,B@82,B@82@Y,Y,Y@02,Y@02@A,C,C@07,C@07@K	D-amino Acid Peptides
+C,C@10,C@10@M,C,C@10,C@10@L,C,C@10,C@10@N,C,C@07,C@07@F	Method and Apparatus for Encoding and Decoding Image Through Intra Prediction
+G,G@06,G@06@F,A,A@61,A@61@M,G,G@16,G@16@H,G,G@07,G@07@C,G,G@09,G@09@B,Y,Y@02,Y@02@A	Integrated Circuit Chips with Fine-Line Metal and Over-passivation Metal
+H,H@01,H@01@L	Communicating System, Communicating Method, and Base Station
+B,B@60,B@60@K	Void-arranged Structure and Measurement Method Using the Same
+H,H@04,H@04@M,H,H@04,H@04@N,H,H@04,H@04@W,H,H@04,H@04@L,G,G@07,G@07@C,H,H@04,H@04@B	Electrical Connector with Switch Device
+F,F@16,F@16@L,Y,Y@10,Y@10@T,B,B@32,B@32@B	Reinforced Plastic Pipe
+H,H@01,H@01@R	Real-Time Notification of Presence Changes
+A,A@61,A@61@K,C,C@08,C@08@L,A,A@61,A@61@L,A,A@61,A@61@B,A,A@61,A@61@F	Glue for Cartilage Repair
+G,G@06,G@06@F	Storage System with Elective Garbage Collection to Reduce Flash Contention
+H,H@04,H@04@N	Secure Distribution of Video On-Demand
+A,A@61,A@61@B,A,A@61,A@61@F	Enhanced Gradient Multipole Collision Cell for Higher Duty Cycle
+B,B@26,B@26@D,Y,Y@10,Y@10@T	Computing Node Job Assignment for Distribution of Scheduling Operations
+A,A@61,A@61@K,C,C@40,C@40@B,G,G@01,G@01@N,Y,Y@10,Y@10@T,A,A@61,A@61@B,B,B@01,B@01@J,B,B@01,B@01@L	Implantable Medical Device for Diagnostic Sensing
+G,G@06,G@06@F,G,G@06,G@06@Q	Authentication of an Object
+G,G@03,G@03@G	Method for purifying exhaust gas from internal combustion engines
+H,H@05,H@05@K,H,H@01,H@01@R,C,C@08,C@08@F,H,H@01,H@01@L,C,C@09,C@09@J,H,H@01,H@01@B	Electrical Connection Material
+C,C@09,C@09@F	Image Acquisition Apparatus, Image Acquisition Method, and Information Processing Program
+G,G@06,G@06@K,H,H@04,H@04@N,A,A@61,A@61@B,G,G@01,G@01@J,G,G@02,G@02@B	Fatty Acid Production in Cell-Free Systems
+H,H@01,H@01@L	Method and System for Bit Rate Adaptation
+H,H@01,H@01@S	Cable Including a Plurality of Insulated Conductors Enclosed in the Same Sheath and Method of Fabricating This Kind of Cable
+G,G@06,G@06@F,G,G@11,G@11@C	Configurable Multi-level Error Correction in a Storage Controller
+B,B@29,B@29@C	Semiconductor device and manufacturing method thereof
+C,C@10,C@10@L,C,C@10,C@10@G,C,C@01,C@01@B	Vehicular Lamp
+A,A@61,A@61@B	Absorbable Compositions and Methods for Their Use in Hemostasis
+A,A@61,A@61@K,C,C@07,C@07@J,C,C@07,C@07@H,C,C@12,C@12@Y,C,C@12,C@12@N,C,C@12,C@12@P,C,C@12,C@12@Q	Seat arrangement for a vehicle having an actuatable occupant protection device
+C,C@11,C@11@D	Backlight Unit and Holographic Display Device Including the Same
+G,G@06,G@06@F,G,G@02,G@02@F	HCV Protease Inhibitors and Uses Thereof
+A,A@61,A@61@B,G,G@01,G@01@D,A,A@61,A@61@M	Ingestible Medical Device
+B,B@65,B@65@H,A,A@61,A@61@F,B,B@32,B@32@B	Network Function Virtualization NFV Fault Management Apparatus, Device, and Method
+F,F@02,F@02@B,F,F@02,F@02@M	Loss Circulation Compositions (LCM) Having Portland Cement Clinker
+H,H@01,H@01@L	Geographical Web Browser, Methods, Apparatus and Systems
+H,H@05,H@05@H,Y,Y@10,Y@10@T	Power Converter Package and Thermal Management
+C,C@07,C@07@K,C,C@12,C@12@N	Wiring Substrate and Electronic Component Device
+G,G@01,G@01@D	Pulse signal generator and method of making same
+B,B@24,B@24@B,F,F@16,F@16@C,B,B@24,B@24@D	Device Status Notification Device
+C,C@23,C@23@C,B,B@05,B@05@D,Y,Y@10,Y@10@T	Vessel Sealer and Divider
+B,B@82,B@82@Y,C,C@07,C@07@H,G,G@06,G@06@N,C,C@12,C@12@N,C,C@12,C@12@Q	Rotationally Sequestered Translators
+A,A@61,A@61@B,G,G@01,G@01@N,B,B@01,B@01@L,A,A@61,A@61@M	Percutaneous Registration Apparatus and Method for Use in Surgical Navigation
+A,A@61,A@61@M	Filter Element and Support Structure
+A,A@61,A@61@B	Liquid Crystal Display
+G,G@06,G@06@F,G,G@06,G@06@K,G,G@10,G@10@L	Highlevel Active Pen Matrix
+G,G@06,G@06@F,H,H@04,H@04@J,H,H@04,H@04@M,H,H@04,H@04@H,H,H@04,H@04@W,H,H@04,H@04@N,Y,Y@02,Y@02@D,H,H@04,H@04@L,H,H@03,H@03@M,H,H@04,H@04@K,H,H@04,H@04@B	Synchronization Techniques in Multipoint-to-Point Communication Using Orthogonal Frequency Division Multiplexing
+G,G@01,G@01@N,Y,Y@10,Y@10@T,B,B@82,B@82@Y,B,B@01,B@01@J,B,B@81,B@81@B,B,B@81,B@81@C,B,B@01,B@01@L,B,B@01,B@01@F	Microfluidic Devices for Methods Development
+A,A@61,A@61@M	Autotransfusion Device
+B,B@65,B@65@H,G,G@03,G@03@G	Transluminal methods and devices for closing, forming attachments to, and/or forming anastomotic junctions in, luminal anatomical structures
+B,B@65,B@65@D	Methods for Washing Carcasses, Meat, or Meat Products with Medium Chain Peroxycarboxylic Acid Compositions
+A,A@01,A@01@K	Well Implant Through Dummy Gate Oxide in Gate-Last Process
+C,C@10,C@10@L,C,C@07,C@07@C,Y,Y@02,Y@02@P,C,C@07,C@07@K,C,C@12,C@12@Y,Y,Y@02,Y@02@T,C,C@12,C@12@P,C,C@12,C@12@N,Y,Y@02,Y@02@E	Renewable Chemical Production from Novel Fatty Acid Feedstocks
+Y,Y@02,Y@02@B,G,G@01,G@01@J,H,H@05,H@05@B	Service Regulator with Improved Boost Performance
+F,F@25,F@25@D,F,F@25,F@25@B,B,B@60,B@60@H	Airbag and Airbag Apparatus
+A,A@61,A@61@K,G,G@01,G@01@N	Method of Diagnosing Stage or Aggressiveness of Breast and Prostate Cancer Based on Levels of Fatty Acid Binding Proteins
+H,H@01,H@01@L,C,C@30,C@30@B,Y,Y@10,Y@10@S	Printer Selectively Having Configurations for Receipt Printer and for Ticket Printer
+A,A@63,A@63@B	Combination Abdominal/Pectoral Exercise Device
+A,A@61,A@61@K,C,C@07,C@07@D	Stray light attenuating device
+F,F@04,F@04@D,G,G@21,G@21@C,Y,Y@02,Y@02@E	Variable Area Bypass Nozzle
+G,G@06,G@06@F,A,A@63,A@63@F,G,G@06,G@06@T	Human-Computer Interface Device and System
+C,C@10,C@10@M,C,C@10,C@10@N	Lubricating oil composition for high-temperature use
+H,H@01,H@01@L	High density combined cycle power plant process
+C,C@08,C@08@L,C,C@09,C@09@D,C,C@08,C@08@G	Method for the manufacturing of a saw blade
+H,H@01,H@01@L	Semiconductor device and method of forming the same
+Y,Y@10,Y@10@S,D,D@06,D@06@N,D,D@06,D@06@M,Y,Y@10,Y@10@T	Semiconductor device and method for manufacturing the same technical field
+G,G@01,G@01@N,C,C@07,C@07@K,C,C@12,C@12@Q	Wiring Substrate and Semiconductor Package
+B,B@29,B@29@C,A,A@61,A@61@N,A,A@61,A@61@F,H,H@04,H@04@R	Earpiece and Method for Forming an Earpiece
+H,H@01,H@01@L	Lateral Bipolar Junction Transistor with Abrupt Junction and Compound Buried Oxide
+H,H@01,H@01@L	Nanocoupling for Improvement of Coating Adhesion of Polymer on Metal Substrates
+G,G@01,G@01@N,C,C@07,C@07@K,C,C@12,C@12@N,C,C@12,C@12@Q	Multi-services Application Gateway and System Employing the Same
+B,B@23,B@23@D,Y,Y@10,Y@10@T,B,B@08,B@08@B,B,B@27,B@27@G,B,B@23,B@23@Q	Dust collection system
+A,A@43,A@43@C,Y,Y@10,Y@10@T	Method of synthesizing optically enriched &agr;-halo-esters, and product and composition therefrom
+H,H@04,H@04@M,H,H@04,H@04@B,B,B@60,B@60@R,G,G@08,G@08@B	Portable information communication device
+Y,Y@10,Y@10@T,B,B@29,B@29@C,F,F@16,F@16@B,B,B@29,B@29@B,B,B@21,B@21@D	Liquid Crystal Display Device Having Counter Electrode with Particular Configuration
+C,C@07,C@07@D,C,C@07,C@07@C	Access Door for Feeder/Delinker of a Gatling Gun
+A,A@61,A@61@F	Pyrolytic oil-productivity index method for predicting reservoir rock and oil characteristics
+G,G@06,G@06@F,H,H@04,H@04@L	In-message Applications in a Messaging Platform
+B,B@60,B@60@R,F,F@16,F@16@B	Direct methanol fuel cell system and method of fabrication
+G,G@06,G@06@F	Method, Software and System for Multi-path Fail-Over Recovery in Sequential Storage Systems
+F,F@21,F@21@V,F,F@21,F@21@Y,F,F@21,F@21@S,F,F@21,F@21@W,B,B@64,B@64@D,B,B@60,B@60@Q	Method, apparatus, and storage media for image processing
+G,G@11,G@11@B	Semiconductor Device and Manufacturing Method Thereof
+B,B@01,B@01@J,C,C@07,C@07@C,C,C@07,C@07@F	Training Apparatus, Training Method, and Computer Program Product
+H,H@01,H@01@L	Bonding of Heat-activated Films Including a Plasticizer
+H,H@04,H@04@N,G,G@06,G@06@T	Systems and methods for multiple mode voice and data communications using intelligently bridged TDM and packet buses
+H,H@01,H@01@R	Media File Distribution System and Method
+Y,Y@02,Y@02@B,H,H@01,H@01@M	System and Method for Operating a High Temperature Fuel Cell as a Back-up Power Supply with Reduced Performance Decay
+G,G@06,G@06@F,A,A@61,A@61@G,G,G@16,G@16@H,H,H@04,H@04@L	Methods and Apparatus for Cryogenic Treatment of a Body Cavity or Lumen
+B,B@62,B@62@D,B,B@60,B@60@G	Interactive Data Visualization User Interface with Multiple Interaction Profiles
+B,B@01,B@01@J,A,A@61,A@61@K,C,C@08,C@08@L,C,C@08,C@08@K	Conflict Resolution Enhancement System
+B,B@05,B@05@B,A,A@45,A@45@D,B,B@65,B@65@D,B,B@05,B@05@C	Containment System
+G,G@06,G@06@F	System and Method for Identifying Line Breaks
+G,G@01,G@01@N,C,C@12,C@12@Q	Compositions and Methods for the Identification, Assessment, Prevention and Therapy of Human Cancers
+H,H@03,H@03@G	Signal Processing Device and Signal Processing Method
+H,H@01,H@01@L	Cotton cells, plants, and seeds genetically engineered to express insecticidal and fungicidal chitin binding proteins (lectins)
+G,G@06,G@06@Q,H,H@04,H@04@L	Syringe-shaped Dose Calibration Source Standard
+A,A@61,A@61@K,C,C@12,C@12@N,C,C@07,C@07@K	Neuroprotective peptides and uses thereof
+C,C@23,C@23@C,C,C@03,C@03@B	Solid-State Light Sources for Curing and Surface Modification
+Y,Y@02,Y@02@C,E,E@21,E@21@B,C,C@09,C@09@K	Composite Electrode
+G,G@06,G@06@F,H,H@03,H@03@J,G,G@08,G@08@C,H,H@04,H@04@N,G,G@10,G@10@L,H,H@04,H@04@L,H,H@04,H@04@B	Method for manufacturing a multilayer plastic pipe
+B,B@29,B@29@L,B,B@29,B@29@K,B,B@29,B@29@C,Y,Y@10,Y@10@T	System and method for detecting and managing fraud
+A,A@63,A@63@B	Swing Training Device
+G,G@03,G@03@B,G,G@02,G@02@B,H,H@04,H@04@N	Optimizing Drive Schemes for Multiple Projector Systems
+H,H@04,H@04@B,H,H@03,H@03@F	Dialyzing Apparatus
+B,B@60,B@60@Y,B,B@60,B@60@J,B,B@60,B@60@P	Flexible Powered Tonneau Cover for a Pickup Truck Bed
+A,A@01,A@01@D	Twin Sheet Vacuum Formed Covers for Disc Mower Cutterbars
+H,H@01,H@01@L,H,H@01,H@01@M,H,H@05,H@05@K,H,H@02,H@02@J	Polymer Solutions
+A,A@61,A@61@B	System and method for purging database update image files after completion of associated transactions
+G,G@02,G@02@B,G,G@02,G@02@F	Modular spray cooling system for electronic components
+H,H@01,H@01@L	Method and Device for Incorporating Single Diffusion Break into Nanochannel Structures of FET Devices
+H,H@01,H@01@G	Wake-up Radio Assisted WLAN Power Saving Technologies
+C,C@01,C@01@B,B,B@01,B@01@B,F,F@23,F@23@C,Y,Y@02,Y@02@P,B,B@01,B@01@J,H,H@01,H@01@M	Device for Carrying Out a Heterogeneously Catalyzed Reaction and Method for Producing a Catalyst
+F,F@02,F@02@B,Y,Y@02,Y@02@T,F,F@02,F@02@D,F,F@01,F@01@N,F,F@01,F@01@L	Aroma-containing Components
+G,G@03,G@03@G	Thermal Management for Superconducting Interconnects
+H,H@01,H@01@M	Plain Bearing and Process for Producing the Same
+A,A@61,A@61@F	Segmented scleral band for treatment of presbyopia and other eye disorders
+Y,Y@10,Y@10@S,A,A@45,A@45@D,Y,Y@10,Y@10@T	Mechanism for Instruction Set Based Thread Execution on a Plurality of Instruction Sequencers
+A,A@61,A@61@K,Y,Y@10,Y@10@S,C,C@12,C@12@N	Display Apparatus Using Subpixels with High Light Utilization
+Y,Y@02,Y@02@B,H,H@05,H@05@B,H,H@01,H@01@H	Medium Containing Flt3 Ligand for Culturing Hematophoietic Cells
+H,H@01,H@01@L	Semiconductor Memory Device
+F,F@17,F@17@D,A,A@47,A@47@L,Y,Y@10,Y@10@T,D,D@06,D@06@F	Magnetite-iron based composite powder, magnetite-iron based powder mixture, method for producing the same, method for remedying polluted soil, water or gases and electromagnetic wave absorber
+C,C@11,C@11@B,Y,Y@10,Y@10@S	Vehicle
+F,F@25,F@25@D,H,H@01,H@01@L,F,F@25,F@25@B	Inkjet Recording Head
+B,B@29,B@29@D,Y,Y@10,Y@10@T,B,B@29,B@29@K,B,B@29,B@29@C,B,B@32,B@32@B,B,B@29,B@29@L	Microfluidic Large Scale Integration
+Y,Y@02,Y@02@P,C,C@07,C@07@C	Method and apparatus for displaying text based upon attributes found within the text
+Y,Y@02,Y@02@P,H,H@05,H@05@B,C,C@21,C@21@D	Induction Hardening Control System
+A,A@61,A@61@B	Male Terminal Fitting and Blank Therefor
+A,A@61,A@61@K,A,A@61,A@61@Q,B,B@82,B@82@Y,Y,Y@02,Y@02@A	Antimicrobial compositions
+G,G@06,G@06@F,H,H@04,H@04@N	Process for the preparation of sulphonated distyryl-biphenyl compounds
+C,C@08,C@08@L,G,G@02,G@02@B,C,C@08,C@08@G,C,C@09,C@09@J,C,C@08,C@08@K	Method for Monitoring Proper Fastening of an Article of Assembly at More Than One Location
+H,H@03,H@03@K	Selectivated Metallosilicate Catalyst Composite for Alkyl Aromatic Conversion, Process for the Preparation Thereof, Use Thereof in Hydrocarbon Conversion
+H,H@01,H@01@L	Bodies, Packages of Bodies, and a Device and Method for Packaging Bodies
+A,A@44,A@44@B,Y,Y@10,Y@10@T	Compressor and Refrigerating Machine
+B,B@60,B@60@K,F,F@02,F@02@M,F,F@02,F@02@B,Y,Y@02,Y@02@T,B,B@62,B@62@M,B,B@60,B@60@Y	Heat Exchanger for a Snowmobile Engine Air Intake
+H,H@04,H@04@B,H,H@04,H@04@L,H,H@04,H@04@W	Method of Adding Fabrication Monitors to Integrated Circuit Chips
+B,B@29,B@29@K,B,B@29,B@29@C,B,B@29,B@29@L,Y,Y@02,Y@02@T,B,B@64,B@64@F,B,B@64,B@64@C	Controller for the drive train of a motor vehicle
+D,D@06,D@06@F	Surgical Instrument Handle with Adjustable Actuator Position
+H,H@01,H@01@L	Low inductance power wiring structure and semiconductor device
+C,C@07,C@07@D	Method of Controlling Digital Image Processing Apparatus for Efficient Reproduction and Digital Image Processing Apparatus Using the Method
+E,E@04,E@04@H	Memorial Display
+A,A@01,A@01@D	Auto-injector
+H,H@01,H@01@L	Semiconductor Device and a Method for Fabricating the Same
+H,H@02,H@02@P,Y,Y@02,Y@02@T,H,H@02,H@02@K,B,B@60,B@60@L	Efficient stator
+Y,Y@02,Y@02@T,Y,Y@10,Y@10@T,B,B@60,B@60@L,H,H@02,H@02@J	Zeolite-containing Settable Spotting Fluids
+Y,Y@04,Y@04@S,H,H@04,H@04@W,H,H@04,H@04@L,H,H@02,H@02@J,H,H@04,H@04@B,H,H@04,H@04@Q,Y,Y@02,Y@02@E	Network Termination and Methods for Use Therewith
+G,G@07,G@07@C,G,G@06,G@06@Q,G,G@07,G@07@B	Semiconductor package having stacked dice and leadframes and method of fabrication
+B,B@65,B@65@B,A,A@22,A@22@C,Y,Y@10,Y@10@S,Y,Y@10,Y@10@T	Image processing method and image processing device
+B,B@62,B@62@D,B,B@21,B@21@D,Y,Y@10,Y@10@T	Automotive Closure Panel Assembly
+C,C@08,C@08@L,Y,Y@10,Y@10@T,C,C@09,C@09@D,Y,Y@10,Y@10@S,C,C@08,C@08@F	Epoxy/Acrylate Based Primer Coating Compositions and Their Use in the Optical Field
+A,A@61,A@61@B,C,C@08,C@08@L,A,A@61,A@61@L	Baseplate for chip burn-in and/of testing, and method thereof
+H,H@01,H@01@L	Reliable Data Storage in Analog Memory Cells in the Presence of Temperature Variations
+H,H@01,H@01@J,Y,Y@10,Y@10@S	Compound for Organic Electronic Element, Organic Electrical Element Using Compound, and Electronic Device Comprising Same
+H,H@01,H@01@L,Y,Y@10,Y@10@S	Method for Designing Minimal Cost, Timing Correct Hardware During Circuit Synthesis
+A,A@61,A@61@K,H,H@04,H@04@B,H,H@04,H@04@L,H,H@04,H@04@W	Process for Controlling Performance Characteristics of a Negative Differential Resistance (NDR) Device
+A,A@61,A@61@K,C,C@40,C@40@B,C,C@07,C@07@D,G,G@01,G@01@N,C,C@07,C@07@C,Y,Y@10,Y@10@T,C,C@09,C@09@B,C,C@07,C@07@K,C,C@12,C@12@Q	Cooling Apparatus and a Thermostat with the Apparatus Installed Therein
+F,F@02,F@02@M,F,F@02,F@02@B,Y,Y@02,Y@02@T,F,F@02,F@02@D,F,F@01,F@01@L	Catheter Having First and Second Guidewire Tubes and Overlapping Stiffening Members
+H,H@04,H@04@L	Method and System for Operating Autonomous Driving Vehicles Using Graph-based Lane Change Guide
+F,F@02,F@02@C,F,F@03,F@03@G,F,F@01,F@01@K,F,F@22,F@22@B,F,F@05,F@05@D,Y,Y@02,Y@02@E	Patient-isolating programming interface for programming hearing aids
+H,H@01,H@01@L,H,H@05,H@05@K	Method for Soldering Surface-Mount Component and Surface-Mount Component
+C,C@07,C@07@D,C,C@07,C@07@C	Transconductor having structure of crossing pairs
+H,H@01,H@01@Q,G,G@06,G@06@K,Y,Y@10,Y@10@T	System and Method Enabling Fourth Line Embossing on Contactless Cards
+C,C@08,C@08@L,C,C@08,C@08@K,C,C@08,C@08@F	Method and Apparatus for Aeration of a Fluid
+B,B@65,B@65@G	Conveyor Belt System and System for Monitoring the Rolls of the Conveyor Belt System
+H,H@04,H@04@M,H,H@04,H@04@L,H,H@04,H@04@W	Proteinoid carriers and methods for preparation and use thereof
+F,F@01,F@01@L	Molded Splitter Structures and Methods for Making the Same
+Y,Y@02,Y@02@B,H,H@01,H@01@L,Y,Y@02,Y@02@E	Broadband Distributed Antenna System with Non-duplexer Isolator Sub-system
+G,G@06,G@06@F,H,H@04,H@04@L	Redundant Electrical Brake and Protection System for Electric Generators
+H,H@01,H@01@L	Methods of Manufacturing a Power MOSFET
+C,C@08,C@08@J,C,C@08,C@08@L,A,A@61,A@61@L,Y,Y@10,Y@10@T,C,C@09,C@09@D,B,B@01,B@01@J,D,D@21,D@21@H,C,C@08,C@08@G,C,C@09,C@09@J,C,C@08,C@08@K	Degradation control of environmentally degradable disposable materials
+H,H@04,H@04@L	Plastic lever assembly for power transmission device
+F,F@21,F@21@V,F,F@21,F@21@Y,H,H@05,H@05@B,A,A@01,A@01@G,G,G@01,G@01@J	Method and Apparatus for Horticultural Lighting to Better Simulate the Sun
+A,A@61,A@61@K,C,C@07,C@07@D,C,C@12,C@12@Y,C,C@12,C@12@N	Method of providing environmental protection to an electronic enclosure
+G,G@01,G@01@K,H,H@01,H@01@L	Curable Composition Having Improved Curability and Adhesion
+B,B@23,B@23@C,Y,Y@10,Y@10@T	Milling Tool
+H,H@01,H@01@R	Electrical Connector Having an Improved Housing
+H,H@04,H@04@N,H,H@04,H@04@W	Wireless Communication
+D,D@21,D@21@H,C,C@08,C@08@L,C,C@09,C@09@D,Y,Y@10,Y@10@T	Arm Rest Frame, Arm Rest and Method for Producing an Arm Rest Frame
+C,C@04,C@04@B,E,E@04,E@04@B,Y,Y@10,Y@10@S,Y,Y@10,Y@10@T	Methods of Operating a Compression Ignition Engine and a Vehicle System
+B,B@01,B@01@J,F,F@02,F@02@M	Automatic QoS Configuration
+G,G@06,G@06@Q	Computer-implemented Trading in Freight Derivatives and Techniques Therefor
+G,G@06,G@06@F,G,G@11,G@11@B,H,H@04,H@04@H,H,H@04,H@04@N	Nurse inductor apparatus for air seeders
+Y,Y@10,Y@10@T,Y,Y@02,Y@02@P,H,H@05,H@05@K,B,B@23,B@23@K,G,G@01,G@01@R	Aligning Multiple Pivot Pin System and Method Therefor
+Y,Y@10,Y@10@S,D,D@06,D@06@M,Y,Y@10,Y@10@T	Identity-based-Encryption Messaging System
+B,B@01,B@01@D,C,C@02,C@02@F,F,F@23,F@23@G	Ammonia Stripper
+A,A@47,A@47@L,Y,Y@10,Y@10@T,B,B@25,B@25@G,F,F@16,F@16@B	Method and Apparatus for Providing Enhanced Communication Capability for Mobile Devices on a Virtual Private Network (VPN)
+G,G@06,G@06@F,G,G@06,G@06@K,H,H@04,H@04@N,B,B@41,B@41@J,G,G@03,G@03@G	Reduction of Cross Talk in WLCSP's Through Laser Drilled Technique
+C,C@01,C@01@G,C,C@22,C@22@B	Recovery of Gold from Solution
+H,H@01,H@01@L	Apparatus and Method for Perspiration Management on the Human Body
+F,F@21,F@21@V,F,F@21,F@21@Y,F,F@21,F@21@S	Method and System for Producing a Beam of Illumination Having Smooth Edges
+H,H@01,H@01@L	SEMICONDUCTOR PROCESSING METHODS OF FORMING CONTACT OPENINGS, METHODS OF FORMING MEMORY CIRCUITRY, METHODS OF FORMING ELECTRICAL CONNECTIONS, AND METHODS OF FORMING DYNAMIC RANDOM ACCESS MEMORY (DRAM) CIRCUITRY
+B,B@65,B@65@B,B,B@29,B@29@C,Y,Y@10,Y@10@T	Thin-film opto-electronic device and a method of making it
+G,G@06,G@06@F,B,B@60,B@60@K	Methods for Treatment of Obesity and Effective Fat Loss Promotion
+A,A@61,A@61@K	Spanning Tree Protocol Enabled N-node Link Aggregation System
+H,H@04,H@04@J,H,H@04,H@04@W	Channel set-up in wideband, code division multiple access systems
+H,H@01,H@01@L	Apparatus and Methods for an Underfilled Integrated Circuit Package
+C,C@22,C@22@B,Y,Y@02,Y@02@P,C,C@02,C@02@F,Y,Y@10,Y@10@S	Nucleic acid amplification using modular branched primers
+H,H@04,H@04@R	Sealing device for a conduit passing through a wall
+G,G@01,G@01@N,Y,Y@10,Y@10@T,C,C@12,C@12@Q	Method of using a small volume in vitro analyte sensor with diffusible or non-leachable redox mediator
+B,B@23,B@23@H,F,F@16,F@16@D,F,F@16,F@16@C	Player and Playing Method and Program
+H,H@04,H@04@J	Ultra Fine Particle Film Forming Method and Apparatus
+G,G@02,G@02@F,C,C@09,C@09@K	Method and Apparatus for Horticultural Lighting and Associated Optic Systems
+H,H@04,H@04@L,H,H@04,H@04@W	Method for Securing a Laminated Core for the Stator Winding of a Linear Motor to the Track
+G,G@02,G@02@B,H,H@04,H@04@Q	Strictly non-blocking optical switch core having optimized switching architecture based on reciprocity conditions
+B,B@01,B@01@J,B,B@01,B@01@D,Y,Y@02,Y@02@C	Return Pad Cable Connector
+F,F@27,F@27@B,C,C@22,C@22@B,Y,Y@02,Y@02@P,F,F@27,F@27@D,C,C@21,C@21@D	Method for the Continuous or Discontinuous Extraction of a Metal or Several Metals from a Slag That Contains the Metal or a Compound of the Metal
+B,B@29,B@29@B,B,B@29,B@29@C,Y,Y@10,Y@10@T	Method for stabilizing chemical compounds containing at least one ethylenically unsaturated bond in order to prevent undesirable radical polymerization
+A,A@61,A@61@K,C,C@07,C@07@D	Adaptive HARQ in an OFDMA Based Communication System
+G,G@01,G@01@S	Flexure Seal for Fuel Injection Nozzle
+C,C@10,C@10@G,C,C@07,C@07@C	Crosslinkable Thermoset Monomer, Composition for Producing Printed Circuit Board Comprising the Thermoset Monomer and Printed Circuit Board Using the Composition
+C,C@30,C@30@B,H,H@01,H@01@S,H,H@01,H@01@L,Y,Y@10,Y@10@T	Planar Nonpolar Group-Iii Nitride Films Grown on Miscut Substrates
+F,F@02,F@02@N,F,F@16,F@16@D,Y,Y@10,Y@10@T	Process and Catalyst System for the Production of High Quality Syngas from Light Hydrocarbons and Carbon Dioxide
+F,F@16,F@16@H,B,B@23,B@23@D,F,F@16,F@16@C	Superelastic spinal stabilization system and method
+C,C@08,C@08@L,D,D@10,D@10@B,Y,Y@10,Y@10@T,A,A@61,A@61@L,D,D@04,D@04@B	Hemostatic Wound Dressings and Methods of Making Same
+D,D@06,D@06@F	Packet-based Calls in a Wireless Network
+Y,Y@10,Y@10@T,C,C@12,C@12@P,C,C@08,C@08@G	Method for cutting the tie-leaf on bundled leaf tobacco
+G,G@01,G@01@T,G,G@06,G@06@K	Coaxial Imaging for Indentation Instruments
+C,C@08,C@08@J,B,B@05,B@05@B,B,B@31,B@31@D,B,B@29,B@29@L,Y,Y@10,Y@10@T,B,B@29,B@29@C,B,B@32,B@32@B,C,C@04,C@04@B,B,B@29,B@29@K,E,E@05,E@05@Y,B,B@28,B@28@B,B,B@28,B@28@C,B,B@65,B@65@D,B,B@05,B@05@C,C,C@08,C@08@L,E,E@05,E@05@D,Y,Y@10,Y@10@S,B,B@01,B@01@F,B,B@31,B@31@B	Learning or Emulation Approach to Traffic Engineering in Information-Centric Networks
+A,A@61,A@61@F	Method for Manufacturing Resin Substrate with Hard Coating Film and Resin Substrate with Hard Coating Film
+H,H@01,H@01@L,G,G@11,G@11@C	Die architecture accommodating high-speed semiconductor devices
+H,H@01,H@01@L,H,H@01,H@01@R,B,B@23,B@23@K,H,H@05,H@05@K	Method and Apparatus for Multivariate Active Driveline Damping
+H,H@04,H@04@N	Method for Progressive Lossless Video Coding, Method for Progressive Lossless Video Decoding, Progressive Lossless Video Coding Apparatus, Progressive Lossless Video Decoding Apparatus, Progressive Lossless Video Coding Program, Progressive Lossless Video Decoding Program, and Recording Media of Progressive Lossless Video Coding Program and Progressive Lossless Video Decoding Program
+G,G@11,G@11@B,H,H@04,H@04@N	Television Receiver Storage Management
+A,A@61,A@61@K,A,A@23,A@23@P,A,A@23,A@23@V,A,A@23,A@23@L	Flexural Pivot
+Y,Y@10,Y@10@S,C,C@08,C@08@L,C,C@08,C@08@K,C,C@08,C@08@G	Observation Device with a Distance Meter
+C,C@09,C@09@K,C,C@07,C@07@C	Flat Panel Display Apparatus, Stand and Speaker Apparatus
+G,G@07,G@07@C,E,E@05,E@05@B	Device with Infusion Holes for Imaging Inside a Blood Vessel
+G,G@11,G@11@B	Cooling System
+B,B@01,B@01@D	Method of manufacturing multi-segmented optical fiber and preform
+C,C@23,C@23@C,H,H@01,H@01@L	Electronic operations and maintenance log and system for an aircraft
+G,G@06,G@06@F	Controlling Virtual Machine Density and Placement Distribution in a Converged Infrastructure Resource Pool
+A,A@61,A@61@K,C,C@07,C@07@D,A,A@61,A@61@P,Y,Y@10,Y@10@T	1-[2-(2,4 Dimethylphenylsulfanyl)-Phenyl]piperazine as a compound with combined serotonin reuptake, 5-ht3 and 5-ht1a activity for the treatment of cognitive impairment
+A,A@61,A@61@B	Variable angle cervical excision electrode
+H,H@04,H@04@B,H,H@04,H@04@L	Channel Estimation Device and Method, Demodulation Device and Method, and Fading Frequency Decision Device and Method
+H,H@04,H@04@N,G,G@06,G@06@K,G,G@06,G@06@T	Electronic Device Having Stacked Structures
+A,A@61,A@61@K,A,A@61,A@61@Q	Disk Drive with Read IC Chip and Write IC Chip Mounted Respectively on Suspension and Arm
+H,H@02,H@02@P,A,A@47,A@47@L	Linear actuator control structure
+A,A@61,A@61@K,A,A@61,A@61@Q	Gas adsorption sheet and air-purifying filter
+H,H@01,H@01@J,H,H@05,H@05@G,A,A@61,A@61@N,A,A@61,A@61@B	Method of Processing Wafer
+G,G@02,G@02@B	Optical Coupling Device and Manufacturing Method Thereof
+H,H@01,H@01@J,H,H@05,H@05@H	Electronic Device and Manufacturing Method of the Same
+H,H@01,H@01@L,H,H@05,H@05@B	Organic Electroluminescence Element, Organic Electroluminescence Display, and Organic Electroluminescence Display Apparatus
+A,A@61,A@61@K,C,C@12,C@12@N,C,C@07,C@07@K	Heat shock fusion-based vaccine system
+A,A@61,A@61@K	Compositions and Methods of Using Lamellar Bodies for Therapeutic Purposes
+D,D@02,D@02@G	Game Animal Tag and Method of Use
+H,H@04,H@04@M,G,G@06,G@06@Q,H,H@04,H@04@L,H,H@04,H@04@W	Derivatives of Pyridine and Quinoline
+F,F@02,F@02@D,F,F@01,F@01@L	Variable Valve Control System for Internal Combustion Engine
+G,G@06,G@06@F,Y,Y@02,Y@02@D	Variable-Width Memory
+A,A@61,A@61@K,C,C@08,C@08@L,A,A@61,A@61@F,C,C@08,C@08@G	Drug Delivery System for Delivery of Acid Sensitivity Drugs
+B,B@26,B@26@D,Y,Y@10,Y@10@S,Y,Y@10,Y@10@T	Method of operating spiral wound type membrane module
+G,G@06,G@06@F,H,H@04,H@04@M,G,G@06,G@06@Q,G,G@08,G@08@G,H,H@04,H@04@W,H,H@04,H@04@L	Electronic component having improved soldering performance and adhesion properties of the lead wires
+D,D@21,D@21@H,D,D@21,D@21@C	Measurement Apparatus and Method
+H,H@01,H@01@L	Golfing Aid Device Capable of Displaying and Setting Points-of-Interest
+Y,Y@10,Y@10@T,B,B@25,B@25@G,F,F@16,F@16@B	High Voltage Cascoded Iii-Nitride Rectifier Package
+H,H@04,H@04@N	System and Method for Transmission of Video Signals Using Multiple Channels
+G,G@09,G@09@G	Light Emitting Device and Electronic Device
+B,B@41,B@41@J	Non-hydroscopic sweetener composition and method for preparation of same
+H,H@01,H@01@L	Light-emitting diode
+H,H@01,H@01@L,G,G@03,G@03@F	Manufacturing method of semiconductor device
+F,F@04,F@04@D,F,F@24,F@24@F	Tolerant Input Circuit
+Y,Y@10,Y@10@T,F,F@04,F@04@B,F,F@16,F@16@K,B,B@32,B@32@B,B,B@01,B@01@J,B,B@81,B@81@B,B,B@81,B@81@C,B,B@01,B@01@L,F,F@15,F@15@C,C,C@12,C@12@Q	Techniques to Process Packets in a Dual-mode Switching Environment
+H,H@01,H@01@L	Topographically Indexed Support Substrates
+G,G@11,G@11@B	Temperature-controlled Incubator Having an Arcuate Closure Panel
+H,H@04,H@04@J,H,H@04,H@04@N,H,H@04,H@04@L,G,G@01,G@01@S,G,G@11,G@11@B,Y,Y@02,Y@02@D,H,H@03,H@03@M,G,G@09,G@09@G,H,H@04,H@04@Q,H,H@04,H@04@R,H,H@04,H@04@W,H,H@03,H@03@L,H,H@04,H@04@B,H,H@01,H@01@L,G,G@03,G@03@G,G,G@06,G@06@F,H,H@04,H@04@M,G,G@02,G@02@B,H,H@04,H@04@S,Y,Y@10,Y@10@S	System and a Method of Controlling a Plurality of Devices
+H,H@01,H@01@L	Continuous ink jet printhead having two-dimensional nozzle array and method of redundant printing
+G,G@01,G@01@N	Sheath Fluid Systems and Methods for Particle Analysis in Blood Samples
+H,H@01,H@01@L	Camshaft control device and control valve with leakage compensation
+B,B@60,B@60@R,H,H@01,H@01@R,B,B@60,B@60@N	Child Restraint System
+F,F@23,F@23@C,F,F@23,F@23@G,Y,Y@02,Y@02@E,F,F@23,F@23@K	Method of making ferrite material powder by spray pyrolysis process and method of producing ferrite magnet
+B,B@22,B@22@F,C,C@22,C@22@C	Oxygen-enriched Ti-6ai-4v Alloy and Process for Manufacture
+B,B@65,B@65@H,D,D@21,D@21@G	Vacuum Belt Conveyor for Transferring a Web Threading Tail in a Web Manufacturing Machine
+Y,Y@10,Y@10@S,F,F@16,F@16@K,Y,Y@10,Y@10@T	System and Method for Moderating a Therapy Delivered During Sleep Using Physiologic Data Acquired During Non-sleep
+G,G@05,G@05@B	Nonaqueous Electrolyte Secondary Battery
+A,A@61,A@61@K,A,A@61,A@61@Q	Extract, Extraction Process and Pharmaceutical Composition Containing the Same
+H,H@01,H@01@J,C,C@23,C@23@C,H,H@01,H@01@L,C,C@25,C@25@D	Dosing Regimen for Treatment of Cognitive and Motor Impairments with Blood Plasma and Blood Plasma Products
+C,C@08,C@08@L,C,C@07,C@07@D,C,C@09,C@09@K,C,C@07,C@07@C,H,H@05,H@05@B,C,C@07,C@07@F,C,C@09,C@09@B,Y,Y@10,Y@10@S,C,C@08,C@08@G,H,H@01,H@01@L	Charge Transport Compositions and Electronic Devices Made with Such Compositions
+C,C@11,C@11@D,D,D@21,D@21@H,D,D@06,D@06@L,C,C@07,C@07@C	CMOS Image Sensor and Method for Fabricating the Same
+A,A@62,A@62@C,Y,Y@10,Y@10@T,B,B@31,B@31@D,B,B@65,B@65@D,B,B@21,B@21@D	Ink Jet Faceplate Coatings Comprising Structured Organic Films
+F,F@02,F@02@K,F,F@23,F@23@C,H,H@05,H@05@H,F,F@23,F@23@R	Triple Helical Flow Vortex Reactor
+C,C@01,C@01@B,B,B@82,B@82@Y,C,C@01,C@01@P,B,B@01,B@01@J,Y,Y@10,Y@10@S,B,B@22,B@22@F	Round-trip orbital operation of a spacecraft
+G,G@09,G@09@B,G,G@05,G@05@D	Biofilm carrier, method of manufacture thereof and waste water treatment system employing biofilm carrier
+A,A@61,A@61@K,C,C@07,C@07@D,A,A@61,A@61@P	Substituted 2-n-Hydroxy-1,3-Dioxo-1,2,3,4-Tetrahydronaphthyridines, and Methods of Making and Using Same
+Y,Y@02,Y@02@T,A,A@01,A@01@D,B,B@60,B@60@L,H,H@02,H@02@J	Robotic Work Tool System and a Charging Connector Arrangement for a Robotic Work Tool System
+A,A@61,A@61@F,Y,Y@10,Y@10@T,B,B@32,B@32@B	Therapeutic Intervention Systems Employing Implantable Balloon Devices
+G,G@01,G@01@V	Method for Allocating Information Transfer Capacity in Mobile Communication System, and Mobile Communication System
+G,G@11,G@11@B	Planographic Printing Plate Precursor
+B,B@23,B@23@K	Systems and Methods for Detecting Nodes or Signals of a Radio Access Technology (RAT) by a Node of Another RAT
+G,G@01,G@01@G	Optical disk device
+H,H@01,H@01@L	Method of improving pad metal adhesion
+C,C@12,C@12@P,C,C@07,C@07@K,C,C@12,C@12@N	PUFA Polyketide Synthase Systems and Uses Thereof
+F,F@04,F@04@D	Capacitor Having Rusixoy-containing Adhesion Layers
+E,E@02,E@02@F,F,F@15,F@15@B	Progressive spectacle lens having only a small change of binocular properties during a movement of glance
+A,A@61,A@61@K,A,A@61,A@61@Q,C,C@11,C@11@D	Thin Film Support Substrate for Use in Hydrogen Production Filter and Production Method of Hydrogen Production Filter
+E,E@01,E@01@D,B,B@32,B@32@B,Y,Y@10,Y@10@T,E,E@04,E@04@C	Rotatable Cutting Implement Arrangements for Ultrasonic Surgical Instruments
+H,H@04,H@04@W	Fuel Pump Locking Assembly
+B,B@61,B@61@D,B,B@60,B@60@D	Package and Electronic Apparatus Using the Same
+B,B@60,B@60@B,Y,Y@10,Y@10@T	Vehicle Powertrain Lash Crossing Control Strategy
+G,G@06,G@06@F,G,G@06,G@06@K	Printing apparatus having a memory management system
+C,C@08,C@08@L,C,C@09,C@09@J,Y,Y@10,Y@10@T	Peelable heat-conductive and pressure-sensitive adhesive and adhesive sheet containing the same
+H,H@04,H@04@B,H,H@04,H@04@J,H,H@04,H@04@L,H,H@04,H@04@W	Systems for Automatic Driverless Movement for Self-parking Processing
+Y,Y@02,Y@02@D,H,H@04,H@04@L,H,H@04,H@04@W	Prosthesis Installation Systems and Methods
+Y,Y@10,Y@10@S,A,A@01,A@01@M,A,A@45,A@45@C	Garment bag having odor and scent-controlling capabilities
+B,B@01,B@01@J,C,C@01,C@01@G,H,H@01,H@01@M,C,C@01,C@01@P	High-Density Precursor for Manufacture of Composite Metal Oxide Cathodes for Li-Ion Batteries
+B,B@01,B@01@J,B,B@01,B@01@D,Y,Y@02,Y@02@C	Article for COcapture Having Heat Exchange Capability
+B,B@05,B@05@B	Renewable wheelchair and gurney protection system
+F,F@16,F@16@C,F,F@02,F@02@C,F,F@01,F@01@D,F,F@05,F@05@D,F,F@04,F@04@D	Polyurethane foam for shoe soles
+H,H@04,H@04@H,H,H@04,H@04@N	Flow Control Valve That May Be Used for Mold Temperature Control Systems
+A,A@61,A@61@B,A,A@61,A@61@G,A,A@61,A@61@F	Prostaglandin agonists and their use to treat bone disorders
+B,B@62,B@62@D,B,B@60,B@60@J	Retractable top tonneau cover assembly and modular assembly
+H,H@05,H@05@H,B,B@23,B@23@K	Cost Effective Cartridge for a Plasma Arc Torch
+H,H@01,H@01@L,Y,Y@10,Y@10@S	Semiconductor Device Having Capacitors for Reducing Power Source Noise
+A,A@61,A@61@M	Method and apparatus for individual destruction of syringe needles by melting under the effect of electric current
+H,H@01,H@01@L,G,G@01,G@01@R,G,G@11,G@11@C	Evaluation circuit for an anti-fuse
+G,G@06,G@06@F,H,H@01,H@01@L	11-Arachidonate-Lipoxygenase Mutants
+G,G@06,G@06@F,A,A@63,A@63@F	Microelectromechanical Oscillator Having Temperature Measurement System, and Method of Operating Same
+Y,Y@10,Y@10@S,F,F@16,F@16@C	Sanitization System and System Components
+G,G@06,G@06@F,G,G@06,G@06@Q,H,H@04,H@04@H,H,H@04,H@04@N,H,H@04,H@04@L	Structure and fabrication method using latch-up implantation for improving latch-up immunity in CMOS fabrication process
+B,B@65,B@65@D,A,A@47,A@47@J	Pickup Device and Pickup Method
+A,A@62,A@62@B,A,A@61,A@61@F,A,A@61,A@61@M	Wavelength selective cross-connect (WSC)
+H,H@01,H@01@L	Active Energy Beam-Curable Composition
+G,G@02,G@02@C	Rim lock of glasses frame and glasses frame
+F,F@16,F@16@H	Flow Scheduling Device and Method
+G,G@06,G@06@K,B,B@41,B@41@J	Redundant Gaming Network Mediation
+G,G@06,G@06@F,H,H@04,H@04@L	Methods and Devices for Handling Hash-Tree Based Data Signatures
+H,H@01,H@01@L,Y,Y@10,Y@10@S	Creating Customized Bootable Image for Client Computing Device from Backup Copy
+C,C@07,C@07@C,C,C@01,C@01@P,B,B@01,B@01@J,C,C@01,C@01@G,Y,Y@10,Y@10@S	Iron Oxides with a Higher Degree of Refining
+B,B@82,B@82@Y,G,G@02,G@02@B,G,G@01,G@01@N,H,H@01,H@01@S	Article having a decorative and protective coating thereon
+F,F@15,F@15@B	Custom Responses for Resource Unavailable Errors
+F,F@28,F@28@F,B,B@29,B@29@K,B,B@29,B@29@C,B,B@29,B@29@L,F,F@24,F@24@S,Y,Y@02,Y@02@E	Olefin Polymerization Catalyst System Comprising Mesoporous Organosilica Support
+B,B@65,B@65@H	Service walkway for sheet-stacking apparatus
+F,F@02,F@02@M,Y,Y@10,Y@10@T,B,B@01,B@01@D,B,B@29,B@29@C,B,B@32,B@32@B,B,B@01,B@01@J,C,C@04,C@04@B,B,B@29,B@29@L,Y,Y@10,Y@10@S,F,F@01,F@01@N	Elongated cylinder head for mounting on for instance a diesel engine having cavities for injection units and supply means for liquid fuel
+A,A@61,A@61@K,G,G@01,G@01@N,C,C@07,C@07@K,Y,Y@02,Y@02@A,C,C@12,C@12@P,C,C@12,C@12@N,C,C@12,C@12@Q	Cloning, sequencing and expression of a gene encoding an eukaryotic amino acid racemase, and diagnostic, therapeutic, and vaccination applications of parasite and viral mitogens
+H,H@05,H@05@K,B,B@81,B@81@B,H,H@01,H@01@R,B,B@81,B@81@C,H,H@01,H@01@L,G,G@01,G@01@R,B,B@33,B@33@Y	Forming tool for forming a contoured microelectronic spring mold
+C,C@01,C@01@B,Y,Y@10,Y@10@T,C,C@01,C@01@P,C,C@04,C@04@B,C,C@01,C@01@G,H,H@01,H@01@B,C,C@08,C@08@K	Electronic Component
+G,G@03,G@03@F,G,G@02,G@02@B,G,G@02,G@02@F	Liquid Crystal Display Device, Optical Control Member, and Base Material for Manufacturing Optical Control Member
+A,A@61,A@61@K,A,A@23,A@23@V,A,A@23,A@23@L	Beverage and additive for the ill
+G,G@06,G@06@F,H,H@04,H@04@L	Toner cartridge and mechanism for detecting remaining amount of toner
+G,G@06,G@06@F,H,H@04,H@04@M,G,G@01,G@01@R	Method Using a Time Point for Sharing Data Between Electronic Devices Based on Situation Information
+Y,Y@02,Y@02@T,F,F@02,F@02@D	Rotary Machine
+G,G@01,G@01@D,H,H@04,H@04@B,G,G@01,G@01@H	Fusion Protein Arrays on Metal Substrates for Surface Plasmon Resonance Imaging
+H,H@04,H@04@J	Integrated dimerization process
+G,G@06,G@06@Q	Systems and Methods to Aggregate Demand
+H,H@01,H@01@L	Method and Apparatus for Providing Power to a Microprocessor with Integrated Thermal and EMI Management
+G,G@06,G@06@F	Agents and Methods for Enhancing Bone Formation
+G,G@06,G@06@F,G,G@01,G@01@S,G,G@06,G@06@Q,G,G@08,G@08@B,G,G@08,G@08@G,G,G@06,G@06@N,H,H@04,H@04@L,B,B@60,B@60@W,G,G@05,G@05@D,G,G@07,G@07@C,G,G@05,G@05@B,B,B@60,B@60@R,B,B@60,B@60@L,G,G@01,G@01@C	Method of Applying Staples to Liver and Other Organs
+G,G@03,G@03@B,G,G@02,G@02@B	Conjugate optics projection display with image enhancement
+C,C@03,C@03@B	Optimizing the Advantages of Multi-level Rendering
+H,H@04,H@04@N,G,G@06,G@06@K,G,G@06,G@06@T	Perfecting the Effect of Flash within an Image Acquisition Devices Using Face Detection
+B,B@29,B@29@C,B,B@29,B@29@L,B,B@29,B@29@K,H,H@04,H@04@R	Method of Fabricating a Miniature Device Having an Acoustic Diaphragm
+G,G@03,G@03@G	Centrifugal Fan
+C,C@01,C@01@G,H,H@01,H@01@M,C,C@01,C@01@P	Positive Electrode Active Material for Lithium Secondary Battery, Positive Electrode, and Secondary Battery
+G,G@06,G@06@F,H,H@04,H@04@L	System and Method for Accessing Really Simple Syndication (RSS) Enabled Content Using Session Initiation Protocol (SIP) Signaling
+Y,Y@10,Y@10@T,D,D@06,D@06@F	Security Layer for Containers in Multi-tenant Environments
+G,G@06,G@06@Q,H,H@04,H@04@L	Verification of Correctness of Networking Aspects of an Information Technology System
+A,A@61,A@61@K,C,C@01,C@01@B,A,A@01,A@01@N,A,A@23,A@23@L	Turbocharged Engine Control System
+H,H@01,H@01@L	Internal Combustion Engine
+C,C@09,C@09@K	Increasing the Viscosity of Viscoelastic Fluids
+Y,Y@10,Y@10@T,G,G@09,G@09@B,B,B@44,B@44@C,G,G@09,G@09@F,F,F@16,F@16@M	Omnipositional Cable-Suspension System
+H,H@01,H@01@L	Scandium-containing Iii-N Etch-Stop Layers for Selective Etching of Iii-Nitrides and Related Materials
+E,E@01,E@01@C,G,G@05,G@05@B,G,G@01,G@01@N,E,E@21,E@21@C	Wear Prognosis Method and Maintenance Method
+H,H@04,H@04@M,H,H@04,H@04@B	Polymer Electrolyte Composition and Polymer Electrolyte Membrane, Polymer Electrolyte Membrane with Catalyst Layer, Membrane Electrode Assembly, and Polymer Electrolyte Fuel Cell Each Using the Same
+A,A@23,A@23@L,C,C@01,C@01@F,A,A@01,A@01@N,C,C@05,C@05@D,C,C@01,C@01@P,D,D@21,D@21@H	Basic Magnesium Carbonate, Production Method and Use of the Same
+A,A@61,A@61@B,A,A@61,A@61@F	Instrumentation and Methods for Preparation of an Intervertebral Space
+G,G@06,G@06@F,G,G@06,G@06@T	Rendering of Virtual Hand Pose Based on Detected Hand Input
+H,H@01,H@01@L	Method for making wallboard or backerboard sheets including aerated concrete
+H,H@01,H@01@L	Die-up Ball Grid Array Package with Enhanced Stiffener
+G,G@11,G@11@B	Systems and Methods for Determining a Surface Geometry
+B,B@60,B@60@R	Methods for Recognizing Unknown Media Samples Using Characteristics of Known Media Samples
+H,H@04,H@04@L	Suspension Thrust Bearing Device and Strut
+B,B@65,B@65@G,B,B@07,B@07@C,Y,Y@10,Y@10@S	System for Responding to Fulfillment Orders
+Y,Y@10,Y@10@S,C,C@07,C@07@D,C,C@07,C@07@C	Load Balancing Descending Device
+E,E@05,E@05@B,Y,Y@10,Y@10@T	Micro Arrays with Structured and Unstructured Probes
+G,G@03,G@03@B,B,B@66,B@66@B,G,G@06,G@06@T,H,H@04,H@04@N	System Comprising Multiple Digital Cameras Viewing a Large Scene
+G,G@01,G@01@N	Riser Support Clamp for Pipe Riser or Conduit
+B,B@60,B@60@M,Y,Y@04,Y@04@S,Y,Y@02,Y@02@P,Y,Y@02,Y@02@T,H,H@02,H@02@J,B,B@60,B@60@L,Y,Y@02,Y@02@E	Fluidic Connectors and Microfluidic Systems
+C,C@08,C@08@G	Automatic Coupling Device
+A,A@61,A@61@K,C,C@12,C@12@N,C,C@07,C@07@K,C,C@12,C@12@Q	Self-replicating RNA Molecule from Hepatitis C Virus
+B,B@29,B@29@D,A,A@43,A@43@B	Article of Footwear Having a Sole Structure Including a Fluid-filled Chamber and an Outsole, the Sole Structure, and Methods for Manufacturing
+A,A@63,A@63@B	Universal Stent Link Design
+A,A@47,A@47@K,B,B@65,B@65@D	Apparatus and method for replenishing a developing device with toner while suppressing toner remaining
+B,B@29,B@29@D,B,B@29,B@29@C	Optical Transmission Coupling
+G,G@05,G@05@B	Smart Camera
+A,A@61,A@61@K,C,C@12,C@12@N,C,C@12,C@12@Y,C,C@07,C@07@K	Albumin Fusion Proteins Comprising Insulin Polypeptides
+B,B@65,B@65@D	Wrapped slide bearing bushing
+H,H@04,H@04@L	Apparatus and Method for Managing a Network of Intelligent Devices
+Y,Y@10,Y@10@T,Y,Y@02,Y@02@P,F,F@05,F@05@B,B,B@66,B@66@C,F,F@03,F@03@D,H,H@02,H@02@K,Y,Y@02,Y@02@E	Disassembly Apparatus of Rotating Electric Machine
+H,H@04,H@04@N,G,G@02,G@02@B,Y,Y@10,Y@10@S,H,H@01,H@01@L,G,G@02,G@02@F,F,F@21,F@21@K	High-Density Illumination System
+A,A@61,A@61@K,C,C@12,C@12@Y,C,C@12,C@12@N	Synthetic Methylmalonyl-Coa Mutase Transgene for the Treatment of MUT Class Methylmalonic Acidemia (MMA)
+G,G@03,G@03@C,Y,Y@10,Y@10@S	Characteristics adjusting means of physical quantity sensing device and thermal type air flow measuring instrument
+G,G@06,G@06@K,H,H@04,H@04@N	Electronic Circuit Package
+C,C@14,C@14@B	Airbag Apparatus for Automobile
+G,G@06,G@06@F	Force-responsive detectors and systems
+H,H@01,H@01@L,G,G@05,G@05@F,H,H@03,H@03@K	Modular fiber reinforced polymer composite deck system
+C,C@08,C@08@J,C,C@07,C@07@D	Cylindrical Irradiance-mapping Lens and Its Applications to LED Shelf-lighting
+C,C@11,C@11@D,A,A@61,A@61@Q,A,A@61,A@61@K	Class D Amplifier
+H,H@01,H@01@Q,B,B@60,B@60@R	Rearview Mirror Assembly with Antenna
+H,H@01,H@01@R	Pull-type Tripping Device for Electrical Connector
+H,H@01,H@01@L,H,H@05,H@05@K,Y,Y@10,Y@10@T	Coreless Substrate and Manufacturing Method Thereof
+H,H@01,H@01@L	Method of making a bump on a substrate using multiple photoresist layers
+A,A@61,A@61@N,H,H@05,H@05@F	Transmission for internal combustion engine
+A,A@61,A@61@K,C,C@12,C@12@N	Workstations with Circuits for Generating Images of Global Injury
+H,H@04,H@04@L	Microscale Sensor Structure with Backside Contacts and Packaging of the Same
+A,A@61,A@61@B	Ultrasonic Probe
+G,G@01,G@01@D,G,G@01,G@01@N	Bipolar hip prosthesis with locking head
+B,B@05,B@05@D,G,G@03,G@03@G,Y,Y@10,Y@10@T	Tertiary amide-terminated polyamides in structured personal care compositions
+F,F@16,F@16@L,E,E@21,E@21@B,Y,Y@10,Y@10@S	Electronic Apparatus
+H,H@01,H@01@L,Y,Y@02,Y@02@E	Heterostructure Containing IC and LED and Method for Fabricating the Same
+B,B@01,B@01@D,F,F@01,F@01@N	Vortex device and system for treating exhaust gas from internal combustion engine
+G,G@11,G@11@B	Shock Absorber
+A,A@61,A@61@K,Y,Y@02,Y@02@A	Photostable Liquid-Crystalline Medium
+G,G@06,G@06@K,G,G@06,G@06@T	Drive Signal Generator and Image Display Apparatus
+H,H@05,H@05@B,C,C@09,C@09@K,Y,Y@10,Y@10@S	Multilayer Wiring Board, and Method for Manufacturing Multilayer Wiring Board
+B,B@60,B@60@K,F,F@02,F@02@B,B,B@60,B@60@W,F,F@02,F@02@D,G,G@07,G@07@C,Y,Y@02,Y@02@T	Dynamic Hybrid Vehicle System for Stabilizing Cylinder Deactivation or Turbocharger Boosting
+F,F@04,F@04@B,Y,Y@10,Y@10@T	Accessories and Accessory Attaching Devices with Retractable Externally Threaded Member
+H,H@04,H@04@L,H,H@04,H@04@W	Vehicle Including Multiple Items That Move Vertically
+G,G@06,G@06@F,H,H@04,H@04@L	Systems, Devices, and Methods Including Infection-fighting and Monitoring Shunts
+A,A@63,A@63@B,A,A@42,A@42@B	Yard Sign Assembly
+G,G@08,G@08@G,G,G@10,G@10@L,H,H@04,H@04@S,H,H@04,H@04@R,B,B@60,B@60@Q,G,G@01,G@01@C	Coherent Laser Radar
+E,E@05,E@05@B,Y,Y@10,Y@10@S,Y,Y@10,Y@10@T	Process for Producing Arsenic Trioxide Formulations and Methods for Treating Cancer Using Arsenic Trioxide or Melarsoprol
+F,F@21,F@21@V,F,F@21,F@21@Y,F,F@21,F@21@S,H,H@01,H@01@L,F,F@21,F@21@K	Internal Combustion Engine Including Dual Particulate Filter with Ash Accumulation Receptacle
+G,G@01,G@01@N	Component Analyzing Apparatus with Microchip
+H,H@04,H@04@Q	Channel Equalizer and Method of Processing Broadcast Signal in DTV Receiving System
+D,D@05,D@05@B	Video Display Appliance and Signal Processing Apparatus Detachably Connected Thereto
+B,B@29,B@29@C,Y,Y@10,Y@10@T	Process of Continuously Producing Polyester Polymer
+A,A@61,A@61@F,A,A@61,A@61@L	Self-powered Miniature Liquid Treatment System
+F,F@27,F@27@D,C,C@21,C@21@C	Method and apparatus for detecting slag carryover
+H,H@04,H@04@N	Multi-colored Shaped Body
+C,C@07,C@07@K,C,C@12,C@12@N	Hydraulic System Having a Post-pressure Compensator
+Y,Y@02,Y@02@P,B,B@02,B@02@C	Expandable stent-graft covered with expanded polytetrafluoroethylene
+A,A@23,A@23@B,B,B@65,B@65@B,F,F@25,F@25@D,B,B@32,B@32@B	Fish, poultry, meat processing method
+F,F@16,F@16@L,Y,Y@10,Y@10@T	Wafer Level Package and Multi-package Stack
+B,B@01,B@01@D,F,F@02,F@02@D,F,F@01,F@01@N	System and User Interface for a Television Receiver in a Television Program Distribution System
+B,B@25,B@25@B,Y,Y@10,Y@10@T,F,F@16,F@16@B	Reduced-Pressure, Linear-Wound Treatment Systems
+A,A@47,A@47@C	Height-Adjustable Work Chair
+C,C@07,C@07@F	Rubber plug fitting apparatus
+H,H@01,H@01@L	Peak detector
+H,H@05,H@05@K	Wide data path stacking system and method
+C,C@08,C@08@G	Methods for Preparing Transparent Articles from Hydroquinone Polycarbonate Copolymers
+H,H@04,H@04@R,H,H@04,H@04@N	Battery having a network communication interface
+B,B@65,B@65@D	Ferrule Polishing Control Machine, Ferrule Polishing Method, and Ferrule Polishing Computer Program
+H,H@04,H@04@J,H,H@04,H@04@Q,H,H@04,H@04@L	Non-telecentric Multispectral Stereoscopic Endoscope Objective
+G,G@06,G@06@Q,A,A@63,A@63@F,H,H@04,H@04@H,H,H@04,H@04@N,H,H@04,H@04@L	Method for Improving the Performance of Seam-welded Joints Using Post-weld Heat Treatment
+F,F@16,F@16@F,B,B@62,B@62@K	Inverter Controller and Motor Driving System
+F,F@05,F@05@B,Y,Y@02,Y@02@E,F,F@03,F@03@B	Apparatus and Methods for Reducing Embolization During Treatment of Carotid Artery Disease
+C,C@05,C@05@F,A,A@01,A@01@N,Y,Y@10,Y@10@S,C,C@05,C@05@G,Y,Y@02,Y@02@A	Soil Amendment Compositions
+H,H@02,H@02@M,H,H@05,H@05@K,H,H@01,H@01@L	Preservative Compositions for Wood Products
+B,B@23,B@23@K	Welding system
+B,B@60,B@60@L,B,B@60,B@60@K,B,B@60,B@60@W,Y,Y@02,Y@02@T,Y,Y@10,Y@10@S,B,B@60,B@60@Y	Automatic recognition of an optically periodic structure in an integrated circuit design
+H,H@01,H@01@L	Process for Refrigerant Charge Level Detection Using a Neural Net
+B,B@60,B@60@J	High aspect ratio metallization structures
+H,H@01,H@01@R	Supporting Substrate for Composite Substrate and Composite Substrate
+F,F@04,F@04@B,F,F@04,F@04@C,H,H@05,H@05@K,H,H@01,H@01@L,B,B@23,B@23@K,F,F@04,F@04@D	Vacuum-processing Device and Control Method Therefor, and Vacuum Soldering Device and Control Method Therefor
+B,B@01,B@01@D,C,C@10,C@10@G	Computerized exercise system and method
+H,H@01,H@01@L	Inbred Maize Variety PHH5G
+A,A@47,A@47@J	Expandable Spinal Rods and Methods of Use
+A,A@61,A@61@K,C,C@08,C@08@H,C,C@08,C@08@B	Data Processing Apparatus and Method for Controlling Performance of Speculative Vector Operations
+G,G@06,G@06@F,H,H@04,H@04@M,Y,Y@10,Y@10@T,H,H@05,H@05@K,H,H@01,H@01@Q	Cosmetic Co-removal of Material for Electronic Device Surfaces
+H,H@01,H@01@M,C,C@01,C@01@B	High Power Fuel Cell System
+B,B@01,B@01@D,Y,Y@10,Y@10@S	3-dimensional Dot Code for Paper Storage
+A,A@61,A@61@K,C,C@12,C@12@N,Y,Y@02,Y@02@A,C,C@07,C@07@K	Method and Apparatus for Operating at Cell Not Supporting Extended DRX in Wireless Communication System
+A,A@61,A@61@B,A,A@61,A@61@K,A,A@61,A@61@F,A,A@61,A@61@L	In-situ Formed Intervertebral Fusion Device and Method
+G,G@01,G@01@N,H,H@04,H@04@N,G,G@06,G@06@T,B,B@01,B@01@L,B,B@04,B@04@B,G,G@16,G@16@C,C,C@12,C@12@Q	Ion implanter
+H,H@05,H@05@K,Y,Y@10,Y@10@S,Y,Y@10,Y@10@T	Method for fabricating connectors for interconnecting etched tri-metal circuit structures
+F,F@28,F@28@F,F,F@28,F@28@D,B,B@63,B@63@B,B,B@63,B@63@H,Y,Y@10,Y@10@S,B,B@63,B@63@J,F,F@01,F@01@P	Keel Cooler with Fluid Flow Diverter
+A,A@61,A@61@M	Semiconductor Device and Manufacturing Method Thereof
+A,A@61,A@61@K,C,C@07,C@07@D	Method of inhibiting interleukin-12 signaling
+G,G@05,G@05@F	Voltage regulator
+A,A@61,A@61@K	Integrated Circuit Packaging System with Base Structure Device
+F,F@01,F@01@N	Urea Compositions and Their Methods of Manufacture
+H,H@04,H@04@B,H,H@04,H@04@J,H,H@04,H@04@L,H,H@03,H@03@M	Optical Characteristic Measurement System and Calibration Method for Optical Characteristic Measurement System
+A,A@61,A@61@K,C,C@08,C@08@L,A,A@61,A@61@L	Regenerative Implants for Stabilizing the Spine and Devices for Attachment of Said Implants
+H,H@01,H@01@L,C,C@22,C@22@F,C,C@22,C@22@C	Electronic module
+B,B@60,B@60@C,B,B@60,B@60@B	Method for Mounting a Control Assembly for Doors and Windows
+H,H@04,H@04@B,H,H@04,H@04@W,G,G@01,G@01@S	Panic handle for doors
+C,C@01,C@01@B,C,C@09,C@09@D,C,C@09,C@09@C,Y,Y@02,Y@02@E,H,H@01,H@01@L,C,C@08,C@08@K	Carbonate Pigments, and Methods for Making and Using the Same
+A,A@61,A@61@F	Intestinal Sleeves and Associated Deployment Systems and Methods
+B,B@60,B@60@L,B,B@60,B@60@K,B,B@60,B@60@W,Y,Y@02,Y@02@T,Y,Y@10,Y@10@S,B,B@60,B@60@Y	Cardiac Pacing Sensing and Control
+H,H@04,H@04@L,H,H@04,H@04@W	Medical Devices
+A,A@61,A@61@K,C,C@07,C@07@K,A,A@01,A@01@K	Vascular endothelial growth factor-X
+Y,Y@10,Y@10@T,H,H@02,H@02@J	Pad Removal Device and Method
+H,H@04,H@04@N,G,G@06,G@06@K,G,G@06,G@06@T	Group Management Method, Terminal, and Storage Medium
+G,G@01,G@01@S,H,H@04,H@04@W	Battery Module Printed Circuit Board Assembly System and Method
+H,H@01,H@01@L,H,H@05,H@05@K	Shipping and Installation Container for Soft Tubing
+G,G@06,G@06@F,H,H@04,H@04@L	System, Method, and Computer Program Product for a Scalable, Configurable, Client/Server, Cross-Platform Browser for Mobile Devices
+C,C@08,C@08@L,A,A@61,A@61@F,A,A@61,A@61@L	Cover Assembly for a Cradle Unit Having an Ink Refilling Actuator Provided Therein
+B,B@23,B@23@H,C,C@25,C@25@D	Method and Apparatus for Electroprocessing a Substrate with Edge Profile Control
+H,H@01,H@01@L,C,C@09,C@09@J,Y,Y@10,Y@10@T	Adhesive material and circuit connection method
+A,A@63,A@63@B	Ab-Exerciser Bench
+Y,Y@02,Y@02@B,H,H@02,H@02@M	Electronic Measurement of the Motion of a Moving Body of Sports Equipment
+H,H@04,H@04@L,H,H@04,H@04@W	Silicon-on-insulator (SOI) semiconductor structure with additional trench including a conductive layer
+G,G@10,G@10@H,Y,Y@10,Y@10@S	Module for Dispensing Adhesive and Adhesive Applicator Incorporating the Module
+H,H@03,H@03@H	External storage device unit, and information processor having the same
+C,C@07,C@07@D,C,C@08,C@08@G	Sulfide-containing Polythiols
+G,G@06,G@06@F,Y,Y@10,Y@10@S	Inverse inference engine for high performance web search
+A,A@61,A@61@B	Auxiliary Device for a Puncture Needle
+A,A@61,A@61@K,C,C@07,C@07@K	Anti-jagged 1/Jagged 2 Cross-Reactive Antibodies, Activatable Anti-jagged Antibodies and Methods of Use Thereof
+B,B@82,B@82@Y,G,G@02,G@02@B,G,G@02,G@02@F	Strip loaded waveguide with low-index transition layer
+H,H@01,H@01@L,G,G@06,G@06@K	Cnt-infused Carbon Fiber Materials and Process Therefor
+H,H@04,H@04@L,H,H@03,H@03@M	Coding method and coding apparatus for coding a serial data stream
+H,H@01,H@01@J,H,H@01,H@01@L	Methods for Processing Substrates in Process Systems Having Shared Resources
+A,A@61,A@61@B	Heat-generating Element of a Heating Device
+G,G@09,G@09@G	Electro-optical devices
+A,A@63,A@63@B	Intravascular Diagnostic or Therapeutic Apparatus Using High-Intensity Pulsed Light
+G,G@03,G@03@B,G,G@07,G@07@F,B,B@41,B@41@J,H,H@04,H@04@N	Printer Module Incorporating a Quartet of Co-operating Rollers
+B,B@60,B@60@C,H,H@04,H@04@L,H,H@04,H@04@W	Methods and Apparatus to Facilitate TPMS Broadcast Mode Selection
+G,G@01,G@01@B	Measuring template having a plurality of indicia groups each including an indicator for indicating a spacing of the indicia of each of the groups of indicia
+H,H@02,H@02@S,Y,Y@02,Y@02@P,H,H@01,H@01@M,H,H@02,H@02@J,Y,Y@02,Y@02@B,H,H@01,H@01@L,Y,Y@02,Y@02@E	Method of Transacting Objects
+B,B@41,B@41@J	Cartridge Unit Assembly with Ink Storage Modules and a Printhead IC for a Printer
+F,F@04,F@04@B,G,G@01,G@01@F,A,A@61,A@61@M	Dosing Device for an Infusion System and Method Thereof
+H,H@01,H@01@B	Method of Manufacturing a Semiconductor Light-emitting Device
+G,G@08,G@08@B	Machine vision methods and system for boundary point-based comparison of patterns and images
+F,F@15,F@15@B,F,F@16,F@16@K,G,G@05,G@05@D	Fluid Metering Valve
+H,H@01,H@01@L,H,H@04,H@04@N	Solid-State Image Pickup Element and Method of Producing the Same
+B,B@23,B@23@Q,B,B@23,B@23@C,Y,Y@10,Y@10@T	Adapter for Coupling a Laser Processing Device to an Object
+G,G@06,G@06@F,G,G@06,G@06@Q,G,G@06,G@06@K,H,H@04,H@04@N,G,G@06,G@06@T	Apparatus and method for production of synthesis gas using radiant and convective reforming
+G,G@06,G@06@F,H,H@04,H@04@N,G,G@09,G@09@G,G,G@06,G@06@T	Combinatorial Approach to Treating Alzheimer's Disease
+A,A@61,A@61@B,A,A@61,A@61@M	Vital Sleeve
+H,H@04,H@04@M,H,H@04,H@04@B	Display device having thin film transistors
+F,F@16,F@16@L,Y,Y@10,Y@10@S	Electronic Device and Method Using Machine Learning for Identifying Characteristics of Users Located within a Specific Space
+A,A@61,A@61@M	High frequency wiring board and its connecting structure
+E,E@05,E@05@F,E,E@05,E@05@Y	Concealed Electrical Door Operator
+H,H@01,H@01@L,G,G@02,G@02@F	Internal gate valve for flow completion systems
+F,F@21,F@21@Y,C,C@09,C@09@K,F,F@21,F@21@S,H,H@05,H@05@B,Y,Y@02,Y@02@B,H,H@01,H@01@L	Bacterial strain, processed plant extracts, compositions containing same, processes for their preparation and their therapeutic and industrial applications
+C,C@09,C@09@D,B,B@29,B@29@C,B,B@29,B@29@K,B,B@29,B@29@L,B,B@05,B@05@D,B,B@29,B@29@B,B,B@33,B@33@Y	Systems and Methods for Additively Manufacturing Composite Parts
+C,C@01,C@01@B	Droplet Impingement Chemical Reactors and Methods of Processing Fuel
+G,G@06,G@06@N	Ni-Zn-Cu Ferrite Particles, Green Sheet Comprising the Ni-Zn-Cu Ferrite Particles and Ni-Zn-Cu Ferrite Sintered Ceramics
+B,B@24,B@24@B,Y,Y@10,Y@10@T	Multiple Level Power Control Command Signaling
+Y,Y@10,Y@10@T,H,H@01,H@01@R,G,G@01,G@01@R,H,H@05,H@05@K	Methods of Forming Connector Pad Structures, Interconnect Structures, and Structures Thereof
+B,B@44,B@44@C,Y,Y@10,Y@10@T	Multi-vector Sensing in Cardiac Devices with Signal Combinations
+G,G@01,G@01@N,C,C@12,C@12@M,G,G@06,G@06@M	Neem Based Composition for Coating Nitrogenous Fertilizer
+C,C@09,C@09@D,B,B@22,B@22@F,H,H@01,H@01@B,H,H@05,H@05@K	Fine Silver Particle Dispersing Solution
+C,C@08,C@08@J,C,C@08,C@08@L,Y,Y@10,Y@10@T,B,B@29,B@29@C,B,B@32,B@32@B,C,C@08,C@08@F,C,C@09,C@09@J	High Frequency Module
+B,B@64,B@64@D,F,F@16,F@16@K,Y,Y@10,Y@10@T	Portable Wireless Communications Adapter
+H,H@01,H@01@L	Current Limit Control with Current Limit Detector
+G,G@11,G@11@B,H,H@05,H@05@K	Auxiliary Cooling by Automated Cooling Unit
+A,A@61,A@61@K,C,C@07,C@07@D,G,G@01,G@01@N	Method and Apparatus to Control a Transition Between HCCI and SI Combustion in a Direct-Injection Gasoline Engine
+A,A@44,A@44@B,Y,Y@10,Y@10@T	Clothes Treating Apparatus
+A,A@61,A@61@K,A,A@61,A@61@P,G,G@01,G@01@N,C,C@12,C@12@Q	Compounds and Methods for Inhibiting Cif Virulence Factor
+F,F@02,F@02@B,F,F@01,F@01@M,F,F@02,F@02@F,F,F@05,F@05@C	Hybrid hull construction for marine vessels
+G,G@01,G@01@M,B,B@60,B@60@G,F,F@16,F@16@C,G,G@01,G@01@L	Copolymer for Semiconductor Lithography, Resist Composition, and Method for Manufacturing Substrate
+B,B@82,B@82@Y,H,H@01,H@01@L	Magnetic Field Sensor Apparatus
+Y,Y@02,Y@02@T,F,F@02,F@02@D,F,F@01,F@01@L	Fuel Tuned Variable Valve Timing
+G,G@01,G@01@R	Apparatus and Method for Determining Capacitance Variation in an Integrated Circuit
+C,C@07,C@07@C,C,C@07,C@07@F	Pedal Device with Damping of the Actuation
+C,C@01,C@01@B,G,G@01,G@01@N,C,C@10,C@10@B,Y,Y@02,Y@02@P,C,C@10,C@10@J,B,B@01,B@01@J,F,F@24,F@24@S,Y,Y@02,Y@02@E	Ribbed Spine Stud with Variable Web
+H,H@01,H@01@L,G,G@02,G@02@F	Method of Manufacturing a Semiconductor Device
+A,A@61,A@61@K,C,C@08,C@08@J,Y,Y@02,Y@02@W,A,A@23,A@23@V,A,A@61,A@61@L,A,A@61,A@61@M,A,A@23,A@23@L,B,B@82,B@82@Y,Y,Y@10,Y@10@T,C,C@09,C@09@D,B,B@01,B@01@J,C,C@02,C@02@F,G,G@02,G@02@B,Y,Y@10,Y@10@S,G,G@21,G@21@K,A,A@61,A@61@N,C,C@12,C@12@H,C,C@09,C@09@J	Thermal Cane
+C,C@08,C@08@L,F,F@16,F@16@C,C,C@08,C@08@K	Lubricant-feeding material
+A,A@61,A@61@L,C,C@08,C@08@L,A,A@61,A@61@M	Catheter with a Polyimide Distal Tip
+C,C@07,C@07@B,C,C@07,C@07@C	Operating System Load Device Resource Selection
+H,H@01,H@01@H	Method of Connecting a Conductive Trace to a Semiconductor Chip Using a Metal Base
+A,A@63,A@63@B	Front Toss Machine
+F,F@04,F@04@B,F,F@15,F@15@B	Method, Apparatus and Computer Program for Handling Overlapping Interworking Information
+H,H@01,H@01@M	Control Features of Imitation Candle Devices
+H,H@01,H@01@L	Semiconductor Devices Including Conductive Pillars
+H,H@01,H@01@L,H,H@01,H@01@P	Remotely Enabled Pacemaker and Implantable Subcutaneous Cardioverter/Defibrillator System
+F,F@16,F@16@G,B,B@62,B@62@J,Y,Y@10,Y@10@T	Bungee cord with hookless ends
+C,C@07,C@07@D,C,C@07,C@07@C,Y,Y@10,Y@10@T	Fluorous tagging compounds and methods of increasing the fluorous nature of compounds
+G,G@06,G@06@F,G,G@06,G@06@K,H,H@04,H@04@N	Image Printing Apparatus and Method for Controlling an Image Printing Apparatus
+F,F@41,F@41@C	Hybrid Holster
+A,A@61,A@61@K,A,A@61,A@61@Q,C,C@08,C@08@G	Semiconductor device and lead frame therefor
+H,H@01,H@01@L	Providing Communication Services of a Mobile Communication Network to a Plurality of Telecommunication Devices
+B,B@65,B@65@D	Electrical Circuit Assembly with Micro-socket
+H,H@01,H@01@L	Display Apparatus
+H,H@01,H@01@L	Connector Position Assurance (CPA) and Plug Connector Arrangement Having a CPA
+G,G@08,G@08@B,E,E@03,E@03@B	Signal Processing Apparatus and Methods
+G,G@09,G@09@F,Y,Y@10,Y@10@T	Method for Producing Surface-supported Catalyst
+B,B@60,B@60@B,F,F@16,F@16@C,F,F@16,F@16@J	Sealing Device
+B,B@01,B@01@D,B,B@01,B@01@L	Cartridge with Improved Penetration and Expansion Bullet
+H,H@04,H@04@B,H,H@01,H@01@Q	Portable Telephone
+H,H@04,H@04@M,G,G@06,G@06@Q,H,H@04,H@04@L,H,H@04,H@04@W	Scanning appliance and method having user help capability
+G,G@01,G@01@K,H,H@03,H@03@K	Methods and Systems for Determining Intraocular Pressure
+A,A@61,A@61@K,A,A@23,A@23@V,A,A@23,A@23@L,A,A@23,A@23@Y,C,C@12,C@12@N	Simulation System Implementing Real-Time Machine Data
+A,A@24,A@24@C	Tabbed Multi-cellular Shade Material
+A,A@23,A@23@P,A,A@23,A@23@K,Y,Y@10,Y@10@S	Pet Snack
+B,B@60,B@60@C,Y,Y@10,Y@10@T,B,B@60,B@60@S,F,F@17,F@17@C	Apparatus and method for reproducing information from two types of optical disks having discrimination marks formed along tracks thereof
+B,B@30,B@30@B,A,A@21,A@21@C,B,B@29,B@29@C,A,A@23,A@23@P,A,A@23,A@23@G	Methods for the Early Diagnosis of Ovarian Cancer
+H,H@01,H@01@L,H,H@05,H@05@K,B,B@41,B@41@J	Liquid Ejection Apparatus
+H,H@01,H@01@L,H,H@05,H@05@K	Apparatus for Continuous Closed Circuit Desalination Under Variable Pressure with a Single Container
+Y,Y@10,Y@10@T,B,B@60,B@60@S,E,E@02,E@02@B	Vehicular Lighting Device
+G,G@06,G@06@F	Compressible Printing Blanket and Method of Manufacturing a Compressible Printing Blanket
+C,C@08,C@08@L,C,C@09,C@09@K,H,H@05,H@05@B,Y,Y@02,Y@02@E,C,C@08,C@08@G,H,H@01,H@01@L,C,C@08,C@08@K	Pharmaceutical Compositions for Treating Ebola Virus Disease
+G,G@01,G@01@F,B,B@65,B@65@D	Initial Positioning Device, Container and Method
+G,G@01,G@01@N,Y,Y@10,Y@10@T,C,C@07,C@07@H,Y,Y@10,Y@10@S,C,C@12,C@12@Q	System, Array and Non-porous Solid Support Comprising Fixed or Immobilized Nucleic Acids
+Y,Y@10,Y@10@T,C,C@10,C@10@N,Y,Y@10,Y@10@S,C,C@10,C@10@M,B,B@21,B@21@D	Human metabotropic glutamate receptor subtype mGluR6 protein
+G,G@11,G@11@C	Flat-Panel Type Display and Spacer
+A,A@47,A@47@F,B,B@62,B@62@B,G,G@08,G@08@G,Y,Y@02,Y@02@W,H,H@04,H@04@N,H,H@04,H@04@L,B,B@65,B@65@F,H,H@02,H@02@J,B,B@60,B@60@Y,G,G@01,G@01@S,G,G@06,G@06@K,G,G@06,G@06@T,G,G@05,G@05@B,G,G@01,G@01@C,B,B@66,B@66@F,G,G@06,G@06@Q,H,H@04,H@04@W,G,G@10,G@10@L,H,H@04,H@04@B,B,B@60,B@60@P,B,B@60,B@60@L,G,G@06,G@06@F,Y,Y@04,Y@04@S,A,A@47,A@47@L,E,E@01,E@01@H,B,B@07,B@07@C,Y,Y@10,Y@10@S,G,G@05,G@05@D	Rotor Turning System and Method
+G,G@08,G@08@B,A,A@01,A@01@K	System for Securing a Fishing Reel to a Support
+G,G@06,G@06@F	Identifying Preferred Nodes for Backing up Availability Groups
+G,G@07,G@07@C,G,G@05,G@05@B	Fuel cell system and method of controlling the same
+H,H@01,H@01@L	Emulation technique for variable-length disk system to access data in a fixed-length disk system
+F,F@26,F@26@B,D,D@21,D@21@G,F,F@16,F@16@C	Method and System for Terminal Access
+C,C@09,C@09@K	Invertible Well Bore Servicing Fluid
+Y,Y@02,Y@02@W,C,C@02,C@02@F,Y,Y@02,Y@02@E	Injector for Auto-injection of Medication and Associated Method of Use
+H,H@04,H@04@M,H,H@04,H@04@L	Method for service provisioning a broadband modem
+G,G@06,G@06@F,H,H@01,H@01@L,G,G@11,G@11@C	Method for Inkjet Printing of E13B Magnetic Ink Character Recognition Characters and Substrate Having Such Characters Printed Thereon
+A,A@61,A@61@M	Photonic band-gap light-emitting fibers
+A,A@61,A@61@B	Automated Packaging, Inspection, Verification, and Counting Apparatus
+G,G@06,G@06@K	Two-dimensional dot code and reader thereof
+F,F@16,F@16@H,Y,Y@10,Y@10@T	CG Height Adjustability by Conformal Crown Weighting
+G,G@06,G@06@F	Multi-planar Three-Dimensional User Interface
+H,H@01,H@01@L,C,C@09,C@09@K	Apparatus for Forming a Pre-applied Underfill Adhesive Layer for Semiconductor Wafer Level Chip-Scale Packages
+B,B@01,B@01@D	High Temperature Support Apparatus and Method of Use for Casting Materials

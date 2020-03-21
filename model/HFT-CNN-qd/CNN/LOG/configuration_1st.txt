@@ -1,0 +1,9 @@
+# gpu: 0
+# unit: 1024
+# batch-size: 100
+# epoch: 40
+# number of category: 9
+# embedding dimension: 300
+# current layer: 1st
+# model-type: Pre-process
+
