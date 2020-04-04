@@ -17,15 +17,14 @@ def remove_stopwords(input_path, output_path):
     
 if __name__ == '__main__':
 
-#    input_directory = sys.argv[1]
-#    output_directory = sys.argv[2]
-#    if not os.path.exists(output_directory):
-#        os.makedirs(output_directory)
-#    
-#    for filename in os.listdir(input_directory):
-#        if filename.endswith(".json"):
-#            input_path = os.path.join(input_directory, filename)
-#            output_path = os.path.join(output_directory, filename)
-#            remove_stopwords(input_path, output_path)
-#    
-    remove_stopwords("../../test.json", "../../test_nonstop.json")
+    input_directory = sys.argv[1]
+    output_directory = sys.argv[2]
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
+    
+    for filename in os.listdir(input_directory):
+        if filename.endswith(".json"):
+            input_path = os.path.join(input_directory, filename)
+            output_path = os.path.join(output_directory, filename)
+            remove_stopwords(input_path, output_path)
+    
