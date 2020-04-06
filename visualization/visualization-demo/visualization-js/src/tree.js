@@ -2,6 +2,7 @@ import * as d3 from "d3";
 import React, { Component } from 'react';
 import './tree.css';
 import { treePredictedData, treeTrueData } from './data'
+import { selector } from "d3";
 
 const circleColor = "#FB9A0D";
 const trueCircleColor = "#ff3b00";
@@ -35,6 +36,21 @@ function isTrueAndPredicted(d) {
     return d.data.true === true && d.data.prob !== -1;
 }
 
+function descriptionIndent(d) {
+    switch (d.data.level) {
+        case "SECTION":
+            return "|--";
+        case "CLASS":
+            return "|----";
+        case "SUBCLASS":
+            return "|------";
+        case "GROUP":
+            return "|--------";
+        case "SUBGROUP":
+            return "|----------";
+    }
+}
+
 class Chart extends Component {
     constructor(props) {
         super(props)
@@ -56,13 +72,23 @@ class Chart extends Component {
         const svg = d3.select("body").append("svg")
             .attr("width", width + margin.right + margin.left)
             .attr("height", height + margin.top + margin.bottom)
+            .attr("border", 1)
             .append("g")
             .attr("transform", "translate("
                 + margin.left + "," + margin.top + ")");
 
-        // const descriptionDiv = d3.select("body")
-        //     .append("div")
-        //     .attr("id", "description");
+        // add border path
+        const bordercolor = 'black';
+        const border = 3;
+        const borderPath = svg.append("rect")
+            .attr("x", -30)
+            .attr("y", 30)
+            .attr("width", width)
+            .attr("height", height)
+            .style("stroke", bordercolor)
+            .style("fill", "none")
+            .style("stroke-width", border);
+
         const descriptionDiv = d3.select("body")
             .append("div")
             .attr("id", "description");
@@ -70,9 +96,6 @@ class Chart extends Component {
             .append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
-        // descriptionDiv.transition().delay(1000);
-        // .transition()
-        // .delay(300);
 
         var i = 0,
             duration = 750,
@@ -103,17 +126,22 @@ class Chart extends Component {
 
         function showPrecedentNodesDescription(d) {
             var curr = d;
-            var descriptions = [curr.data.name];
+            var descriptions = [descriptionIndent(d) + curr.data.name];
             while (curr.parent != null) {
                 curr = curr.parent;
-                descriptions.splice(0, 0, curr.data.name);
+                descriptions.splice(0, 0, descriptionIndent(curr) + curr.data.name);
+
             }
             descriptions.map(appendNodeDescription);
+            console.log(`descriptions `)
+            console.log(descriptions)
+            console.log(`descriptionDiv ${descriptionDiv}`)
+            console.log(descriptionDiv)
         }
 
         function appendNodeDescription(d) {
-            descriptionDiv.append('div').text(d);
-            // d3.select("body").selectAll("div").transition().delay(1000)
+            descriptionDiv.append('div').attr('class', 'description')
+                .text(d);
         }
 
         function removePrecedentNodesDescription() {
@@ -257,7 +285,7 @@ class Chart extends Component {
                     return diagonal(o, o)
                 })
                 .attr('stroke-width', function (d) {
-                    return d.data.prob * 2;
+                    return d.data.prob * 10;
                 })
                 .style('stroke-dasharray', function (d) {
                     return isTrueNotPredicted(d) ? ("3, 3") : ("0, 0");
@@ -367,7 +395,12 @@ class Chart extends Component {
     }
 
     render() {
-        return <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
+        return (
+            <div>
+                <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
+                <selector>test</selector>
+            </div>
+        )
     }
 }
 
