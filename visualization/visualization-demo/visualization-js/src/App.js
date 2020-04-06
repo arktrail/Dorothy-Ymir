@@ -19,7 +19,7 @@ class App extends Component {
   }
   render() {
     return (
-      <Chart height={1000} width={2000} />
+      <Chart height={850} width={2000} />
       // <button
       //   onClick={() => this.handleRequest()}>
       //   test

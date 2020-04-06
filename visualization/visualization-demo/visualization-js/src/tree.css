@@ -54,6 +54,16 @@
 .truelink {
   stroke: #ff3b00;
 }
+.falselink {
+  stroke: #0000ff !important;
+}
+
+.border {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 1px solid #8F8D8D;
+  border-radius: 0.5%;
+  margin: 10px 10px 10px 50px
+}
 
 .label { 
     /*word-break: break-word;*/

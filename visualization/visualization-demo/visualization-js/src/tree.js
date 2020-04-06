@@ -62,7 +62,7 @@ class Chart extends Component {
     componentDidMount() {
 
         // Set the dimensions and margins of the diagram
-        const margin = { top: 20, right: 90, bottom: 30, left: 90 },
+        const margin = { top: 20, right: 30, bottom: 20, left: 90 },
             width = this.state.width - margin.left - margin.right,
             height = this.state.height - margin.top - margin.bottom;
 
@@ -70,6 +70,7 @@ class Chart extends Component {
         // appends a 'group' element to 'svg'
         // moves the 'group' element to the top left margin
         const svg = d3.select("body").append("svg")
+            .attr("class", 'border')
             .attr("width", width + margin.right + margin.left)
             .attr("height", height + margin.top + margin.bottom)
             .attr("border", 1)
@@ -78,16 +79,17 @@ class Chart extends Component {
                 + margin.left + "," + margin.top + ")");
 
         // add border path
-        const bordercolor = 'black';
-        const border = 3;
-        const borderPath = svg.append("rect")
-            .attr("x", -30)
-            .attr("y", 30)
-            .attr("width", width)
-            .attr("height", height)
-            .style("stroke", bordercolor)
-            .style("fill", "none")
-            .style("stroke-width", border);
+        const bordercolor = '#8f8d8d';
+        const border = 1;
+        // const borderPath = svg.append("rect")
+        //     // .attr("class", "border")
+        //     .attr("x", -37)
+        //     .attr("y", 30)
+        //     .attr("width", width - margin.right - margin.left)
+        //     .attr("height", height - margin.top - margin.bottom)
+        //     .style("stroke", bordercolor)
+        //     .style("fill", "none")
+        //     .style("stroke-width", border);
 
         const descriptionDiv = d3.select("body")
             .append("div")
@@ -278,7 +280,8 @@ class Chart extends Component {
             var linkEnter = link.enter().insert('path', "g")
                 // .attr("class", "link")
                 .attr('class', function (d) {
-                    return isTrueNotPredicted(d) ? "link truelink" : "link";
+                    // return isTrueNotPredicted(d) ? isFalseButPredicted(d) ? "link falselink" : "link truelink" : "link";
+                    return isTrueAndPredicted(d) ? "link truelink" : isFalseButPredicted(d) ? "link falselink" : "link";
                 })
                 .attr('d', function (d) {
                     var o = { x: source.x0, y: source.y0 }
