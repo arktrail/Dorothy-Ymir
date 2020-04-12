@@ -171,7 +171,7 @@ export const treeLessData = {
     ]
 
 }
-export const treePredictedData =
+export const treePredictedData = 
 {
     "name": "G PHYSICS",
     "symbol": "G",

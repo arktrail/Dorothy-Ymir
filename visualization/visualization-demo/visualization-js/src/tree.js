@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import React, { Component } from 'react';
 import './tree.css';
-import { treePredictedData, treeTrueData } from './data'
+// import { treePredictedData, treeTrueData } from './data'
 import { selector } from "d3";
 
 const circleColor = "#FB9A0D";
@@ -107,7 +107,7 @@ class Chart extends Component {
         const treemap = d3.tree().size([height, width]);
 
         // Assigns parent, children, height, depth
-        root = d3.hierarchy(treePredictedData, function (d) { return d.children; });
+        root = d3.hierarchy(this.props.treeData, function (d) { return d.children; });
         // root = d3.hierarchy(treeTrueData, function (d) { return d.children; });
         root.x0 = height / 2;
         root.y0 = 0;
@@ -401,7 +401,7 @@ class Chart extends Component {
         return (
             <div>
                 <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
-                <selector>test</selector>
+                {/* <selector>test</selector> */}
             </div>
         )
     }
