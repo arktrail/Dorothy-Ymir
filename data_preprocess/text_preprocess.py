@@ -41,20 +41,22 @@ def process_single_API_data(input_path, output_path):
     with open(input_path, 'rb') as file:
         df = pd.DataFrame(pickle.load(file))
         
-    df_text = pd.DataFrame(df['cpc_codes'].apply(extract_labels, args=(label_columns,)))
-    df_text['doc_token'] = df[text_columns].agg(' '.join, axis=1).apply(tokenize)
-    df_text.columns = ['doc_label', 'doc_token']
-    df_text["doc_keyword"] = [[] for _ in range(len(df_text))]
-    df_text["doc_topic"] = [[] for _ in range(len(df_text))]
+    df_text = pd.DataFrame(df['cpc_codes'].apply(extract_labels, args=(LABEL_COLUMNS,)))
+    
+    for text_column in TEXT_COLUMNS:
+        df_text[text_column] = df[text_column].apply(tokenize)
     df_text.to_json(output_path, orient='records', lines=True)
-
 
 def process_API_data_folder(input_directory, output_directory):
     counter = 0
     for filename in os.listdir(input_directory):
-        if filename.endswith(".p"):
+        
+        if filename.endswith("_split"):
+            continue 
+            
+        if filename.startswith("_"):
             input_path = os.path.join(input_directory, filename)
-            output_path = os.path.join(output_directory, "post_"+filename)
+            output_path = os.path.join(output_directory, OUTPUT_BASE_NAME.format(counter))
             process_single_API_data(input_path, output_path)
             counter += 1
             print("finished processing file {}; count = {}".format(filename, counter))
@@ -69,39 +71,36 @@ def combine_json(json_list, output_file):
                 outfile.write('\n')
             os.remove(input_path)
 
-
+            
 def get_json_list(output_directory, start_index, end_index, base_name):
     return [os.path.join(output_directory, base_name.format(i)) for i in range(start_index, end_index+1)]
+
 
 
 if __name__ == '__main__':
 
     input_directory = sys.argv[1]
-    output_subfolder = sys.argv[2]
-    output_directory = os.path.join(input_directory, output_subfolder)
+    output_directory = sys.argv[2]
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
 
-    # text_column values: ['title', 'abstraction', 'claims', 'brief_summary', 'description']
-    # text_columns = ['title', 'abstraction', 'claims']
-    text_columns = ['description']
+    TEXT_COLUMNS = ['title', 'abstraction', 'claims', 'brief_summary', 'description']
+    LABEL_COLUMNS = ['cpc_section', 'cpc_class', 'cpc_subclass', 'cpc_main_group', 'cpc_subgroup']
+    OUTPUT_BASE_NAME = "post_json_{}.p"
 
-    # label_columns values: ['cpc_section', 'cpc_class', 'cpc_subclass', 'cpc_main_group', 'cpc_subgroup']
-    label_columns = ['cpc_section', 'cpc_class', 'cpc_subclass']
 
-    train_start_index = 0
-    train_end_index = 12
-    valid_start_index = 16
-    valid_end_index = 17
-    test_start_index = 13
-    test_end_index = 15
-    base_name = "post_patent_2M_reparse_{}.p"
+    train_start_index = 1
+    train_end_index = 70
+    valid_start_index = 71
+    valid_end_index = 80
+    test_start_index = 81
+    test_end_index = 91
 
     process_API_data_folder(input_directory, output_directory)
 
-    train_json_list = get_json_list(output_directory, train_start_index, train_end_index, base_name)
-    valid_json_list = get_json_list(output_directory, valid_start_index, valid_end_index, base_name)
-    test_json_list = get_json_list(output_directory, test_start_index, test_end_index, base_name)
+    train_json_list = get_json_list(output_directory, train_start_index, train_end_index, OUTPUT_BASE_NAME)
+    valid_json_list = get_json_list(output_directory, valid_start_index, valid_end_index, OUTPUT_BASE_NAME)
+    test_json_list = get_json_list(output_directory, test_start_index, test_end_index, OUTPUT_BASE_NAME)
 
     combine_json(train_json_list, os.path.join(output_directory, "train.json"))
     combine_json(valid_json_list, os.path.join(output_directory, "valid.json"))
