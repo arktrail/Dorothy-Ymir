@@ -6,6 +6,9 @@ import string
 import json
 import os
 import sys
+from pandarallel import pandarallel
+
+pandarallel.initialize()
 
 cpc_field_slice_dict = {'kind':                (0 ,2 ),   
                         'application_number':  (2 ,10),  
@@ -39,14 +42,19 @@ def tokenize(text):
 
 
 def process_single_API_data(input_path, output_path):
+
+    print("starting to process {}".format(input_path))
     with open(input_path, 'rb') as file:
         df = pd.DataFrame(pickle.load(file))
         
     df_text = pd.DataFrame(df['cpc_codes'].apply(extract_labels, args=(LABEL_COLUMNS,)))
     df_text.rename(columns={'cpc_codes': 'all_labels'}, inplace=True)
+
+    print("label extraction done")
     
     for text_column in TEXT_COLUMNS:
-        df_text[text_column] = df[text_column].apply(tokenize)
+        print("tokenizing {}".format(text_column))
+        df_text[text_column] = df[text_column].parallel_apply(tokenize)
     df_text.to_json(output_path, orient='records', lines=True)
 
 
