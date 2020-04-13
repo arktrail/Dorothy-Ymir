@@ -21,6 +21,7 @@ cpc_field_slice_dict = {'kind':                (0 ,2 ),
                         'cpc_set_group':       (43,46), 
                         'cpc_set_rank':        (46,48)}
 
+
 def extract_labels(cpc_codes, label_columns):
     labels = set()
     for cpc_code in cpc_codes:
@@ -42,10 +43,12 @@ def process_single_API_data(input_path, output_path):
         df = pd.DataFrame(pickle.load(file))
         
     df_text = pd.DataFrame(df['cpc_codes'].apply(extract_labels, args=(LABEL_COLUMNS,)))
+    df_text.rename(columns={'cpc_codes': 'all_labels'}, inplace=True)
     
     for text_column in TEXT_COLUMNS:
         df_text[text_column] = df[text_column].apply(tokenize)
     df_text.to_json(output_path, orient='records', lines=True)
+
 
 def process_API_data_folder(input_directory, output_directory):
     counter = 0
@@ -74,7 +77,6 @@ def combine_json(json_list, output_file):
             
 def get_json_list(output_directory, start_index, end_index, base_name):
     return [os.path.join(output_directory, base_name.format(i)) for i in range(start_index, end_index+1)]
-
 
 
 if __name__ == '__main__':
