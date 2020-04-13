@@ -20,7 +20,7 @@ SEPARATOR_2 = ','
 SECTION = 'SECTION'
 CLASS = 'CLASS'
 SUBCLASS = 'SUBCLASS'
-INSTANCE_INDEX = 5
+INSTANCE_INDEX = 30
 
 def index(req):
     return HttpResponse("test response for index")

@@ -36,7 +36,7 @@ class App extends Component {
       <div>
         {
           this.state.treeData &&
-            <Chart treeData={this.state.treeData} height={850} width={2000} />
+            <Chart treeData={this.state.treeData} height={850} width={2000} leafNodesNum={this.state.leafNodesNum}/>
         }
         Predicted leaf nodes
         <select defaultValue={this.state.leafNodesNum} onChange={this.onLeafNodesNumChange.bind(this)}>
@@ -45,6 +45,9 @@ class App extends Component {
           <option value ={9}>9</option>
           <option value={12}>12</option>
           <option value={15}>15</option>
+          <option value={20}>20</option>
+          <option value={25}>25</option>
+          <option value={30}>30</option>
         </select>
         <button
           onClick={() => this.handleRequest()}>

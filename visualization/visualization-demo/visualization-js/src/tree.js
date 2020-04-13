@@ -18,23 +18,7 @@ const trueCircleColor = "#ff3b00";
 // 5. change the font size : x
 // 6. add labels to 
 
-function isTrueNotPredicted(d) {
-    console.log(d)
-    console.log("is true and not predicted")
-    return d.data.true === true && d.data.prob === -1;
-}
 
-function isFalseButPredicted(d) {
-    console.log(d)
-    console.log("is false but predicted")
-    return d.data.true === false && d.data.prob !== -1;
-}
-
-function isTrueAndPredicted(d) {
-    console.log(d)
-    console.log("is true and predicted")
-    return d.data.true === true && d.data.prob !== -1;
-}
 
 function descriptionIndent(d) {
     switch (d.data.level) {
@@ -56,9 +40,39 @@ class Chart extends Component {
         super(props)
         this.state = {
             width: props.width,
-            height: props.height
+            height: props.height,
+            root: null,
+            treemap: null,
         }
+        this.isTrueNotPredicted = this.isTrueNotPredicted.bind(this);
+        this.isFalseButPredicted = this.isFalseButPredicted.bind(this);
+        this.isTrueAndPredicted = this.isTrueAndPredicted.bind(this);
+        this.isPredicted = this.isPredicted.bind(this);
     }
+
+    isTrueNotPredicted(d) {
+        // console.log(d)
+        // console.log("is true and not predicted")
+        return d.data.true === true && !this.isPredicted(d);
+    }
+    
+    isFalseButPredicted(d) {
+        // console.log(d)
+        // console.log("is false but predicted")
+        return d.data.true === false && this.isPredicted(d);
+    }
+    
+    isTrueAndPredicted(d) {
+        console.log(d.data.symbol, d.data.true, d.data.order)
+        // console.log("is true and predicted")
+        return d.data.true === true && this.isPredicted(d);
+    }
+    
+    isPredicted(d) {
+        console.log(this.props.leafNodesNum)
+        return d.data.order < this.props.leafNodesNum
+    }
+
     componentDidMount() {
 
         // Set the dimensions and margins of the diagram
@@ -91,17 +105,16 @@ class Chart extends Component {
         //     .style("fill", "none")
         //     .style("stroke-width", border);
 
-        const descriptionDiv = d3.select("body")
-            .append("div")
-            .attr("id", "description");
-        const tooltipDiv = d3.select("body")
+        d3.select("body")
             .append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
 
-        var i = 0,
-            duration = 750,
-            root;
+        d3.select("body")
+            .append("div")
+            .attr("id", "description");
+
+        var root;
 
         // declares a tree layout and assigns the size
         const treemap = d3.tree().size([height, width]);
@@ -115,293 +128,338 @@ class Chart extends Component {
         // Collapse after the second level
         // root.children.forEach(collapse);
 
-        update(root);
+        this.update(root, root, treemap);
+        this.copy(root);
+        console.log("root after copy", root)
 
-        // Collapse the node and all it's children
-        function collapse(d) {
-            if (d.children) {
-                d._children = d.children
-                d._children.forEach(collapse)
-                d.children = null
+        this.setState({
+            root,
+            treemap
+        })
+    }
+
+    componentDidUpdate() {
+        this.filterNodeByLeafNodesNum(this.props.leafNodesNum, this.state.root)
+    }
+
+    filterNodeByLeafNodesNum (leafNodesNum, d) {
+        if (!d || !d._children) return
+        var children = new Array()
+        for (var i = 0; i < d._children.length; i++){
+            console.log(d._children[i])
+            console.log(d._children[i].data.order)
+            var child = d._children[i]
+            if (child.data.order < leafNodesNum || child.data.true) {
+                children.push(child)
             }
         }
+        d.children = children
+        console.log("after modify ", d.children)
+        d.children.forEach(this.filterNodeByLeafNodesNum.bind(this,leafNodesNum))
+        this.update(d, this.state.root, this.state.treemap)
+    }
 
-        function showPrecedentNodesDescription(d) {
-            var curr = d;
-            var descriptions = [descriptionIndent(d) + curr.data.name];
-            while (curr.parent != null) {
-                curr = curr.parent;
-                descriptions.splice(0, 0, descriptionIndent(curr) + curr.data.name);
+    update(source, root, treemap) {
+        var svg = d3.select('svg')
+        console.log("svg g nodes", svg.selectAll('g.node'))
+        const duration = 750
+        var i = 0
 
-            }
-            descriptions.map(appendNodeDescription);
-            console.log(`descriptions `)
-            console.log(descriptions)
-            console.log(`descriptionDiv ${descriptionDiv}`)
-            console.log(descriptionDiv)
-        }
+        // Assigns the x and y position for the nodes
+        var treeMap = treemap(root);
 
-        function appendNodeDescription(d) {
-            descriptionDiv.append('div').attr('class', 'description')
-                .text(d);
-        }
+        // Compute the new tree layout.
+        var nodes = treeMap.descendants(),
+            links = treeMap.descendants().slice(1);
 
-        function removePrecedentNodesDescription() {
-            document.getElementById("description").innerHTML = "";
-            console.log("remove", document.getElementById("#description"));
-        }
+        // Normalize for fixed-depth.
+        nodes.forEach(function (d) { d.y = d.depth * 200 });
 
-        function update(source) {
+        // ****************** Nodes section ***************************
 
-            // Assigns the x and y position for the nodes
-            var treeMap = treemap(root);
+        // Update the nodes...
+        var node = svg.selectAll('g.node')
+            .data(nodes, function (d) { return d.id || (d.id = ++i); });
 
-            // Compute the new tree layout.
-            var nodes = treeMap.descendants(),
-                links = treeMap.descendants().slice(1);
+        const this_ = this
+        // Enter any new modes at the parent's previous position.
+        var nodeEnter = node.enter().append('g')
+            .attr('class', 'node')
+            .attr("transform", function (d) {
+                return "translate(" + source.y0 + "," + source.x0 + ")"
+                    ;
+            })
+            // .attr("text-anchor", d => d._children ? "end" : "start")
+            .on('click', function (d) {
+                this_.removePrecedentNodesDescription(d)
+                this_.showPrecedentNodesDescription(d)
+            })
+        // .on('click', click);
 
-            // Normalize for fixed-depth.
-            nodes.forEach(function (d) { d.y = d.depth * 200 });
-
-            // ****************** Nodes section ***************************
-
-            // Update the nodes...
-            var node = svg.selectAll('g.node')
-                .data(nodes, function (d) { return d.id || (d.id = ++i); });
-
-            // Enter any new modes at the parent's previous position.
-            var nodeEnter = node.enter().append('g')
-                .attr('class', 'node')
-                .attr("transform", function (d) {
-                    return "translate(" + source.y0 + "," + source.x0 + ")"
-                        ;
-                })
-                .attr("text-anchor", d => d._children ? "end" : "start")
-                .on('click', function (d) {
-                    removePrecedentNodesDescription(d)
-                    showPrecedentNodesDescription(d)
-                })
-            // .on('click', click);
-
-            // Add Circle for the nodes
-            nodeEnter.append('circle')
-                .attr('class', 'node')
-                .attr('class', function (d) {
-                    return isFalseButPredicted(d) ? "node falsenode" : "node truenode";
-                })
-                .attr('r', 1e-6)
-                .style("fill", function (d) {
-                    return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
-                });
-
-            // Add labels for the nodes
-            nodeEnter.append('foreignObject')
-                .attr("dy", ".35em")
-                /*  .attr("x", function(d) {
-                      // return d.children || d._children ? -13 : 13;
-                      return -13;
-                  })*/
-                .attr("y", function (d) {
-                    return -30;
-                })
-                .attr("text-anchor", function (d) {
-                    return d.children || d._children ? "end" : "start";
-                })
-                .text(function (d) { return d.data.symbol; });
-
-            var tooltip = d3.select("body").append("div")
-                .attr("class", "tooltip") //用于css设置类样式
-                .attr("opacity", 0.0);
-
-            // Add tooltip
-            // nodeEnter.on("mouseover", function (d) {
-            //     // tooltipDiv.transition().duration(0).style("opacity", 0)
-            //     // descriptionDiv.transition().duration(3000);
-            //     showPrecedentNodesDescription(d);
-
-            //     // tooltipDiv.transition().delay(1000).duration(200).style("opacity", .9)
-
-            //     // tooltipDiv.html(d.data.name)
-            //     //     .attr("id", "tooltip")
-            //     //     .style("left", (d3.event.pageX) + "px")
-            //     //     .style("top", (d3.event.pageY + 20) + "px")
-            //     //     .style("opacity", 1.0);
+        // Add Circle for the nodes
+        nodeEnter.append('circle')
+            .attr('class', 'node')
+            .attr('class', function (d) {
+                return this_.isFalseButPredicted(d) ? "node falsenode" : "node truenode";
+            })
+            .attr('r', 1e-6)
+            // .style("fill", function (d) {
+            //     return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
             // })
-            //     .on("mouseout", function (d) {
-            //         removePrecedentNodesDescription();
+            ;
 
-            //         // tooltipDiv.style("opacity", 0.0);
-            //         // tooltipDiv.transition().duration(200).style("opacity", .0)
-            //         // d3.select("#tooltip").remove();
-            //     });
+        // Add labels for the nodes
+        nodeEnter.append('foreignObject')
+            .attr("dy", ".35em")
+            .attr("x", function(d) {
+                return d.children ? 0 : 13;
+              })
+            .attr("y", function (d) {
+                return d.children ? -30 : -10;
+            })
+            .attr("text-anchor", function (d) {
+                return d.children || d._children ? "end" : "start";
+            })
+            .text(function (d) { return d.data.symbol; });
 
-            // UPDATE
-            var nodeUpdate = nodeEnter.merge(node);
+        var tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip") //用于css设置类样式
+            .attr("opacity", 0.0);
 
-            // Transition to the proper position for the node
-            nodeUpdate.transition()
-                .duration(duration)
-                .attr("transform", function (d) {
-                    return "translate(" + d.y + "," + d.x + ")";
-                });
+        // Add tooltip
+        // nodeEnter.on("mouseover", function (d) {
+        //     // tooltipDiv.transition().duration(0).style("opacity", 0)
+        //     // descriptionDiv.transition().duration(3000);
+        //     showPrecedentNodesDescription(d);
 
-            // Update the node attributes and style
-            nodeUpdate.select('circle.node')
-                .attr('r', 5)
-                .style("fill", function (d) {
-                    return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
-                })
-                .attr('cursor', 'pointer');
+        //     // tooltipDiv.transition().delay(1000).duration(200).style("opacity", .9)
 
+        //     // tooltipDiv.html(d.data.name)
+        //     //     .attr("id", "tooltip")
+        //     //     .style("left", (d3.event.pageX) + "px")
+        //     //     .style("top", (d3.event.pageY + 20) + "px")
+        //     //     .style("opacity", 1.0);
+        // })
+        //     .on("mouseout", function (d) {
+        //         removePrecedentNodesDescription();
 
-            // Remove any exiting nodes
-            var nodeExit = node.exit().transition()
-                .duration(duration)
-                .attr("transform", function (d) {
-                    return "translate(" + source.y + "," + source.x + ")";
-                })
-                .remove();
+        //         // tooltipDiv.style("opacity", 0.0);
+        //         // tooltipDiv.transition().duration(200).style("opacity", .0)
+        //         // d3.select("#tooltip").remove();
+        //     });
 
-            // On exit reduce the node circles size to 0
-            nodeExit.select('circle')
-                .attr('r', 1e-6);
+        // UPDATE
+        var nodeUpdate = nodeEnter.merge(node);
 
-            // On exit reduce the opacity of text labels
-            nodeExit.select('foreignObject')
-                .style('fill-opacity', 1e-6);
-
-            // ****************** links section ***************************
-
-            // Update the links...
-            var link = svg.selectAll('path.link')
-                .data(links, function (d) { return d.id; });
-
-            // Enter any new links at the parent's previous position.
-            var linkEnter = link.enter().insert('path', "g")
-                // .attr("class", "link")
-                .attr('class', function (d) {
-                    // return isTrueNotPredicted(d) ? isFalseButPredicted(d) ? "link falselink" : "link truelink" : "link";
-                    return isTrueAndPredicted(d) ? "link truelink" : isFalseButPredicted(d) ? "link falselink" : "link";
-                })
-                .attr('d', function (d) {
-                    var o = { x: source.x0, y: source.y0 }
-                    return diagonal(o, o)
-                })
-                .attr('stroke-width', function (d) {
-                    return d.data.prob * 10;
-                })
-                .style('stroke-dasharray', function (d) {
-                    return isTrueNotPredicted(d) ? ("3, 3") : ("0, 0");
-                });
-
-            // UPDATE
-            var linkUpdate = linkEnter.merge(link);
-
-            // Transition back to the parent element position
-            linkUpdate.transition()
-                .duration(duration)
-                .attr('d', function (d) { return diagonal(d, d.parent) })
-                .attr('stroke-width', function (d) {
-                    return d.data.prob * 3;
-                });
-
-            // Remove any exiting links
-            var linkExit = link.exit().transition()
-                .duration(duration)
-                .attr('d', function (d) {
-                    var o = { x: source.x, y: source.y }
-                    return diagonal(o, o)
-                })
-                .remove();
-
-
-            // ****************** labels section ***************************
-            // labelsDiv.text("asprijsdafjspoadifjpsadjfp")
-            svg.append('circle')
-                .attr("cx", 30)
-                .attr("cy", 80)
-                .attr("r", 6)
-                .attr('class', 'node truenode')
-                .style('stroke-width', 3)
-                .style("fill", function (d) {
-                    // return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
-                    return circleColor;
-                });
-            svg.append('text')
-                .attr("x", 40)
-                .attr('y', 85)
-                .text("predicted true label")
-                .classed("labels", true)
-
-            svg.append('circle')
-                .attr("cx", 30)
-                .attr("cy", 100)
-                .attr("r", 6)
-                .attr('class', 'node falsenode')
-                .style('stroke-width', 3)
-                .style("fill", function (d) {
-                    // return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
-                    return '#fff';
-                });
-            svg.append('text')
-                .attr("x", 40)
-                .attr('y', 105)
-                .text("predicted false label")
-                .classed("labels", true)
-
-            svg.append('line')
-                .attr("x1", 10)
-                .attr("y1", 120)
-                .attr("x2", 40)
-                .attr("y2", 120)
-                .attr('class', 'truelink')
-                .style('stroke-dasharray', ('3, 3'))
-            svg.append('text')
-                .attr("x", 40)
-                .attr('y', 125)
-                .text("unpredicted true label")
-                .classed("labels", true)
-            // .attr("font-family", "Montserrat")
-            // .attr("font-size", "14px")
-            // .style("-webkit-text-stroke-width", "0.5px")
-
-
-            // Store the old positions for transition.
-            nodes.forEach(function (d) {
-                d.x0 = d.x;
-                d.y0 = d.y;
+        // Transition to the proper position for the node
+        nodeUpdate.transition()
+            .duration(duration)
+            .attr("transform", function (d) {
+                return "translate(" + d.y + "," + d.x + ")";
             });
 
-            // Creates a curved (diagonal) path from parent to the child nodes
-            function diagonal(s, d) {
+        // Update the node attributes and style
+        nodeUpdate.select('circle.node')
+            .attr('r', 5)
+            // .style("fill", function (d) {
+            //     return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
+            // })
+            .attr('cursor', 'pointer');
 
-                var path = `M ${s.y} ${s.x}
-            C ${(s.y + d.y) / 2} ${s.x},
-              ${(s.y + d.y) / 2} ${d.x},
-              ${d.y} ${d.x}`
 
-                return path
-            }
+        // Remove any exiting nodes
+        var nodeExit = node.exit().transition()
+            .duration(duration)
+            .attr("transform", function (d) {
+                return "translate(" + source.y + "," + source.x + ")";
+            })
+            .remove();
 
-            // Toggle children on click.
-            function click(d) {
-                if (d.children) {
-                    d._children = d.children;
-                    d.children = null;
-                } else {
-                    d.children = d._children;
-                    d._children = null;
-                }
-                update(d);
-            }
+        // On exit reduce the node circles size to 0
+        nodeExit.select('circle')
+            .attr('r', 1e-6);
+
+        // On exit reduce the opacity of text labels
+        nodeExit.select('foreignObject')
+            .style('fill-opacity', 1e-6);
+
+        // ****************** links section ***************************
+
+        // Update the links...
+        var link = svg.selectAll('path.link')
+            .data(links, function (d) { return d.id; });
+
+        // Enter any new links at the parent's previous position.
+        var linkEnter = link.enter().insert('path', "g")
+            // .attr("class", "link")
+            .attr('class', function (d) {
+                // return isTrueNotPredicted(d) ? isFalseButPredicted(d) ? "link falselink" : "link truelink" : "link";
+                return this_.isTrueAndPredicted(d) ? "link truelink" : this_.isFalseButPredicted(d) ? "link falselink" : "link";
+            })
+            .attr('d', function (d) {
+                var o = { x: source.x0, y: source.y0 }
+                return diagonal(o, o)
+            })
+            .attr('stroke-width', function (d) {
+                return d.data.prob * 10;
+            })
+            .style('stroke-dasharray', function (d) {
+                return this_.isTrueNotPredicted(d) ? ("3, 3") : ("0, 0");
+            });
+
+        // UPDATE
+        var linkUpdate = linkEnter.merge(link);
+
+        // Transition back to the parent element position
+        linkUpdate.transition()
+            .duration(duration)
+            .attr('d', function (d) { return diagonal(d, d.parent) })
+            .attr('stroke-width', function (d) {
+                return d.data.true ? 1 : d.data.prob * 10;
+            })
+            .style('stroke-dasharray', function (d) {
+                return this_.isTrueNotPredicted(d) ? ("3, 3") : ("0, 0");
+            });
+
+        // Remove any exiting links
+        var linkExit = link.exit().transition()
+            .duration(duration)
+            .attr('d', function (d) {
+                var o = { x: source.x, y: source.y }
+                return diagonal(o, o)
+            })
+            .remove();
+
+
+        // ****************** labels section ***************************
+        // labelsDiv.text("asprijsdafjspoadifjpsadjfp")
+        svg.append('circle')
+            .attr("cx", 30)
+            .attr("cy", 80)
+            .attr("r", 6)
+            .attr('class', 'node truenode')
+            .style('stroke-width', 3)
+            .style("fill", function (d) {
+                // return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
+                return circleColor;
+            });
+        svg.append('text')
+            .attr("x", 40)
+            .attr('y', 85)
+            .text("predicted true label")
+            .classed("labels", true)
+
+        svg.append('circle')
+            .attr("cx", 30)
+            .attr("cy", 100)
+            .attr("r", 6)
+            .attr('class', 'node falsenode')
+            .style('stroke-width', 3)
+            .style("fill", function (d) {
+                // return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
+                return '#fff';
+            });
+        svg.append('text')
+            .attr("x", 40)
+            .attr('y', 105)
+            .text("predicted false label")
+            .classed("labels", true)
+
+        svg.append('line')
+            .attr("x1", 10)
+            .attr("y1", 120)
+            .attr("x2", 40)
+            .attr("y2", 120)
+            .attr('class', 'truelink')
+            .style('stroke-dasharray', ('3, 3'))
+        svg.append('text')
+            .attr("x", 40)
+            .attr('y', 125)
+            .text("unpredicted true label")
+            .classed("labels", true)
+        // .attr("font-family", "Montserrat")
+        // .attr("font-size", "14px")
+        // .style("-webkit-text-stroke-width", "0.5px")
+
+
+        // Store the old positions for transition.
+        nodes.forEach(function (d) {
+            d.x0 = d.x;
+            d.y0 = d.y;
+        });
+
+        // Creates a curved (diagonal) path from parent to the child nodes
+        function diagonal(s, d) {
+
+            var path = `M ${s.y} ${s.x}
+        C ${(s.y + d.y) / 2} ${s.x},
+          ${(s.y + d.y) / 2} ${d.x},
+          ${d.y} ${d.x}`
+
+            return path
         }
+
+        // Toggle children on click.
+        function click(d) {
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            this.update(d);
+        }
+    }
+
+    // Collapse the node and all it's children
+    collapse(d) {
+        if (d.children) {
+            d._children = d.children
+            d._children.forEach(this.collapse)
+            d.children = null
+        }
+    }
+
+    copy(d) {
+        if (d.children) {
+            d._children = d.children
+            d.children.forEach(this.copy.bind(this))
+        }
+    }
+
+    showPrecedentNodesDescription(d) {
+        const descriptionDiv = d3.select("div#description")
+
+        var curr = d;
+        var descriptions = [descriptionIndent(d) + curr.data.name];
+        while (curr.parent != null) {
+            curr = curr.parent;
+            descriptions.splice(0, 0, descriptionIndent(curr) + curr.data.name);
+
+        }
+        descriptions.map(this.appendNodeDescription);
+        console.log(`descriptions `)
+        console.log(descriptions)
+        console.log(`descriptionDiv ${descriptionDiv}`)
+        console.log(descriptionDiv)
+    }
+
+    appendNodeDescription(d) {
+        const descriptionDiv = d3.select("div#description")
+
+        descriptionDiv.append('div').attr('class', 'description')
+            .text(d);
+    }
+
+    removePrecedentNodesDescription() {
+        document.getElementById("description").innerHTML = "";
+        console.log("remove", document.getElementById("#description"));
     }
 
     render() {
         return (
             <div>
-                <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
-                {/* <selector>test</selector> */}
             </div>
         )
     }
