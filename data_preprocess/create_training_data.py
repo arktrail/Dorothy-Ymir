@@ -44,13 +44,21 @@ if __name__ == '__main__':
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
         
+    print("input directory: {}".format(input_directory))
+    print("output directory: {}".format(output_directory))
+    
     text_field = sys.argv[3]
     level_name = sys.argv[4]
     
-    if sys.argv[4] == "true":
+    print("text field: {}".format(text_field))
+    print("level: {}".format(level_name))
+    
+    if sys.argv[5] == "true":
         remove_stop_words = True
+        print("removing stop words")
     else:
         remove_stop_words = False
+        print("not removing stop words")
     
     for filename in os.listdir(input_directory):
         if filename.endswith(".json"):
