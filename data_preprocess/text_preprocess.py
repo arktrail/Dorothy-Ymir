@@ -94,7 +94,8 @@ if __name__ == '__main__':
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
 
-    TEXT_COLUMNS = ['title', 'abstraction', 'claims', 'brief_summary', 'description']
+    #TEXT_COLUMNS = ['title', 'abstraction', 'claims', 'brief_summary', 'description']
+    TEXT_COLUMNS = ['title', 'abstraction', 'claims', 'brief_summary']
     LABEL_COLUMNS = ['cpc_section', 'cpc_class', 'cpc_subclass', 'cpc_main_group', 'cpc_subgroup']
     OUTPUT_BASE_NAME = "post_json_{}.p"
 
