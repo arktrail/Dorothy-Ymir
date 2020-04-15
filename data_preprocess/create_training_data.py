@@ -20,21 +20,29 @@ def extract_labels(subgroup_labels, level_number):
         labels.add("--".join(subgroup_label_splits[:level_number]))
     return list(labels)
 
-def create_training_data(input_path, output_path, text_field, level_name, remove_stop_words = True):
+def create_training_data(input_path, output_path, text_field, level_name, remove_stop_words = True, fasttext = False):
     with open(input_path, 'r') as input_file:
         with open(output_path, 'w') as output_file:
             for line in input_file:
-                new_data = dict()
-                data = json.loads(line)
-                if remove_stop_words:
-                    new_data['doc_token'] = [token for token in data[text_field] if token not in stop_words]
+                if fasttext:
+                    data = json.loads(line)
+                    labels = extract_labels(data['all_labels'], level_name_to_number_dict[level_name])
+                    content = ["__label__{}".format(label) for label in labels]
+                    content += data[text_field]
+                    output_file.write(" ".join(content))
+                    output_file.write('\n')
                 else:
-                    new_data['doc_token'] = data[text_field]
-                new_data['doc_label'] = extract_labels(data['all_labels'], level_name_to_number_dict[level_name])
-                new_data['doc_keyword'] = []
-                new_data['doc_topic'] = []
-                output_file.write(json.dumps(new_data))
-                output_file.write('\n')
+                    new_data = dict()
+                    data = json.loads(line)
+                    if remove_stop_words:
+                        new_data['doc_token'] = [token for token in data[text_field] if token not in stop_words]
+                    else:
+                        new_data['doc_token'] = data[text_field]
+                    new_data['doc_label'] = extract_labels(data['all_labels'], level_name_to_number_dict[level_name])
+                    new_data['doc_keyword'] = []
+                    new_data['doc_topic'] = []
+                    output_file.write(json.dumps(new_data))
+                    output_file.write('\n')
 
 
 if __name__ == '__main__':
@@ -59,9 +67,16 @@ if __name__ == '__main__':
     else:
         remove_stop_words = False
         print("not removing stop words")
+
+    if sys.argv[6] == "true":
+        fasttext = True
+        print("using fasttext")
+    else:
+        fasttext = False
+        print("not using fasttext")
     
     for filename in os.listdir(input_directory):
         if filename.endswith(".json"):
             input_path = os.path.join(input_directory, filename)
             output_path = os.path.join(output_directory, filename)
-            create_training_data(input_path, output_path, text_field, level_name, remove_stop_words)
+            create_training_data(input_path, output_path, text_field, level_name, remove_stop_words, fasttext)
