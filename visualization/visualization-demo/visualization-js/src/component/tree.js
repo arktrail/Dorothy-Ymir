@@ -62,17 +62,18 @@ class Chart extends Component {
   }
 
   isTrueAndPredicted(d) {
-    console.log(d.data.symbol, d.data.true, d.data.order);
+    // console.log(d.data.symbol, d.data.true, d.data.order);
     // console.log("is true and predicted")
     return d.data.true === true && this.isPredicted(d);
   }
 
   isPredicted(d) {
-    console.log(this.props.leafNodesNum);
+    // console.log(this.props.leafNodesNum);
     return d.data.order < this.props.leafNodesNum;
   }
 
   componentDidMount() {
+    console.log("tree componentDidMount")
     // Set the dimensions and margins of the diagram
     const margin = { top: 20, right: 30, bottom: 20, left: 90 },
       width = this.state.width - margin.left - margin.right,
@@ -129,7 +130,7 @@ class Chart extends Component {
 
     this.update(root, root, treemap);
     this.copy(root);
-    console.log("root after copy", root);
+    // console.log("root after copy", root);
 
     this.setState({
       root,
@@ -145,22 +146,22 @@ class Chart extends Component {
     if (!d || !d._children) return;
     var children = new Array();
     for (var i = 0; i < d._children.length; i++) {
-      console.log(d._children[i]);
-      console.log(d._children[i].data.order);
+      // console.log(d._children[i]);
+      // console.log(d._children[i].data.order);
       var child = d._children[i];
       if (child.data.order < leafNodesNum || child.data.true) {
         children.push(child);
       }
     }
     d.children = children;
-    console.log("after modify ", d.children);
+    // console.log("after modify ", d.children);
     d.children.forEach(this.filterNodeByLeafNodesNum.bind(this, leafNodesNum));
     this.update(d, this.state.root, this.state.treemap);
   }
 
   update(source, root, treemap) {
     var svg = d3.select("svg");
-    console.log("svg g nodes", svg.selectAll("g.node"));
+    // console.log("svg g nodes", svg.selectAll("g.node"));
     const duration = 750;
     var i = 0;
 
@@ -464,10 +465,10 @@ class Chart extends Component {
       descriptions.splice(0, 0, descriptionIndent(curr) + curr.data.name);
     }
     descriptions.map(this.appendNodeDescription);
-    console.log(`descriptions `);
-    console.log(descriptions);
-    console.log(`descriptionDiv ${descriptionDiv}`);
-    console.log(descriptionDiv);
+    // console.log(`descriptions `);
+    // console.log(descriptions);
+    // console.log(`descriptionDiv ${descriptionDiv}`);
+    // console.log(descriptionDiv);
   }
 
   appendNodeDescription(d) {
@@ -478,7 +479,7 @@ class Chart extends Component {
 
   removePrecedentNodesDescription() {
     document.getElementById("description").innerHTML = "";
-    console.log("remove", document.getElementById("#description"));
+    // console.log("remove", document.getElementById("#description"));
   }
 
   render() {

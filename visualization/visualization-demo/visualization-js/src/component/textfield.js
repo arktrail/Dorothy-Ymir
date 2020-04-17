@@ -1,46 +1,32 @@
 import React, { Component } from "react";
-import Chart from "./tree";
-import axios from "axios";
-import { TextType } from "./TextType";
+import "./textfield.css"
 
 
 class TextField extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            type: this.props.type,
-            treeData: null
+            input: ""
         }
 
     }
 
-    // handleSubmit = (value) => {
-    //     // console.log("textfield value: ")
-    //     // console.log(value)
-    //     var url = `http://100.26.45.117:8000/demo/`
+    handleChange(event) {
+        this.setState({
+            input: event.target.value
+        })
+    }
 
-    //     axios.put(
-    //         url,
-    //         value,
-    //         { headers: { "Content-Type": "text/plain" } }
-    //     ).then((res) => {
-    //         console.log("textfield return: ")
-    //         console.log(res.data);
-    //         this.setState({
-    //             treeData: res.data,
-    //         });
-    //     })
-    // }
 
     render() {
-        const { type } = this.props
+        console.log(this.state.input)
         return (
             <div>
                 <label>
-                    {type}
+                    Input Document here:
                 </label>
-                <input type="text" />
-                <button onClick={() => this.props.handleSubmit("I want to test the result")} >
+                <input type="text" className="documentInput" value={this.state.input} onChange={this.handleChange.bind(this)} />
+                <button onClick={() => this.props.handleSubmit(this.state.input)} >
                     submit
                 </button>
             </div>

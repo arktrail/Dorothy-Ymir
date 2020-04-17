@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TextField from "./textfield"
 import Chart from "./tree";
 import axios from "axios";
-import { TextType } from "./TextType"
+import { RenderType } from "./RenderType"
 
 class HomePage extends Component {
     // function App() {
@@ -11,13 +11,15 @@ class HomePage extends Component {
         this.state = {
             treeData: null,
             leafNodesNum: 3,
+            renderType: RenderType.NOT_RENDER
         };
     }
     // request document
     handleRequest = () => {
         var url = `http://54.163.42.113:8000/demo/US12345`
         axios.get(url).then((res) => {
-            console.log(res.data);
+            // console.log("handle request get response")
+            // console.log(res.data)
             this.setState({
                 treeData: res.data,
             });
@@ -25,19 +27,29 @@ class HomePage extends Component {
     };
 
     handleSubmit = (value) => {
+        console.log("homepage, handleSubmit ")
         console.log(value)
         var url = `http://54.163.42.113:8000/demo/`
+        this.setState({
+            renderType: RenderType.RENDERING
+        })
 
         axios.post(
             url,
             value,
             { headers: { "Content-Type": "text/plain" } }
         ).then((res) => {
-            // console.log("textfield return: ")
-            // console.log(res.data);
+            console.log("handle submit get response")
+            console.log(res.data)
+            console.log(`type of res ${typeof res}`)
+            console.log(`type of res.data ${typeof res.data}`)
             this.setState({
-                treeData: res.data,
+                treeData: { ...res.data },
+                renderType: RenderType.RENDERED
             });
+            // this.setState(prevState => ({
+            //     treeData: { ...res.data }
+            // }));
         })
     }
 
@@ -47,11 +59,17 @@ class HomePage extends Component {
         });
     }
     render() {
+        console.log("update tree data")
+        console.log(this.state.treeData)
+        console.log(this.state.renderType)
         return (
             <div>
-                <TextField type={TextType.DOCUMENT_ID} handleSubmit={this.handleSubmit} />
+                <TextField handleSubmit={this.handleSubmit} />
                 {/* <TextField type={TextType.PRIOR_ART} /> */}
-                {this.state.treeData && (
+                {this.state.renderType === RenderType.RENDERING && (
+                    <label value={"I am rendering!@"} />
+                )}
+                {this.state.renderType === RenderType.RENDERED && (
                     <Chart
                         treeData={this.state.treeData}
                         height={850}
