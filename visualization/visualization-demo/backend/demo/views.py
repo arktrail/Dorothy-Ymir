@@ -38,10 +38,12 @@ def get_document(req):
     print("query is {}".format(query))
 
     prediction = ""
-    if query is not None or len(query) > 0:
+    if query is not None and len(query) > 0:
         prediction = predict(query)
     else:
         print("didn't get query, the query is {}".format(query))
+
+    print("length of prediction: {}".format(len(prediction)))
 
     prediction = change_format(prediction=prediction)
 

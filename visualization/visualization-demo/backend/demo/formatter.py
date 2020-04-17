@@ -18,7 +18,7 @@ def get_seperated_labels(label: str):
     subclass_label = SEPARATOR_1.join([
         section_label, subclass_label[1:3], subclass_label[3:]])
 
-    print(section_label, class_label, subclass_label)
+    # print(section_label, class_label, subclass_label)
 
     return section_label, class_label, subclass_label
 

@@ -48,13 +48,17 @@ def read_true_label_from_file():
 def build_tree(model_type, prediction, description_dict):
     # read file to dict
     if model_type is "hftcnn":
+        print("model type is {}".format(model_type))
         section_data = read_predict_file_to_dict(
             SECTION_PREDICT_RESULT_FILENAME)
         class_data = read_predict_file_to_dict(CLASS_PREDICT_RESULT_FILENAME)
         subclass_data = read_predict_file_to_dict(
             SUBCLASS_PREDICT_RESULT_FILENAME)
     elif model_type is "fasttext":
+        print("model type is {}".format(model_type))
         section_data, class_data, subclass_data = prediction
+        print("section_data")
+        print(section_data)
 
     true_labels_set = read_true_label_from_file()
 
@@ -72,16 +76,20 @@ def build_tree(model_type, prediction, description_dict):
     # section
     for s, prob in section_data.items():
         is_true_label = s in true_labels_set
-        tree['children'][s] = create_tree_node(
+        created_node = create_tree_node(
             s, prob, description_dict, level=SECTION,  last=False, order=None, is_true_label=is_true_label)
+        if created_node != None:
+            tree['children'][s] = created_node
 
     # class
     for c, prob in class_data.items():
         s = c.split(SEPARATOR_1)[0]
         c_ = ''.join(c.split(SEPARATOR_1))
         is_true_label = c_ in true_labels_set
-        tree['children'][s]['children'][c_] = create_tree_node(
+        created_node = create_tree_node(
             c_, prob, description_dict, level=CLASS, last=False, order=None, is_true_label=is_true_label)
+        if created_node != None:
+            tree['children'][s]['children'][c_] = created_node
 
     # subclass
     for index, sub in enumerate(subclass_data.keys()):
@@ -93,8 +101,11 @@ def build_tree(model_type, prediction, description_dict):
         is_true_label = sub_ in true_labels_set
         if prob == 0 and not is_true_label:
             continue
-        tree['children'][s]['children'][c]['children'][sub_] = create_tree_node(
+        created_node = create_tree_node(
             sub_, prob, description_dict, level=SUBCLASS, last=True, order=index, is_true_label=is_true_label)
+
+        if created_node != None:
+            tree['children'][s]['children'][c]['children'][sub_] = created_node
 
     # convert children dict to list and remove zero prob parent nodes
     tree_children = []
@@ -118,6 +129,9 @@ def build_tree(model_type, prediction, description_dict):
 
 
 def create_tree_node(symbol, prob, description_dict, level, last, order, is_true_label):
+    if symbol not in description_dict:
+        return None
+
     description = symbol + ' ' + description_dict[symbol]
     node = {'name': description, 'symbol': symbol,
             'level': level, 'prob': prob, 'true': is_true_label}
