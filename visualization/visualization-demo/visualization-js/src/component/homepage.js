@@ -15,13 +15,31 @@ class HomePage extends Component {
     }
     // request document
     handleRequest = () => {
-        axios.get(`http://localhost:8000/demo/US12345`).then((res) => {
+        var url = `http://54.163.42.113:8000/demo/US12345`
+        axios.get(url).then((res) => {
             console.log(res.data);
             this.setState({
                 treeData: res.data,
             });
         });
     };
+
+    handleSubmit = (value) => {
+        console.log(value)
+        var url = `http://54.163.42.113:8000/demo/`
+
+        axios.post(
+            url,
+            value,
+            { headers: { "Content-Type": "text/plain" } }
+        ).then((res) => {
+            // console.log("textfield return: ")
+            // console.log(res.data);
+            this.setState({
+                treeData: res.data,
+            });
+        })
+    }
 
     onLeafNodesNumChange(event) {
         this.setState({
@@ -31,8 +49,8 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <TextField type={TextType.DOCUMENT_ID} />
-                <TextField type={TextType.PRIOR_ART} />
+                <TextField type={TextType.DOCUMENT_ID} handleSubmit={this.handleSubmit} />
+                {/* <TextField type={TextType.PRIOR_ART} /> */}
                 {this.state.treeData && (
                     <Chart
                         treeData={this.state.treeData}

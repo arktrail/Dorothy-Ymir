@@ -5,3 +5,7 @@ spacy
 nltk
 inflect
 pyarrow
+Django == 2.2
+djangorestframework
+django-cors-headers
+django-mptt
