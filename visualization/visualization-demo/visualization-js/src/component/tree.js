@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import React, { Component } from "react";
 import "./tree.css";
-// import { treePredictedData, treeTrueData } from './data'
+import { treePredictedData, treeTrueData } from './data'
 import { selector } from "d3";
 
 const circleColor = "#FB9A0D";
@@ -73,7 +73,7 @@ class Chart extends Component {
   }
 
   componentDidMount() {
-    console.log("tree componentDidMount")
+    console.log("tree componentDidMount", this.props.treeData)
     // Set the dimensions and margins of the diagram
     const margin = { top: 20, right: 30, bottom: 20, left: 90 },
       width = this.state.width - margin.left - margin.right,
@@ -118,7 +118,7 @@ class Chart extends Component {
     const treemap = d3.tree().size([height, width]);
 
     // Assigns parent, children, height, depth
-    root = d3.hierarchy(this.props.treeData, function (d) {
+    root = d3.hierarchy(treePredictedData, function (d) {
       return d.children;
     });
     // root = d3.hierarchy(treeTrueData, function (d) { return d.children; });
@@ -191,6 +191,7 @@ class Chart extends Component {
       .append("g")
       .attr("class", "node")
       .attr("transform", function (d) {
+        console.log("transform")
         return "translate(" + source.y0 + "," + source.x0 + ")";
       })
       // .attr("text-anchor", d => d._children ? "end" : "start")

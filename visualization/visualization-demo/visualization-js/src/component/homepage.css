@@ -1,0 +1,114 @@
+body {
+    letter-spacing: 0.1125em;
+}
+
+/* Header start */
+.header {
+    height: 100px;
+}
+
+.header.MuiAppBar-colorPrimary {
+    background-color: white;
+}
+
+.header-img-container {
+    margin: auto;
+}
+.header-img {
+    height: 48px;
+}
+/* Header end */
+
+.layout {
+    flex: 1;
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+}
+
+.fixed-body {
+    width: 1160px;
+    margin: 0 auto;
+    padding: 32px;
+    z-index: 0;
+    min-height: 600px;
+    margin-top: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background-color: #F0EAE1;
+}
+
+.main-content {
+    width: 800px;
+    margin: 0 auto;
+    padding: 0 16;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    color: #44797B;
+    max-width: 100%;
+    align-self: center;
+    text-align: center;
+    font-size: 1.25em;
+    font-family: Montserrat;
+    font-weight: 500;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* Text field start */
+.text-field.MuiFormControl-root{
+    margin-bottom: 40px;
+}
+
+.text-field .MuiFormLabel-root.Mui-focused {
+    color: black;
+}
+
+.text-field .MuiInput-underline:before {
+    border-color: #44797B;
+}
+
+.text-field .MuiInput-underline:after {
+    border-color: #44797B;
+}
+/* Text field end */
+
+/* Submit button start */
+.submit-btn-container {
+    margin: 0 auto;
+    height: 64px;
+    width: 240px;
+}
+.submit-btn.MuiButton-contained {
+    color: #FFFFFF;
+    background-color: #FB9A0D;
+    padding: 14px 50px;
+    font-weight: 600;
+    letter-spacing: 0.1125em;
+    font-size: 1.01em;
+}
+
+.submit-btn.MuiButton-contained:hover {
+    background-color: #c2802e;
+}
+
+.submit-btn.MuiButton-contained[disabled] {
+    color: #B1A7A2;
+    background-color: #D2C8C2;
+}
+/* Submit button end */
+
+/* slider start */
+.slider-label.MuiTypography-root {
+    margin-top: 1.5em;
+}
+
+.slider.MuiSlider-root {
+    color: #44797B;
+}
+/* slider end */
