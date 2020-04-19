@@ -3,11 +3,9 @@
   font-family: Montserrat;
   /*letter-spacing: 0.06875em;*/
   -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
 }
 
 .description {
-  font-size: 18px;
   font-family: Montserrat;
   letter-spacing: 0.06875em;
   -webkit-text-stroke-width: 0.5px;
@@ -22,11 +20,11 @@
 }
 
 .falsenode {
-  stroke: #0000ff !important;
+  stroke: #FB9A0D !important;
 }
 
 .truenode {
-  stroke: #ff3b00 !important;
+  stroke: #44797B !important;
   /* stroke: #ffff00 !important; */
 }
 
@@ -39,31 +37,28 @@
   width: 200px;
   overflow: hidden;
   height: 20px;
-  fill: black;
-
 }
 
 .link {
   fill: none;
-  stroke: #FB9A0D;
+  stroke: #44797B;
  /* stroke: #F0EAE1;*/
   /*stroke-width: 2px;*/
 }
 
 
 .truelink {
-  stroke: #ff3b00;
+  stroke: #44797B;
 }
 .falselink {
-  stroke: #0000ff !important;
+  stroke: #FB9A0D !important;
 }
 
-.border {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: 1px solid #8F8D8D;
+/* .border {
+  box-shadow: 0px 4px 4px 0px #44797B;
+  border: 1px solid #44797B;
   border-radius: 0.5%;
-  margin: 10px 10px 10px 50px
-}
+} */
 
 .label { 
     /*word-break: break-word;*/
@@ -80,10 +75,4 @@
   border: 1px solid #8F8D8D;
   background-color:white;
   padding: 2px 4px;
-}
-
-#description {
-  padding: 0 50px;
-  font-size: 18px;
-  height: 600px;
 }

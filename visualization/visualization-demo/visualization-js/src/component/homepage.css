@@ -7,22 +7,54 @@ body {
     height: 100px;
 }
 
+.header-container {
+    width: 1224px;
+    margin: auto;
+}
+
+.header-content {
+    height: 48px;
+}
+
 .header.MuiAppBar-colorPrimary {
     background-color: white;
 }
 
-.header-img-container {
+.dorothy-logo {
     margin: auto;
 }
 .header-img {
     height: 48px;
+}
+
+.d-logo-container {
+    color: #222745;
+    font-weight: 800;
+    width: 110px;
+    margin-left: 10px;
+    display: inline-block;
+    line-height: 24px;
+}
+
+.d-logo-ps {
+    letter-spacing: 0em;
+    font-weight: 700;
+}
+
+.d-logo-ps {
+    border-bottom: 2px solid #f4b64e;
+}
+
+.msaii-logo {
+    height: 42px;
+    float: right;
+    margin-right: 10px;
 }
 /* Header end */
 
 .layout {
     flex: 1;
     display: flex;
-    margin-top: 100px;
     flex-direction: column;
 }
 
@@ -111,4 +143,12 @@ body {
 .slider.MuiSlider-root {
     color: #44797B;
 }
+
+.slider.MuiSlider-marked {
+    margin-bottom: 2em;
+}
 /* slider end */
+
+.rendering {
+    margin: 3em 5em;
+}

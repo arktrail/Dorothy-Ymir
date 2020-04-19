@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Chart from "./tree";
+import Tree from "./tree";
 import axios from "axios";
 import { RenderType } from "./RenderType"
 import {cpcCodesDescriptions} from '../cpcCodesDescriptions'
+import RenderingTimer from './RenderingTimer'
 import { AppBar, TextField, Button, Typography, Slider } from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
 
@@ -23,43 +24,38 @@ class HomePage extends Component {
         };
     }
     // request document
-    handleRequest = () => {
-        var url = `http://54.163.42.113:8000/demo/US12345`
-        axios.get(url).then((res) => {
-            // console.log("handle request get response")
-            // console.log(res.data)
-            this.setState({
-                treeData: res.data,
-            });
-        });
-    };
+    // handleRequest = () => {
+    //     var url = `http://54.163.42.113:8000/demo/US12345`
+    //     axios.get(url).then((res) => {
+    //         // console.log("handle request get response")
+    //         // console.log(res.data)
+    //         this.setState({
+    //             treeData: res.data,
+    //         });
+    //     });
+    // };
 
     handleSubmit = () => {
-        const value = this.state.text
-        
-        // console.log("homepage, handleSubmit ")
-        // console.log(value)
+        const {text} = this.state
         var url = `http://54.163.42.113:8000/demo/`
+        console.log("handleSubmit")
         this.setState({
             renderType: RenderType.RENDERING
         })
 
         axios.post(
             url,
-            value,
+            text,
             { headers: { "Content-Type": "text/plain" } }
         ).then((res) => {
-            console.log("handle submit get response")
-            console.log(res.data)
-            console.log(`type of res ${typeof res}`)
-            console.log(`type of res.data ${typeof res.data}`)
+            // console.log("handle submit get response")
+            // console.log(res.data)
+            // console.log(`type of res ${typeof res}`)
+            // console.log(`type of res.data ${typeof res.data}`)
             this.setState({
                 treeData: { ...res.data },
                 renderType: RenderType.RENDERED
             });
-            // this.setState(prevState => ({
-            //     treeData: { ...res.data }
-            // }));
         })
     }
 
@@ -99,17 +95,25 @@ class HomePage extends Component {
     }
 
     render() {
-        console.log("update tree data")
-        console.log(this.state.treeData)
-        console.log(this.state.renderType)
+        console.log("renderType", this.state.renderType)
+        const {renderType, treeData, leafNodesNum, text} = this.state
         const marks = this.createMarks()
         
         return (
             <div>
                  {/* header */}
-                <AppBar className="header" position="fixed">
-                    <div className="header-img-container">
-                        <img className="header-img" src={require('../img/dorothy-ai-logo.svg')} alt="Dorothy AI" />
+                <AppBar className="header" position="static">
+                    <div className="header-container">
+                    <div className="header-content">
+                        <img className="msaii-logo" src={require('../img/msaii.jpeg')} alt="MSAII" />
+                        <div className="dorothy-logo">
+                            <img className="header-img" src={require('../img/dorothy-ai-logo.svg')} alt="Dorothy AI" />
+                            <div className="d-logo-container">
+                                <div className="d-logo-ps">Patent Search</div>
+                                <div className="d-logo-s">SIMPLIFIED</div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </AppBar>
 
@@ -147,54 +151,55 @@ class HomePage extends Component {
 
                             {/* submit button */}
                             <div className="submit-btn-container">
-                                <Button className="submit-btn" variant="contained" 
+                                {text === '' ?
+                                    <Button className="submit-btn" variant="contained" disabled>Submit</Button>
+                                    :
+                                    <Button className="submit-btn" variant="contained" 
                                     onClick={() => this.handleSubmit()} >Submit</Button>
+                                }
                             </div>
 
-                            {/*  select leaf node number */}
-                            <Typography className="slider-label" gutterBottom>
-                                Number of predicted subclass-level codes
-                            </Typography>
-                            <Slider
-                                className="slider"
-                                defaultValue={PREDICTED_NODES_MIN}
-                                getAriaValueText={(value) => value}
-                                aria-labelledby="discrete-slider"
-                                valueLabelDisplay="auto"
-                                step={1}
-                                marks={marks}
-                                min={PREDICTED_NODES_MIN}
-                                max={PREDICTED_NODES_MAX}
-                                onChange={this.onChangePredictedNodesNum.bind(this)}
-                            />
-                            
+                            {/* RENDERING - WAITING FOR RESULT */}
+                            {renderType === RenderType.RENDERING && (
+                                <RenderingTimer/>
+                            )}
+
+                            {/* RENDERED- RESULT RETRIEVED*/}
+                            {renderType === RenderType.RENDERED && (
+                                <div>
+                                    {/*  select leaf node number */}
+                                    <Typography className="slider-label" gutterBottom>
+                                        Number of predicted subclass-level codes
+                                    </Typography>
+                                    <Slider
+                                        className="slider"
+                                        defaultValue={PREDICTED_NODES_MIN}
+                                        getAriaValueText={(value) => value}
+                                        aria-labelledby="discrete-slider"
+                                        valueLabelDisplay="auto"
+                                        step={1}
+                                        marks={marks}
+                                        min={PREDICTED_NODES_MIN}
+                                        max={PREDICTED_NODES_MAX}
+                                        onChange={this.onChangePredictedNodesNum.bind(this)}
+                                    />
+
+                                    {/* TREE GRAPH */}
+                                    <div id="tree-graph">
+                                        <Tree
+                                            treeData={treeData}
+                                            height={600}
+                                            width={800}
+                                            leafNodesNum={leafNodesNum}
+                                        />
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div> 
-
-                {/* <TextField type={TextType.PRIOR_ART} /> */}
-                {this.state.renderType === RenderType.RENDERING && (
-                    <label value={"I am rendering... Please be patient..."} />
-                )}
-                {/* {this.state.renderType === RenderType.RENDERED && ( */}
-                    <Chart
-                        treeData={this.state.treeData}
-                        height={850}
-                        width={2000}
-                        leafNodesNum={this.state.leafNodesNum}
-                    />
-                {/* )}  */}
             </div>
         );
-
-        // return (
-        //     <Chart
-        //         treeData={this.state.treeData}
-        //         height={850}
-        //         width={2000}
-        //         leafNodesNum={this.state.leafNodesNum}
-        //     />
-        // )
     }
 }
 
