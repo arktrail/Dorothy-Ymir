@@ -186,6 +186,8 @@ class Tree extends Component {
     }
 
     update(source, root, treemap) {
+        const {trueCodeSet} = this.props
+
         var svg = d3.select("g#nodes");
         const duration = 750;
         var i = 0;
@@ -229,14 +231,9 @@ class Tree extends Component {
         nodeEnter
             .append("circle")
             .attr("class", function (d) {
-                return this_.isFalseButPredicted(d)
-                    ? "node falsenode" : this_.isTrueAndPredicted(d) ?
-                    "node truenode" : "node";
+                return trueCodeSet.has(d.data.symbol) ? "node truenode" : "node falsenode"
             })
             .attr("r", 1e-6);
-        // .style("fill", function (d) {
-        //     return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
-        // })
 
         // Add labels for the nodes
         nodeEnter
@@ -298,13 +295,8 @@ class Tree extends Component {
         nodeUpdate
             .select("circle.node")
             .attr("r", 5)
-            // .style("fill", function (d) {
-            //     return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
-            // })
             .attr("class", function (d) {
-                return this_.isFalseButPredicted(d)
-                    ? "node falsenode" : this_.isTrueAndPredicted(d) ?
-                    "node truenode" : "node";
+                return trueCodeSet.has(d.data.symbol) ? "node truenode" : "node falsenode"
             })
             .attr("cursor", "pointer");
 

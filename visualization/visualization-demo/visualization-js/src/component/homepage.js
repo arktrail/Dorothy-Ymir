@@ -161,7 +161,8 @@ class HomePage extends Component {
                             </Typography>
                             <Slider
                                 className="slider"
-                                defaultValue={leafNodesNum}
+                                defaultValue={PREDICTED_NODES_MIN}
+                                // defaultValue={leafNodesNum}
                                 getAriaValueText={(value) => value}
                                 aria-labelledby="discrete-slider"
                                 valueLabelDisplay="auto"
