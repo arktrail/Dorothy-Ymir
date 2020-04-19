@@ -56,23 +56,25 @@ class Tree extends Component {
         this.isPredicted = this.isPredicted.bind(this);
     }
 
-    isTrueNotPredicted(d) {
+    isPredicted(d) {
+        return d.data.order < this.props.leafNodesNum;
+    }
+
+    isTrue(d) {
         const { trueCodeSet } = this.props
-        return trueCodeSet.has(d.data.symbol) && !this.isPredicted(d);
+        return trueCodeSet.has(d.data.symbol)
+    }
+
+    isTrueNotPredicted(d) {
+        return this.isTrue(d) && !this.isPredicted(d);
     }
 
     isFalseButPredicted(d) {
-        const { trueCodeSet } = this.props
-        return !trueCodeSet.has(d.data.symbol) && this.isPredicted(d);
+        return !this.isTrue(d) && this.isPredicted(d);
     }
 
-    isTrueAndPredicted(d) {
-        const { trueCodeSet } = this.props
-        return trueCodeSet.has(d.data.symbol) && this.isPredicted(d);
-    }
-
-    isPredicted(d) {
-        return d.data.order < this.props.leafNodesNum;
+    isTrueAndPredicted(d) {  
+        return this.isTrue(d) && this.isPredicted(d);
     }
 
     componentDidMount() {
@@ -171,9 +173,9 @@ class Tree extends Component {
     drawLabels() {
         const x = 30
         const y = 20
-        this.drawLabel("predicted true label", "node truenode", "truelink", x, y, false)
-        this.drawLabel("unpredicted true label", "node truenode", "truelink", x, y + 20, true)
-        this.drawLabel("predicted false label", "node falsenode", "falselink", x, y + 40, false)
+        this.drawLabel("Predicted true label", "node predictedNode", "predictedLink", x, y, false)
+        this.drawLabel("Unpredicted true label", "node unpredictedNode", "unpredictedLink", x, y + 20, false)
+        this.drawLabel("Predicted false label", "node predictedNode", "predictedLink", x, y + 40, true)
     }
 
     filterNodeByLeafNodesNum(leafNodesNum, d) {
@@ -237,7 +239,7 @@ class Tree extends Component {
         nodeEnter
             .append("circle")
             .attr("class", function (d) {
-                return trueCodeSet.has(d.data.symbol) ? "node truenode" : "node falsenode"
+                return this_.isPredicted(d) ? "node predictedNode" : "node unpredictedNode"
             })
             .attr("r", 1e-6);
 
@@ -280,7 +282,7 @@ class Tree extends Component {
             .select("circle.node")
             .attr("r", 5)
             .attr("class", function (d) {
-                return trueCodeSet.has(d.data.symbol) ? "node truenode" : "node falsenode"
+                return this_.isPredicted(d) ? "node predictedNode" : "node unpredictedNode"
             })
             .attr("cursor", "pointer");
 
@@ -312,11 +314,7 @@ class Tree extends Component {
             .enter()
             .insert("path", "g")
             .attr("class", function (d) {
-                return this_.isTrueAndPredicted(d)
-                    ? "link truelink"
-                    : this_.isFalseButPredicted(d)
-                        ? "link falselink"
-                        : "link";
+                return this_.isPredicted(d) ? "link predictedLink" : "link unpredictedLink";
             })
             .attr("d", function (d) {
                 var o = { x: source.x0, y: source.y0 };
@@ -326,7 +324,7 @@ class Tree extends Component {
                 return calculateLinkWidth(d)
             })
             .style("stroke-dasharray", function (d) {
-                return this_.isTrueNotPredicted(d) ? "3, 3" : "0, 0";
+                return !this_.isTrue(d) ? "3, 3" : "0, 0";
             })
             .on('mouseover', function (d) {
                 tooltip.html(`Prob: ${d.data.prob}`)
@@ -350,11 +348,7 @@ class Tree extends Component {
             .transition()
             .duration(duration)
             .attr("class", function (d) {
-                return this_.isTrueAndPredicted(d)
-                    ? "link truelink"
-                    : this_.isFalseButPredicted(d)
-                        ? "link falselink"
-                        : "link";
+                return this_.isPredicted(d) ? "link predictedLink" : "link unpredictedLink";
             })
             .attr("d", function (d) {
                 return diagonal(d, d.parent);
@@ -363,7 +357,7 @@ class Tree extends Component {
                 return this_.isTrueNotPredicted(d) ? 1 : calculateLinkWidth(d);
             })
             .style("stroke-dasharray", function (d) {
-                return this_.isTrueNotPredicted(d) ? "3, 3" : "0, 0";
+                return !this_.isTrue(d) ? "3, 3" : "0, 0";
             });
 
 

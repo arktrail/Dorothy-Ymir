@@ -27,25 +27,21 @@
 
 .node circle {
   fill: #fff;
-  stroke: #FB9A0D;
   stroke-width: 3px;
 }
 
-.falsenode {
+.unpredictedNode {
   stroke: #FB9A0D !important;
 }
 
-.truenode {
+.predictedNode {
   stroke: #44797B !important;
-  /* stroke: #ffff00 !important; */
 }
 
 .node foreignObject {
   font: 14px Montserrat;
-  /*letter-spacing: 0.06875em;*/
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
-
   width: 200px;
   overflow: hidden;
   height: 20px;
@@ -53,16 +49,12 @@
 
 .link {
   fill: none;
-  stroke: #44797B;
- /* stroke: #F0EAE1;*/
-  /*stroke-width: 2px;*/
 }
 
-
-.truelink {
+.predictedLink {
   stroke: #44797B;
 }
-.falselink {
+.unpredictedLink {
   stroke: #FB9A0D !important;
 }
 
