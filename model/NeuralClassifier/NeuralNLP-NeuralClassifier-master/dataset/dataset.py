@@ -92,32 +92,39 @@ class DatasetBase(torch.utils.data.dataset.Dataset):
         # Dict can be generated using:
         # json files or/and pretrained embedding
         if generate_dict:
-            # Use train json files to generate dict
-            # If generate_dict_using_json_files is true, then all vocab in train
-            # will be used, else only part vocab will be used. e.g. label
-            vocab_json_files = config.data.train_json_files
-            mode = InsertVocabMode.LABEL
-            if self.config.data.generate_dict_using_json_files:
-                mode = InsertVocabMode.ALL
-                self.logger.info("Use dataset to generate dict.")
-            _insert_vocab(vocab_json_files, mode)
 
-            if self.config.data.generate_dict_using_all_json_files:
-                vocab_json_files += self.config.data.validate_json_files + \
-                                    self.config.data.test_json_files
-                _insert_vocab(vocab_json_files, InsertVocabMode.OTHER)
+            if os.path.exists(self.config.data.dict_dir):
+                self.logger.info("Skip dict generation. Use existing dict.")
+            else:
+                # Use train json files to generate dict
+                # If generate_dict_using_json_files is true, then all vocab in train
+                # will be used, else only part vocab will be used. e.g. label
+                vocab_json_files = config.data.train_json_files
+                mode = InsertVocabMode.LABEL
+                if self.config.data.generate_dict_using_json_files:
+                    mode = InsertVocabMode.ALL
+                    self.logger.info("Use dataset to generate dict.")
+                _insert_vocab(vocab_json_files, mode)
 
-            if self.config.data.generate_dict_using_pretrained_embedding:
-                self.logger.info("Use pretrained embedding to generate dict.")
-                self._load_pretrained_dict()
-            self._print_dict_info()
+                if self.config.data.generate_dict_using_all_json_files:
+                    vocab_json_files += self.config.data.validate_json_files + \
+                                        self.config.data.test_json_files
+                    _insert_vocab(vocab_json_files, InsertVocabMode.OTHER)
 
-            self._shrink_dict()
-            self.logger.info("Shrink dict over.")
-            self._print_dict_info(True)
-            self._save_dict()
-            self._clear_dict()
+                if self.config.data.generate_dict_using_pretrained_embedding:
+                    self.logger.info("Use pretrained embedding to generate dict.")
+                    self._load_pretrained_dict()
+                self._print_dict_info()
+
+                self._shrink_dict()
+                self.logger.info("Shrink dict over.")
+                self._print_dict_info(True)
+                self._save_dict()
+                self._clear_dict()
+
         self._load_dict()
+        self.logger.info("Final dict to be used:")
+        self._print_dict_info(True)
 
     def __len__(self):
         return self.sample_size
