@@ -10,7 +10,7 @@ import {Autocomplete} from '@material-ui/lab';
 require('./homepage.css')
 
 const PREDICTED_NODES_MIN = 3
-const PREDICTED_NODES_MAX = 12
+const PREDICTED_NODES_MAX = 9
 
 class HomePage extends Component {
     constructor(props) {

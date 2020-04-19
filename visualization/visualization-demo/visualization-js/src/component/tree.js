@@ -459,15 +459,11 @@ class Tree extends Component {
 
         var curr = d;
         var descriptions = [descriptionIndent(d) + curr.data.name];
-        while (curr.parent != null) {
+        while (curr.parent.label !== '') {
             curr = curr.parent;
             descriptions.splice(0, 0, descriptionIndent(curr) + curr.data.name);
         }
         descriptions.map(this.appendNodeDescription);
-        // console.log(`descriptions `);
-        // console.log(descriptions);
-        // console.log(`descriptionDiv ${descriptionDiv}`);
-        // console.log(descriptionDiv);
     }
 
     appendNodeDescription(d) {
