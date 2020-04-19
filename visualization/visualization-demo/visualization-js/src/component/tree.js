@@ -5,13 +5,26 @@ import { treePredictedData, treeLessData } from './data'
 
 const PROB_LINK_MULTI = 1
 
+function calculateLinkWidth(d) {
+    if (d.data.prob < 0.1) {
+        return 2;
+    } else if (d.data.prob < 0.2) {
+        return 2.25;
+    } else if (d.data.prob < 0.4) {
+        return 2.3;
+    } else if (d.data.prob < 0.6) {
+        return 2.5;
+    } else if (d.data.prob < 0.8) {
+        return 2.6;
+    } else if (d.data.prob < 1) {
+        return 2.8
+    }
+    else {
+        return 3
+    }
 
-// TTD:
-// 2. add dot link lines for true-not-predicted node : x
-// 3. add different color node for true-predicted node : x
-// 1. add button to choose how many nodes I need to render
-// 5. change the font size : x
-// 6. add labels to
+}
+
 
 function descriptionClass(d) {
     switch (d.data.level) {
@@ -44,17 +57,17 @@ class Tree extends Component {
     }
 
     isTrueNotPredicted(d) {
-        const {trueCodeSet} = this.props
+        const { trueCodeSet } = this.props
         return trueCodeSet.has(d.data.symbol) && !this.isPredicted(d);
     }
 
     isFalseButPredicted(d) {
-        const {trueCodeSet} = this.props
+        const { trueCodeSet } = this.props
         return !trueCodeSet.has(d.data.symbol) && this.isPredicted(d);
     }
 
     isTrueAndPredicted(d) {
-        const {trueCodeSet} = this.props
+        const { trueCodeSet } = this.props
         return trueCodeSet.has(d.data.symbol) && this.isPredicted(d);
     }
 
@@ -63,7 +76,7 @@ class Tree extends Component {
     }
 
     componentDidMount() {
-        const {width, height} = this.state
+        const { width, height } = this.state
         const treeGraphPaddingLeft = 60
 
         // label container
@@ -86,7 +99,6 @@ class Tree extends Component {
 
         d3.select("#tree-graph")
             .append("div")
-            .attr("class", "tooltip")
             .style("opacity", 0);
 
         // description container 
@@ -139,7 +151,7 @@ class Tree extends Component {
         if (dash) {
             line.style("stroke-dasharray", "3, 3");
         }
-           
+
         svg
             .append("circle")
             .attr("cx", x)
@@ -159,13 +171,13 @@ class Tree extends Component {
     drawLabels() {
         const x = 30
         const y = 20
-        this.drawLabel("predicted true label", "node truenode",  "truelink", x, y, false)
-        this.drawLabel("unpredicted true label", "node truenode",  "truelink", x, y + 20, true)
-        this.drawLabel("predicted false label", "node falsenode",  "falselink", x, y + 40, false)
+        this.drawLabel("predicted true label", "node truenode", "truelink", x, y, false)
+        this.drawLabel("unpredicted true label", "node truenode", "truelink", x, y + 20, true)
+        this.drawLabel("predicted false label", "node falsenode", "falselink", x, y + 40, false)
     }
 
     filterNodeByLeafNodesNum(leafNodesNum, d) {
-        const {trueCodeSet} = this.props
+        const { trueCodeSet } = this.props
         if (!d || !d._children) return;
         var children = new Array();
         for (var i = 0; i < d._children.length; i++) {
@@ -180,7 +192,7 @@ class Tree extends Component {
     }
 
     update(source, root, treemap) {
-        const {trueCodeSet} = this.props
+        const { trueCodeSet } = this.props
 
         var svg = d3.select("g#nodes");
         const duration = 750;
@@ -246,33 +258,11 @@ class Tree extends Component {
                 return d.data.symbol;
             });
 
-        var tooltip = d3
-            .select("body")
+        var tooltip = d3.select("#tree-graph")
             .append("div")
             .attr("class", "tooltip") //用于css设置类样式
-            .attr("opacity", 0.0);
-
-        // Add tooltip
-        // nodeEnter.on("mouseover", function (d) {
-        //     // tooltipDiv.transition().duration(0).style("opacity", 0)
-        //     // descriptionDiv.transition().duration(3000);
-        //     showPrecedentNodesDescription(d);
-
-        //     // tooltipDiv.transition().delay(1000).duration(200).style("opacity", .9)
-
-        //     // tooltipDiv.html(d.data.name)
-        //     //     .attr("id", "tooltip")
-        //     //     .style("left", (d3.event.pageX) + "px")
-        //     //     .style("top", (d3.event.pageY + 20) + "px")
-        //     //     .style("opacity", 1.0);
-        // })
-        //     .on("mouseout", function (d) {
-        //         removePrecedentNodesDescription();
-
-        //         // tooltipDiv.style("opacity", 0.0);
-        //         // tooltipDiv.transition().duration(200).style("opacity", .0)
-        //         // d3.select("#tooltip").remove();
-        //     });
+            .style("position", "absolute")
+            .style("visibility", "hidden");
 
         // UPDATE
         var nodeUpdate = nodeEnter.merge(node);
@@ -333,11 +323,24 @@ class Tree extends Component {
                 return diagonal(o, o);
             })
             .attr("stroke-width", function (d) {
-                return d.data.prob * PROB_LINK_MULTI;
+                return calculateLinkWidth(d)
             })
             .style("stroke-dasharray", function (d) {
                 return this_.isTrueNotPredicted(d) ? "3, 3" : "0, 0";
+            })
+            .on('mouseover', function (d) {
+                tooltip.html(`Prob: ${d.data.prob}`)
+                    .style("visibility", "visible");
+            })
+            .on('mousemove', function (d) {
+                tooltip.
+                    style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 70) + "px")
+            })
+            .on('mouseout', function (d) {
+                tooltip.style("visibility", "hidden");
             });
+
 
         // UPDATE
         var linkUpdate = linkEnter.merge(link);
@@ -357,11 +360,12 @@ class Tree extends Component {
                 return diagonal(d, d.parent);
             })
             .attr("stroke-width", function (d) {
-                return this_.isTrueNotPredicted(d) ? 1 : d.data.prob * PROB_LINK_MULTI;
+                return this_.isTrueNotPredicted(d) ? 1 : calculateLinkWidth(d);
             })
             .style("stroke-dasharray", function (d) {
                 return this_.isTrueNotPredicted(d) ? "3, 3" : "0, 0";
             });
+
 
         // Remove any exiting links
         var linkExit = link
@@ -376,7 +380,7 @@ class Tree extends Component {
 
         // ****************** labels section ***************************
         // labelsDiv.text("asprijsdafjspoadifjpsadjfp")
-        
+
         // .attr("font-family", "Montserrat")
         // .attr("font-size", "14px")
         // .style("-webkit-text-stroke-width", "0.5px")
@@ -439,7 +443,7 @@ class Tree extends Component {
         }
         while (curr.parent !== null && curr.parent.data.name !== 'root') {
             curr = curr.parent;
-            descriptions.splice(0, 0, 
+            descriptions.splice(0, 0,
                 {
                     'className': descriptionClass(curr),
                     'text': curr.data.name
