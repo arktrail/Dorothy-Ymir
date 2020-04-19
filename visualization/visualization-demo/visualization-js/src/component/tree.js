@@ -90,7 +90,9 @@ class Tree extends Component {
             .style("opacity", 0);
 
         // description container 
-        d3.select("#tree-graph").append("div").attr("id", "description");
+        d3.select("#tree-graph")
+            .append("div")
+            .attr("id", "description")
 
         var root;
 

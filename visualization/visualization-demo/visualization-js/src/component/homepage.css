@@ -61,6 +61,7 @@ body {
 /* Header end */
 
 .layout {
+    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -124,6 +125,10 @@ body {
 .text-field .MuiFormHelperText-root {
     letter-spacing: 0.1125em;
 }
+
+.options {
+    font-size: 13px;
+}
 /* Text field end */
 
 /* Submit button start */
@@ -169,4 +174,11 @@ body {
 
 .rendering {
     margin: 3em 5em;
+}
+
+/* copyright */
+.copyright {
+    color: #B1A7A2;
+    text-align: center;
+    font-size: 12px;
 }

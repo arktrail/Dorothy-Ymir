@@ -13,12 +13,16 @@
   color: rgba(0, 0, 0, 0.54);
 }
 
+.description-section {
+  margin-left: 4em;
+}
+
 .description-class {
-  margin-left: 2em;
+  margin-left: 6em;
 }
 
 .description-subclass {
-  margin-left: 4em;
+  margin-left: 8em;
 }
 
 .node circle {

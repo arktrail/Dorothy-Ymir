@@ -6,12 +6,14 @@ import {cpcCodesDescriptions} from '../cpcCodesDescriptions'
 import RenderingTimer from './RenderingTimer'
 import { AppBar, TextField, Button, Typography, Slider } from '@material-ui/core';
 import {Autocomplete} from '@material-ui/lab';
+import parse from 'autosuggest-highlight/parse';
+import match from 'autosuggest-highlight/match';
 
 require('./homepage.css')
 
 const PREDICTED_NODES_MIN = 3
 const PREDICTED_NODES_MAX = 6
-const TREE_HEIGHT = 500
+const TREE_HEIGHT = 600
 const TREE_WIDTH = 800
 
 class HomePage extends Component {
@@ -103,7 +105,6 @@ class HomePage extends Component {
     render() {
         const {renderType, treeData, leafNodesNum, text, cpcCodes} = this.state
         const marks = this.createMarks()
-        
         return (
             <div>
                  {/* header */}
@@ -140,6 +141,7 @@ class HomePage extends Component {
                             {/* cpc code select */}
                             <Autocomplete
                                 multiple
+                                autoHighlight={true}
                                 options={cpcCodesDescriptions}
                                 getOptionLabel={(option) => option.code + '  —————  ' + option.description}
                                 onChange={this.onChangeCPCCodes.bind(this)}
@@ -153,6 +155,21 @@ class HomePage extends Component {
                                     helperText="The true subclass level CPC codes for the above content. Optional."
                                 />
                                 )}
+                                renderOption={(option, { inputValue }) => {
+                                    const content = option.code + '  —————  ' + option.description
+                                    const matches = match(content, inputValue);
+                                    const parts = parse(content, matches);
+                            
+                                    return (
+                                      <div className="options">
+                                        {parts.map((part, index) => (
+                                          <span key={index} style={{fontWeight: part.highlight ? 700 : 400 }}>
+                                            {part.text}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    );
+                                }}
                             />
 
                             {/*  select leaf node number */}
@@ -201,7 +218,11 @@ class HomePage extends Component {
                                 </div>
                             )}
                         </div>
+                        
                     </div>
+                    <div className="copyright">
+                            &copy; Dorothy AI, CMU MSAII, 2020
+                        </div>
                 </div> 
             </div>
         );
