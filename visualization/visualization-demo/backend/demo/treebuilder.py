@@ -75,9 +75,9 @@ def build_tree(model_type, prediction, description_dict):
 
     # section
     for s, prob in section_data.items():
-        is_true_label = s in true_labels_set
+        # is_true_label = s in true_labels_set
         created_node = create_tree_node(
-            s, prob, description_dict, level=SECTION,  last=False, order=None, is_true_label=is_true_label)
+            s, prob, description_dict, level=SECTION,  last=False, order=None)
         if created_node != None:
             tree['children'][s] = created_node
 
@@ -85,9 +85,9 @@ def build_tree(model_type, prediction, description_dict):
     for c, prob in class_data.items():
         s = c.split(SEPARATOR_1)[0]
         c_ = ''.join(c.split(SEPARATOR_1))
-        is_true_label = c_ in true_labels_set
+        # is_true_label = c_ in true_labels_set
         created_node = create_tree_node(
-            c_, prob, description_dict, level=CLASS, last=False, order=None, is_true_label=is_true_label)
+            c_, prob, description_dict, level=CLASS, last=False, order=None)
         if created_node != None:
             tree['children'][s]['children'][c_] = created_node
 
@@ -98,11 +98,9 @@ def build_tree(model_type, prediction, description_dict):
         s = sub_split[0]
         c = ''.join(sub_split[:2])
         sub_ = ''.join(sub_split)
-        is_true_label = sub_ in true_labels_set
-        if prob == 0 and not is_true_label:
-            continue
+        # is_true_label = sub_ in true_labels_set
         created_node = create_tree_node(
-            sub_, prob, description_dict, level=SUBCLASS, last=True, order=index, is_true_label=is_true_label)
+            sub_, prob, description_dict, level=SUBCLASS, last=True, order=index)
 
         if created_node != None:
             tree['children'][s]['children'][c]['children'][sub_] = created_node
@@ -128,13 +126,13 @@ def build_tree(model_type, prediction, description_dict):
     return tree
 
 
-def create_tree_node(symbol, prob, description_dict, level, last, order, is_true_label):
+def create_tree_node(symbol, prob, description_dict, level, last, order):
     if symbol not in description_dict:
         return None
 
     description = symbol + ' ' + description_dict[symbol]
     node = {'name': description, 'symbol': symbol,
-            'level': level, 'prob': prob, 'true': is_true_label}
+            'level': level, 'prob': prob}
     if last:
         node['order'] = order
     else:
