@@ -17,7 +17,7 @@ class HomePage extends Component {
         super(props);
         this.state = {
             text: '',
-            cpcCodes: [],
+            cpcCodes: new Set(),
             treeData: null,
             leafNodesNum: PREDICTED_NODES_MIN,
             renderType: RenderType.NOT_RENDER
@@ -66,8 +66,14 @@ class HomePage extends Component {
     }
 
     onChangeCPCCodes(event, value) {
+        let cpcCodes = new Set() 
+        value.map(i => {
+            cpcCodes.add(i.code.substring(0, 1));
+            cpcCodes.add(i.code.substring(0, 3));
+            cpcCodes.add(i.code);
+        });
         this.setState({
-            cpcCodes: value
+            cpcCodes,
         })
     }
 
@@ -95,8 +101,7 @@ class HomePage extends Component {
     }
 
     render() {
-        console.log("renderType", this.state.renderType)
-        const {renderType, treeData, leafNodesNum, text} = this.state
+        const {renderType, treeData, leafNodesNum, text, cpcCodes} = this.state
         const marks = this.createMarks()
         
         return (
@@ -135,7 +140,7 @@ class HomePage extends Component {
                             <Autocomplete
                                 multiple
                                 options={cpcCodesDescriptions}
-                                getOptionLabel={(option) => option.code}
+                                getOptionLabel={(option) => option.code + '  —————  ' + option.description}
                                 onChange={this.onChangeCPCCodes.bind(this)}
                                 filterSelectedOptions={true}
                                 renderInput={(params) => (
@@ -191,6 +196,7 @@ class HomePage extends Component {
                                             height={600}
                                             width={800}
                                             leafNodesNum={leafNodesNum}
+                                            trueCodeSet={cpcCodes}
                                         />
                                     </div>
                                 </div>

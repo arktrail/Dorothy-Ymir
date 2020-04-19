@@ -50,21 +50,24 @@ class Tree extends Component {
     }
 
     isTrueNotPredicted(d) {
+        const {trueCodeSet} = this.props
         // console.log(d)
         // console.log("is true and not predicted")
-        return d.data.true === true && !this.isPredicted(d);
+        return trueCodeSet.has(d.data.symbol) && !this.isPredicted(d);
     }
 
     isFalseButPredicted(d) {
+        const {trueCodeSet} = this.props
         // console.log(d)
         // console.log("is false but predicted")
-        return d.data.true === false && this.isPredicted(d);
+        return !trueCodeSet.has(d.data.symbol) && this.isPredicted(d);
     }
 
     isTrueAndPredicted(d) {
+        const {trueCodeSet} = this.props
         // console.log(d.data.symbol, d.data.true, d.data.order);
         // console.log("is true and predicted")
-        return d.data.true === true && this.isPredicted(d);
+        return trueCodeSet.has(d.data.symbol) && this.isPredicted(d);
     }
 
     isPredicted(d) {
@@ -149,7 +152,7 @@ class Tree extends Component {
         svg
             .append("circle")
             .attr("cx", 30)
-            .attr("cy", 55)
+            .attr("cy", 5)
             .attr("r", 6)
             .attr("class", "node truenode")
             .style("stroke-width", 3)
@@ -157,13 +160,13 @@ class Tree extends Component {
         svg
             .append("text")
             .attr("x", 40)
-            .attr("y", 60)
+            .attr("y", 10)
             .text("predicted true label")
             .classed("labels", true);
         svg
             .append("circle")
             .attr("cx", 30)
-            .attr("cy", 75)
+            .attr("cy", 25)
             .attr("r", 6)
             .attr("class", "node falsenode")
             .style("stroke-width", 3)
@@ -171,34 +174,35 @@ class Tree extends Component {
         svg
             .append("text")
             .attr("x", 40)
-            .attr("y", 80)
+            .attr("y", 30)
             .text("predicted false label")
             .classed("labels", true);
 
         svg
             .append("line")
             .attr("x1", 10)
-            .attr("y1", 95)
+            .attr("y1", 45)
             .attr("x2", 40)
-            .attr("y2", 95)
+            .attr("y2", 45)
             .attr("class", "truelink")
             .style("stroke-dasharray", "3, 3");
         svg
             .append("text")
             .attr("x", 40)
-            .attr("y", 100)
+            .attr("y", 50)
             .text("unpredicted true label")
             .classed("labels", true);
     }
 
     filterNodeByLeafNodesNum(leafNodesNum, d) {
+        const {trueCodeSet} = this.props
         if (!d || !d._children) return;
         var children = new Array();
         for (var i = 0; i < d._children.length; i++) {
             // console.log(d._children[i]);
             // console.log(d._children[i].data.order);
             var child = d._children[i];
-            if (child.data.order < leafNodesNum || child.data.true) {
+            if (child.data.order < leafNodesNum || trueCodeSet.has(child.data.symbol)) {
                 children.push(child);
             }
         }
