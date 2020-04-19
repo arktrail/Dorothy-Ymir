@@ -25,16 +25,13 @@ def get_prediction_result(req, query):
 
 @csrf_exempt
 def get_document(req):
-    # def get_document(req, query):
-    # doc = Document.objects.get(document_id=document_id)
-    # doc_serializer = DocumentSerializer(
-    #     Document.objects.all(), context={'request': req}, many=True)
-    # return HttpResponse(doc_serializer)
 
     print("get document and query")
     print(pretty_request(req))
 
     query = req.body.decode("utf-8")
+    query = query.replace('\r', '')
+    query = query.replace('\n', '')
     print("query is {}".format(query))
 
     prediction = ""
