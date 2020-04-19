@@ -65,14 +65,6 @@ class Tree extends Component {
     componentDidMount() {
         const {width, height} = this.state
         const treeGraphPaddingLeft = 60
-        // Set the dimensions and margins of the diagram
-        // const margin = { top: 20, right: 30, bottom: 20, left: 10 },
-        //     width = this.state.width - margin.left - margin.right,
-        //     height = this.state.height - margin.top - margin.bottom;
-
-        // append the svg object to the body of the page
-        // appends a 'group' element to 'svg'
-        // moves the 'group' element to the top left margin
 
         // label container
         d3.select("#tree-graph")
@@ -150,7 +142,7 @@ class Tree extends Component {
             .append("circle")
             .attr("cx", x)
             .attr("cy", y)
-            .attr("r", 6)
+            .attr("r", 5)
             .attr("class", circleClass)
             .style("stroke-width", 3)
             .style("fill", "#fff");
