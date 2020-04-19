@@ -45,6 +45,14 @@ body {
     border-bottom: 2px solid #f4b64e;
 }
 
+.msaii-label {
+    float: right;
+    color: #993831;
+    font-weight: 800;
+    line-height: 48px;
+    font-size: 1.1em;
+}
+
 .msaii-logo {
     height: 42px;
     float: right;
@@ -97,6 +105,10 @@ body {
     margin-bottom: 40px;
 }
 
+.text-field .MuiFormLabel-root {
+    letter-spacing: 0.1125em;
+}
+
 .text-field .MuiFormLabel-root.Mui-focused {
     color: black;
 }
@@ -107,6 +119,10 @@ body {
 
 .text-field .MuiInput-underline:after {
     border-color: #44797B;
+}
+
+.text-field .MuiFormHelperText-root {
+    letter-spacing: 0.1125em;
 }
 /* Text field end */
 
@@ -138,6 +154,8 @@ body {
 /* slider start */
 .slider-label.MuiTypography-root {
     margin-top: 1.5em;
+    letter-spacing: 0.1125em;
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .slider.MuiSlider-root {

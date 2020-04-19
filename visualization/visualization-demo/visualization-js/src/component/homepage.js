@@ -11,6 +11,8 @@ require('./homepage.css')
 
 const PREDICTED_NODES_MIN = 3
 const PREDICTED_NODES_MAX = 6
+const TREE_HEIGHT = 500
+const TREE_WIDTH = 800
 
 class HomePage extends Component {
     constructor(props) {
@@ -50,8 +52,6 @@ class HomePage extends Component {
         ).then((res) => {
             // console.log("handle submit get response")
             console.log("treeData", res.data)
-            // console.log(`type of res ${typeof res}`)
-            // console.log(`type of res.data ${typeof res.data}`)
             this.setState({
                 treeData: { ...res.data },
                 renderType: RenderType.RENDERED
@@ -68,9 +68,9 @@ class HomePage extends Component {
     onChangeCPCCodes(event, value) {
         let cpcCodes = new Set() 
         value.map(i => {
-            cpcCodes.add(i.code.substring(0, 1));
-            cpcCodes.add(i.code.substring(0, 3));
-            cpcCodes.add(i.code);
+            cpcCodes.add(i.code.substring(0, 1));   //  section
+            cpcCodes.add(i.code.substring(0, 3));   //  class
+            cpcCodes.add(i.code);                   //  subclass
         });
         this.setState({
             cpcCodes,
@@ -110,6 +110,7 @@ class HomePage extends Component {
                 <AppBar className="header" position="static">
                     <div className="header-container">
                     <div className="header-content">
+                        <label className="msaii-label">MSAII</label>
                         <img className="msaii-logo" src={require('../img/msaii.jpeg')} alt="MSAII" />
                         <div className="dorothy-logo">
                             <img className="header-img" src={require('../img/dorothy-ai-logo.svg')} alt="Dorothy AI" />
@@ -191,8 +192,8 @@ class HomePage extends Component {
                                 <div id="tree-graph">
                                     <Tree
                                         treeData={treeData}
-                                        height={600}
-                                        width={800}
+                                        height={TREE_HEIGHT}
+                                        width={TREE_WIDTH}
                                         leafNodesNum={leafNodesNum}
                                         trueCodeSet={cpcCodes}
                                     />

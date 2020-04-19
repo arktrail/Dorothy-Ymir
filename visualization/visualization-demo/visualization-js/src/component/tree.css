@@ -1,16 +1,24 @@
 .labels {
-  font-size: 18px;
+  font-size: 15px;
   font-family: Montserrat;
-  /*letter-spacing: 0.06875em;*/
+  letter-spacing: 0.1125em;
   -webkit-text-stroke-width: 0.5px;
 }
 
 .description {
   font-family: Montserrat;
-  letter-spacing: 0.06875em;
+  font-size: 14px;
+  letter-spacing: 0.1125em;
   -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
+  color: rgba(0, 0, 0, 0.54);
+}
 
+.description-class {
+  margin-left: 2em;
+}
+
+.description-subclass {
+  margin-left: 4em;
 }
 
 .node circle {
@@ -53,12 +61,6 @@
 .falselink {
   stroke: #FB9A0D !important;
 }
-
-/* .border {
-  box-shadow: 0px 4px 4px 0px #44797B;
-  border: 1px solid #44797B;
-  border-radius: 0.5%;
-} */
 
 .label { 
     /*word-break: break-word;*/

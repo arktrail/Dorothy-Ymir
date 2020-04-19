@@ -2,15 +2,9 @@ import * as d3 from "d3";
 import React, { Component } from "react";
 import "./tree.css";
 import { treePredictedData, treeLessData } from './data'
-import { selector } from "d3";
 
-const circleColor = "#FB9A0D";
-const trueCircleColor = "#ff3b00";
 const PROB_LINK_MULTI = 1
 
-// var link_weight = d3.scale.linear()
-//                     .domain([0, 100])
-//                     .range([0, 100]);
 
 // TTD:
 // 2. add dot link lines for true-not-predicted node : x
@@ -19,18 +13,18 @@ const PROB_LINK_MULTI = 1
 // 5. change the font size : x
 // 6. add labels to
 
-function descriptionIndent(d) {
+function descriptionClass(d) {
     switch (d.data.level) {
         case "SECTION":
-            return "|--";
+            return "description-section";
         case "CLASS":
-            return "|----";
+            return "description-class"
         case "SUBCLASS":
-            return "|------";
+            return "description-subclass";
         case "GROUP":
-            return "|--------";
+            return "description-group";
         case "SUBGROUP":
-            return "|----------";
+            return "description-subgroup";
     }
 }
 
@@ -51,69 +45,59 @@ class Tree extends Component {
 
     isTrueNotPredicted(d) {
         const {trueCodeSet} = this.props
-        // console.log(d)
-        // console.log("is true and not predicted")
         return trueCodeSet.has(d.data.symbol) && !this.isPredicted(d);
     }
 
     isFalseButPredicted(d) {
         const {trueCodeSet} = this.props
-        // console.log(d)
-        // console.log("is false but predicted")
         return !trueCodeSet.has(d.data.symbol) && this.isPredicted(d);
     }
 
     isTrueAndPredicted(d) {
         const {trueCodeSet} = this.props
-        // console.log(d.data.symbol, d.data.true, d.data.order);
-        // console.log("is true and predicted")
         return trueCodeSet.has(d.data.symbol) && this.isPredicted(d);
     }
 
     isPredicted(d) {
-        // console.log(this.props.leafNodesNum);
         return d.data.order < this.props.leafNodesNum;
     }
 
     componentDidMount() {
+        const {width, height} = this.state
+        const treeGraphPaddingLeft = 60
         // Set the dimensions and margins of the diagram
-        const margin = { top: 20, right: 30, bottom: 20, left: 10 },
-            width = this.state.width - margin.left - margin.right,
-            height = this.state.height - margin.top - margin.bottom;
+        // const margin = { top: 20, right: 30, bottom: 20, left: 10 },
+        //     width = this.state.width - margin.left - margin.right,
+        //     height = this.state.height - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
         // appends a 'group' element to 'svg'
         // moves the 'group' element to the top left margin
-        const svg = d3
-            .select("#tree-graph")
+
+        // label container
+        d3.select("#tree-graph")
             .append("svg")
-            .attr("class", "border")
+            .attr("id", "labels")
+            .attr("width", width)
+            .attr("height", 80)
+
+        // tree container
+        d3.select("#tree-graph")
+            .append("svg")
             .attr("id", "tree")
-            .attr("width", width + margin.right + margin.left)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("width", width - treeGraphPaddingLeft)
+            .attr("height", height)
             .attr("border", 1)
             .append("g")
             .attr("id", "nodes")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        // add border path
-        const bordercolor = "#8f8d8d";
-        const border = 1;
-        // const borderPath = svg.append("rect")
-        //     // .attr("class", "border")
-        //     .attr("x", -37)
-        //     .attr("y", 30)
-        //     .attr("width", width - margin.right - margin.left)
-        //     .attr("height", height - margin.top - margin.bottom)
-        //     .style("stroke", bordercolor)
-        //     .style("fill", "none")
-        //     .style("stroke-width", border);
+            .attr("transform", "translate(" + treeGraphPaddingLeft + ", 0)");
 
         d3.select("#tree-graph")
             .append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
 
+        // description container 
         d3.select("#tree-graph").append("div").attr("id", "description");
 
         var root;
@@ -132,7 +116,7 @@ class Tree extends Component {
         // Collapse after the second level
         // root.children.forEach(collapse);
 
-        this.drawLabels(svg);
+        this.drawLabels();
 
         this.update(root, root, treemap);
         this.copy(root);
@@ -148,50 +132,42 @@ class Tree extends Component {
         this.filterNodeByLeafNodesNum(this.props.leafNodesNum, this.state.root);
     }
 
-    drawLabels(svg) {
-        svg
-            .append("circle")
-            .attr("cx", 30)
-            .attr("cy", 5)
-            .attr("r", 6)
-            .attr("class", "node truenode")
-            .style("stroke-width", 3)
-            .style("fill", "#fff");
-        svg
-            .append("text")
-            .attr("x", 40)
-            .attr("y", 10)
-            .text("predicted true label")
-            .classed("labels", true);
-        svg
-            .append("circle")
-            .attr("cx", 30)
-            .attr("cy", 25)
-            .attr("r", 6)
-            .attr("class", "node falsenode")
-            .style("stroke-width", 3)
-            .style("fill", "#fff");
-        svg
-            .append("text")
-            .attr("x", 40)
-            .attr("y", 30)
-            .text("predicted false label")
-            .classed("labels", true);
-
-        svg
+    drawLabel(label, circleClass, lineClass, x, y, dash) {
+        const svg = d3.select("svg#labels");
+        const line = svg
             .append("line")
-            .attr("x1", 10)
-            .attr("y1", 45)
-            .attr("x2", 40)
-            .attr("y2", 45)
-            .attr("class", "truelink")
-            .style("stroke-dasharray", "3, 3");
+            .attr("x1", x - 30)
+            .attr("y1", y)
+            .attr("x2", x - 5)
+            .attr("y2", y)
+            .attr("class", lineClass)
+            .style("stroke-width", 1.5)
+        if (dash) {
+            line.style("stroke-dasharray", "3, 3");
+        }
+           
+        svg
+            .append("circle")
+            .attr("cx", x)
+            .attr("cy", y)
+            .attr("r", 6)
+            .attr("class", circleClass)
+            .style("stroke-width", 3)
+            .style("fill", "#fff");
         svg
             .append("text")
-            .attr("x", 40)
-            .attr("y", 50)
-            .text("unpredicted true label")
+            .attr("x", x + 15)
+            .attr("y", y + 5)
+            .text(label)
             .classed("labels", true);
+    }
+
+    drawLabels() {
+        const x = 30
+        const y = 20
+        this.drawLabel("predicted true label", "node truenode",  "truelink", x, y, false)
+        this.drawLabel("unpredicted true label", "node truenode",  "truelink", x, y + 20, true)
+        this.drawLabel("predicted false label", "node falsenode",  "falselink", x, y + 40, false)
     }
 
     filterNodeByLeafNodesNum(leafNodesNum, d) {
@@ -199,15 +175,12 @@ class Tree extends Component {
         if (!d || !d._children) return;
         var children = new Array();
         for (var i = 0; i < d._children.length; i++) {
-            // console.log(d._children[i]);
-            // console.log(d._children[i].data.order);
             var child = d._children[i];
             if (child.data.order < leafNodesNum || trueCodeSet.has(child.data.symbol)) {
                 children.push(child);
             }
         }
         d.children = children;
-        // console.log("after modify ", d.children);
         d.children.forEach(this.filterNodeByLeafNodesNum.bind(this, leafNodesNum));
         this.update(d, this.state.root, this.state.treemap);
     }
@@ -255,11 +228,10 @@ class Tree extends Component {
         // Add Circle for the nodes
         nodeEnter
             .append("circle")
-            .attr("class", "node")
             .attr("class", function (d) {
                 return this_.isFalseButPredicted(d)
-                    ? "node falsenode"
-                    : "node truenode";
+                    ? "node falsenode" : this_.isTrueAndPredicted(d) ?
+                    "node truenode" : "node";
             })
             .attr("r", 1e-6);
         // .style("fill", function (d) {
@@ -329,6 +301,11 @@ class Tree extends Component {
             // .style("fill", function (d) {
             //     return d._children ? d.data.true ? trueCircleColor : circleColor : "#fff";
             // })
+            .attr("class", function (d) {
+                return this_.isFalseButPredicted(d)
+                    ? "node falsenode" : this_.isTrueAndPredicted(d) ?
+                    "node truenode" : "node";
+            })
             .attr("cursor", "pointer");
 
         // Remove any exiting nodes
@@ -358,9 +335,7 @@ class Tree extends Component {
         var linkEnter = link
             .enter()
             .insert("path", "g")
-            // .attr("class", "link")
             .attr("class", function (d) {
-                // return isTrueNotPredicted(d) ? isFalseButPredicted(d) ? "link falselink" : "link truelink" : "link";
                 return this_.isTrueAndPredicted(d)
                     ? "link truelink"
                     : this_.isFalseButPredicted(d)
@@ -385,6 +360,13 @@ class Tree extends Component {
         linkUpdate
             .transition()
             .duration(duration)
+            .attr("class", function (d) {
+                return this_.isTrueAndPredicted(d)
+                    ? "link truelink"
+                    : this_.isFalseButPredicted(d)
+                        ? "link falselink"
+                        : "link";
+            })
             .attr("d", function (d) {
                 return diagonal(d, d.parent);
             })
@@ -459,26 +441,37 @@ class Tree extends Component {
     }
 
     showPrecedentNodesDescription(d) {
-        const descriptionDiv = d3.select("div#description");
-
-        var curr = d;
-        var descriptions = [descriptionIndent(d) + curr.data.name];
+        let curr = d;
+        let descriptions = [];
+        if (d.data.name !== 'root') {
+            descriptions.push(
+                {
+                    'className': descriptionClass(d),
+                    'text': d.data.name
+                }
+            )
+        }
         while (curr.parent !== null && curr.parent.data.name !== 'root') {
             curr = curr.parent;
-            descriptions.splice(0, 0, descriptionIndent(curr) + curr.data.name);
+            descriptions.splice(0, 0, 
+                {
+                    'className': descriptionClass(curr),
+                    'text': curr.data.name
+                }
+            )
         }
-        descriptions.map(this.appendNodeDescription);
+        console.log("descriptions", descriptions)
+        descriptions.map(this.appendNodeDescription)
     }
 
     appendNodeDescription(d) {
+        console.log("className", d.className, "text", d.text)
         const descriptionDiv = d3.select("div#description");
-
-        descriptionDiv.append("div").attr("class", "description").text(d);
+        descriptionDiv.append("div").attr("class", "description" + ' ' + d.className).text(d.text);
     }
 
     removePrecedentNodesDescription() {
         document.getElementById("description").innerHTML = "";
-        // console.log("remove", document.getElementById("#description"));
     }
 
     render() {
