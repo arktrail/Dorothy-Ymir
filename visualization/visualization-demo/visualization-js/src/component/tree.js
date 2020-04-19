@@ -463,7 +463,7 @@ class Tree extends Component {
 
         var curr = d;
         var descriptions = [descriptionIndent(d) + curr.data.name];
-        while (curr.parent.label !== '') {
+        while (curr.parent !== null && curr.parent.data.name !== 'root') {
             curr = curr.parent;
             descriptions.splice(0, 0, descriptionIndent(curr) + curr.data.name);
         }

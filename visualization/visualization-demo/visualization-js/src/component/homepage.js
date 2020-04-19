@@ -49,7 +49,7 @@ class HomePage extends Component {
             { headers: { "Content-Type": "text/plain" } }
         ).then((res) => {
             // console.log("handle submit get response")
-            // console.log(res.data)
+            console.log("treeData", res.data)
             // console.log(`type of res ${typeof res}`)
             // console.log(`type of res.data ${typeof res.data}`)
             this.setState({
