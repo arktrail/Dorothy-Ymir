@@ -10,7 +10,7 @@ import {Autocomplete} from '@material-ui/lab';
 require('./homepage.css')
 
 const PREDICTED_NODES_MIN = 3
-const PREDICTED_NODES_MAX = 9
+const PREDICTED_NODES_MAX = 6
 
 class HomePage extends Component {
     constructor(props) {
@@ -154,6 +154,23 @@ class HomePage extends Component {
                                 )}
                             />
 
+                            {/*  select leaf node number */}
+                            <Typography className="slider-label" gutterBottom>
+                                Number of predicted subclass-level codes
+                            </Typography>
+                            <Slider
+                                className="slider"
+                                defaultValue={leafNodesNum}
+                                getAriaValueText={(value) => value}
+                                aria-labelledby="discrete-slider"
+                                valueLabelDisplay="auto"
+                                step={1}
+                                marks={marks}
+                                min={PREDICTED_NODES_MIN}
+                                max={PREDICTED_NODES_MAX}
+                                onChange={this.onChangePredictedNodesNum.bind(this)}
+                            />
+
                             {/* submit button */}
                             <div className="submit-btn-container">
                                 {text === '' ?
@@ -171,34 +188,14 @@ class HomePage extends Component {
 
                             {/* RENDERED- RESULT RETRIEVED*/}
                             {renderType === RenderType.RENDERED && (
-                                <div>
-                                    {/*  select leaf node number */}
-                                    <Typography className="slider-label" gutterBottom>
-                                        Number of predicted subclass-level codes
-                                    </Typography>
-                                    <Slider
-                                        className="slider"
-                                        defaultValue={PREDICTED_NODES_MIN}
-                                        getAriaValueText={(value) => value}
-                                        aria-labelledby="discrete-slider"
-                                        valueLabelDisplay="auto"
-                                        step={1}
-                                        marks={marks}
-                                        min={PREDICTED_NODES_MIN}
-                                        max={PREDICTED_NODES_MAX}
-                                        onChange={this.onChangePredictedNodesNum.bind(this)}
+                                <div id="tree-graph">
+                                    <Tree
+                                        treeData={treeData}
+                                        height={600}
+                                        width={800}
+                                        leafNodesNum={leafNodesNum}
+                                        trueCodeSet={cpcCodes}
                                     />
-
-                                    {/* TREE GRAPH */}
-                                    <div id="tree-graph">
-                                        <Tree
-                                            treeData={treeData}
-                                            height={600}
-                                            width={800}
-                                            leafNodesNum={leafNodesNum}
-                                            trueCodeSet={cpcCodes}
-                                        />
-                                    </div>
                                 </div>
                             )}
                         </div>
