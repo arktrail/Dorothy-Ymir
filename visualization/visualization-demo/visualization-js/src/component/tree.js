@@ -329,7 +329,7 @@ class Tree extends Component {
                 return this_.isTrueNotPredicted(d) ? "3, 3" : "0, 0";
             })
             .on('mouseover', function (d) {
-                tooltip.html(`Prob: ${d.data.prob}`)
+                tooltip.html(`Prob: ${d.data.prob.toFixed(3)}`)
                     .style("visibility", "visible");
             })
             .on('mousemove', function (d) {
