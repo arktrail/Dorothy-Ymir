@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Tree from "./tree";
 import axios from "axios";
 import { RenderType } from "./RenderType"
-import {cpcCodesDescriptions} from '../cpcCodesDescriptions'
+import { cpcCodesDescriptions } from '../cpcCodesDescriptions'
 import RenderingTimer from './RenderingTimer'
+import RecallCurve from './RecallCurve'
 import { AppBar, TextField, Button, Typography, Slider } from '@material-ui/core';
-import {Autocomplete} from '@material-ui/lab';
+import { Autocomplete } from '@material-ui/lab';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 
@@ -24,25 +25,14 @@ class HomePage extends Component {
             cpcCodes: new Set(),
             treeData: null,
             leafNodesNum: PREDICTED_NODES_MIN,
-            renderType: RenderType.NOT_RENDER
+            renderType: RenderType.NOT_RENDER,
+            descLabels: []
         };
     }
-    // request document
-    // handleRequest = () => {
-    //     var url = `http://54.163.42.113:8000/demo/US12345`
-    //     axios.get(url).then((res) => {
-    //         // console.log("handle request get response")
-    //         // console.log(res.data)
-    //         this.setState({
-    //             treeData: res.data,
-    //         });
-    //     });
-    // };
 
     handleSubmit = () => {
-        const {text} = this.state
+        const { text } = this.state
         var url = `http://54.163.42.113:8000/demo/`
-        console.log("handleSubmit")
         this.setState({
             renderType: RenderType.RENDERING
         })
@@ -52,10 +42,10 @@ class HomePage extends Component {
             text,
             { headers: { "Content-Type": "text/plain" } }
         ).then((res) => {
-            // console.log("handle submit get response")
-            console.log("treeData", res.data)
+            console.log(res)
             this.setState({
-                treeData: { ...res.data },
+                treeData: res.data.tree,
+                descLabels: res.data.ordered_labels,
                 renderType: RenderType.RENDERED
             });
         })
@@ -68,7 +58,7 @@ class HomePage extends Component {
     }
 
     onChangeCPCCodes(event, value) {
-        let cpcCodes = new Set() 
+        let cpcCodes = new Set()
         value.map(i => {
             cpcCodes.add(i.code.substring(0, 1));   //  section
             cpcCodes.add(i.code.substring(0, 3));   //  class
@@ -88,39 +78,39 @@ class HomePage extends Component {
     createMarks() {
         let marks = [
             {
-              value: PREDICTED_NODES_MIN,
-              label: PREDICTED_NODES_MIN,
+                value: PREDICTED_NODES_MIN,
+                label: PREDICTED_NODES_MIN,
             },
             {
-              value: PREDICTED_NODES_MAX,
-              label: PREDICTED_NODES_MAX,
+                value: PREDICTED_NODES_MAX,
+                label: PREDICTED_NODES_MAX,
             },
         ];
         for (let i = PREDICTED_NODES_MIN + 1; i < PREDICTED_NODES_MAX; i++) {
-            marks.push({value: i})
+            marks.push({ value: i })
         }
         return marks
     }
 
     render() {
-        const {renderType, treeData, leafNodesNum, text, cpcCodes} = this.state
+        const { renderType, treeData, leafNodesNum, text, cpcCodes, descLabels } = this.state
         const marks = this.createMarks()
         return (
             <div>
-                 {/* header */}
+                {/* header */}
                 <AppBar className="header" position="static">
                     <div className="header-container">
-                    <div className="header-content">
-                        <label className="msaii-label">MSAII</label>
-                        <img className="msaii-logo" src={require('../img/msaii.jpeg')} alt="MSAII" />
-                        <div className="dorothy-logo">
-                            <img className="header-img" src={require('../img/dorothy-ai-logo.svg')} alt="Dorothy AI" />
-                            <div className="d-logo-container">
-                                <div className="d-logo-ps">Patent Search</div>
-                                <div className="d-logo-s">SIMPLIFIED</div>
+                        <div className="header-content">
+                            <label className="msaii-label">MSAII</label>
+                            <img className="msaii-logo" src={require('../img/msaii.jpeg')} alt="MSAII" />
+                            <div className="dorothy-logo">
+                                <img className="header-img" src={require('../img/dorothy-ai-logo.svg')} alt="Dorothy AI" />
+                                <div className="d-logo-container">
+                                    <div className="d-logo-ps">Patent Search</div>
+                                    <div className="d-logo-s">SIMPLIFIED</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </AppBar>
 
@@ -137,7 +127,7 @@ class HomePage extends Component {
                             <TextField className="text-field" multiline={true} label="Novel Feature"
                                 helperText="The distinctive feature that you wish to patent. Required."
                                 onChange={this.onChangeText.bind(this)}></TextField>
-                            
+
                             {/* cpc code select */}
                             <Autocomplete
                                 multiple
@@ -147,27 +137,27 @@ class HomePage extends Component {
                                 onChange={this.onChangeCPCCodes.bind(this)}
                                 filterSelectedOptions={true}
                                 renderInput={(params) => (
-                                <TextField
-                                    className="text-field"
-                                    {...params}
-                                    variant="standard"
-                                    label="CPC codes"
-                                    helperText="The true subclass level CPC codes for the above content. Optional."
-                                />
+                                    <TextField
+                                        className="text-field"
+                                        {...params}
+                                        variant="standard"
+                                        label="CPC codes"
+                                        helperText="The true subclass level CPC codes for the above content. Optional."
+                                    />
                                 )}
                                 renderOption={(option, { inputValue }) => {
                                     const content = option.code + '  —————  ' + option.description
                                     const matches = match(content, inputValue);
                                     const parts = parse(content, matches);
-                            
+
                                     return (
-                                      <div className="options">
-                                        {parts.map((part, index) => (
-                                          <span key={index} style={{fontWeight: part.highlight ? 700 : 400 }}>
-                                            {part.text}
-                                          </span>
-                                        ))}
-                                      </div>
+                                        <div className="options">
+                                            {parts.map((part, index) => (
+                                                <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
+                                                    {part.text}
+                                                </span>
+                                            ))}
+                                        </div>
                                     );
                                 }}
                             />
@@ -195,35 +185,49 @@ class HomePage extends Component {
                                 {text === '' ?
                                     <Button className="submit-btn" variant="contained" disabled>Submit</Button>
                                     :
-                                    <Button className="submit-btn" variant="contained" 
-                                    onClick={() => this.handleSubmit()} >Submit</Button>
+                                    <Button className="submit-btn" variant="contained"
+                                        onClick={() => this.handleSubmit()} >Submit</Button>
                                 }
                             </div>
 
                             {/* RENDERING - WAITING FOR RESULT */}
                             {renderType === RenderType.RENDERING && (
-                                <RenderingTimer/>
+                                <RenderingTimer />
                             )}
 
-                            {/* RENDERED- RESULT RETRIEVED*/}
+                            {/* RENDERED- RESULT RETRIEVED */}
                             {renderType === RenderType.RENDERED && (
-                                <div id="tree-graph">
-                                    <Tree
-                                        treeData={treeData}
-                                        height={TREE_HEIGHT}
-                                        width={TREE_WIDTH}
-                                        leafNodesNum={leafNodesNum}
-                                        trueCodeSet={cpcCodes}
-                                    />
+                                <div>
+                                    <div id="tree-graph">
+                                        <Tree
+                                            treeData={treeData}
+                                            height={TREE_HEIGHT}
+                                            width={TREE_WIDTH}
+                                            leafNodesNum={leafNodesNum}
+                                            trueCodeSet={cpcCodes}
+                                        />
+                                    </div>
+
+                                    {cpcCodes.size != 0 && descLabels.length != 0 &&
+                                        <div id="recall-curve">
+                                            <RecallCurve
+                                                height={360}
+                                                width={500}
+                                                descLabels={descLabels}
+                                                trueCodeSet={cpcCodes}
+                                                // trueCodeSet={new Set(['H04B', 'H05K', 'H04W', 'H04L', 'H04M', 'Y02D'])}
+                                            />
+                                        </div>
+                                    }
                                 </div>
                             )}
+
                         </div>
-                        
                     </div>
                     <div className="copyright">
-                            &copy; Dorothy AI, CMU MSAII, 2020
+                        &copy; Dorothy AI, CMU MSAII, 2020
                         </div>
-                </div> 
+                </div>
             </div>
         );
     }

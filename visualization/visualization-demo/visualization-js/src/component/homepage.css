@@ -182,3 +182,8 @@ body {
     text-align: center;
     font-size: 12px;
 }
+
+#recall-curve {
+    margin-top: 4em;
+    margin-left: 100px;
+}
