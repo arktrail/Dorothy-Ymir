@@ -71,7 +71,13 @@ def build_tree(model_type, prediction, description_dict):
     # subclass_data = {k:subclass_data[k] for k in subclass_}
 
     # create root, treat children as dict for quick access
-    tree = {'name': 'root', 'symbol': '', 'children': {}}
+    tree = {'name': 'root', 'symbol': '',
+            'children': {}}
+
+    # save des_ordered_labels
+    des_ordered_labels = [l.replace(SEPARATOR_1, '')
+                          for l in subclass_data.keys()]
+    ordered_labels = des_ordered_labels
 
     # section
     for s, prob in section_data.items():
@@ -123,7 +129,7 @@ def build_tree(model_type, prediction, description_dict):
     if tree_children != 0:
         tree['children'] = tree_children
 
-    return tree
+    return tree, ordered_labels
 
 
 def create_tree_node(symbol, prob, description_dict, level, last, order):

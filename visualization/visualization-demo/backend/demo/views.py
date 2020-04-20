@@ -46,10 +46,14 @@ def get_document(req):
 
     description_dict = load_description_from_file()
     # run the script to predict
-    tree = build_tree(prediction=prediction,
-                      model_type="fasttext", description_dict=description_dict)
-    tree_json = json.dumps(tree)
-    return HttpResponse(tree_json, content_type='application/json')
+    tree, ordered_labels = build_tree(prediction=prediction,
+                                      model_type="fasttext", description_dict=description_dict)
+    res = {'tree': tree, 'ordered_labels': ordered_labels}
+    res_json = json.dumps(res)
+    # tree_json = json.dumps(tree)
+    # ordered_labels_json = json.dumps(ordered_labels)
+    # return HttpResponse(tree_json, content_type='application/json')
+    return HttpResponse(res_json, content_type='application/json')
 
 
 def pretty_request(request):
