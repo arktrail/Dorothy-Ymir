@@ -120,12 +120,12 @@ class HomePage extends Component {
                         <div className="main-content">
                             {/* title */}
                             <div className="title">
-                                Real-time Patent CPC Codes Classification
+                                Real-time Free-Text CPC Codes Classification
                             </div>
 
                             {/* text input */}
-                            <TextField className="text-field" multiline={true} label="Novel Feature"
-                                helperText="The distinctive feature that you wish to patent. Required."
+                            <TextField className="text-field" multiline={true} label="Type in the free text to be classified..."
+                                // helperText="The distinctive feature that you wish to patent. Required."
                                 onChange={this.onChangeText.bind(this)}></TextField>
 
                             {/* cpc code select */}
@@ -142,7 +142,7 @@ class HomePage extends Component {
                                         {...params}
                                         variant="standard"
                                         label="CPC codes"
-                                        helperText="The true subclass level CPC codes for the above content. Optional."
+                                    // helperText="The true subclass level CPC codes for the above content. Optional."
                                     />
                                 )}
                                 renderOption={(option, { inputValue }) => {
@@ -215,7 +215,7 @@ class HomePage extends Component {
                                                 width={500}
                                                 descLabels={descLabels}
                                                 trueCodeSet={cpcCodes}
-                                                // trueCodeSet={new Set(['H04B', 'H05K', 'H04W', 'H04L', 'H04M', 'Y02D'])}
+                                            // trueCodeSet={new Set(['H04B', 'H05K', 'H04W', 'H04L', 'H04M', 'Y02D'])}
                                             />
                                         </div>
                                     }

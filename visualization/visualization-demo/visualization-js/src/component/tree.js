@@ -1,7 +1,6 @@
 import * as d3 from "d3";
 import React, { Component } from "react";
 import "./tree.css";
-import { treePredictedData, treeLessData } from './data'
 
 const PROB_LINK_MULTI = 1
 
@@ -77,6 +76,7 @@ class Tree extends Component {
 
     componentDidMount() {
         const { width, height } = this.state
+        const { trueCodeSet } = this.props
         const treeGraphPaddingLeft = 60
 
         // label container
@@ -122,7 +122,10 @@ class Tree extends Component {
         // Collapse after the second level
         // root.children.forEach(collapse);
 
-        this.drawLabels();
+        // draw the labels if cpc-codes type in
+
+        if (trueCodeSet.size !== 0)
+            this.drawLabels();
 
         this.update(root, root, treemap);
         this.copy(root);
