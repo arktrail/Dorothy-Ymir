@@ -18,7 +18,7 @@ const PREDICTED_NODES_MAX = 6
 const TREE_HEIGHT = 600
 const TREE_WIDTH = 800
 
-class HomePage extends Component {
+class UserPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -128,40 +128,6 @@ class HomePage extends Component {
                                 // helperText="The distinctive feature that you wish to patent. Required."
                                 onChange={this.onChangeText.bind(this)}></TextField>
 
-                            {/* cpc code select */}
-                            <Autocomplete
-                                multiple
-                                autoHighlight={true}
-                                options={cpcCodesDescriptions}
-                                getOptionLabel={(option) => option.code + '  —————  ' + option.description}
-                                onChange={this.onChangeCPCCodes.bind(this)}
-                                filterSelectedOptions={true}
-                                renderInput={(params) => (
-                                    <TextField
-                                        className="text-field"
-                                        {...params}
-                                        variant="standard"
-                                        label="CPC codes"
-                                    // helperText="The true subclass level CPC codes for the above content. Optional."
-                                    />
-                                )}
-                                renderOption={(option, { inputValue }) => {
-                                    const content = option.code + '  —————  ' + option.description
-                                    const matches = match(content, inputValue);
-                                    const parts = parse(content, matches);
-
-                                    return (
-                                        <div className="options">
-                                            {parts.map((part, index) => (
-                                                <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
-                                                    {part.text}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    );
-                                }}
-                            />
-
                             {/*  select leaf node number */}
                             <Typography className="slider-label" gutterBottom>
                                 Number of predicted subclass-level codes
@@ -208,6 +174,10 @@ class HomePage extends Component {
                                         />
                                     </div>
 
+                                    <div id="data-list">
+                                        <DataList treeData={treeData} trueCodeSet={cpcCodes} />
+                                    </div>
+
                                     {cpcCodes.size != 0 && descLabels.length != 0 &&
                                         <div id="recall-curve">
                                             <RecallCurve
@@ -220,9 +190,7 @@ class HomePage extends Component {
                                         </div>
                                     }
 
-                                    <div id="data-list">
-                                        <DataList treeData={treeData} />
-                                    </div>
+
                                 </div>
                             )}
 
@@ -237,4 +205,4 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage;
+export default UserPage;
