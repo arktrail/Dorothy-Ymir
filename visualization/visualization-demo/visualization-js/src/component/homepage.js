@@ -216,7 +216,7 @@ class HomePage extends Component {
                                 <div>
 
                                     {/* cpc code copy past */}
-                                    <TextField className="text-field" fullWidth multiline={true} label="Type in the cpc-codes for analyse (optional)"
+                                    <TextField className="text-field" fullWidth multiline={true} label="Type in the CPC codes for analysis (optional)"
                                         onChange={this.onChangeCPCCodesV2.bind(this)}>
                                     </TextField>
 
