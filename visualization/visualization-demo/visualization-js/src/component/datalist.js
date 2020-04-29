@@ -15,13 +15,6 @@ class DataList extends Component {
         console.log("datalist: type of treeData", typeof treeData)
 
         return (
-            // <div className="options">
-            //     {parts.map((part, index) => (
-            //         <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
-            //             {part.text}
-            //         </span>
-            //     ))}
-            // </div>
             <div>
                 {
                     sliceLabels.map((d, idx) => (

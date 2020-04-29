@@ -220,6 +220,19 @@ class HomePage extends Component {
                                         onChange={this.onChangeCPCCodesV2.bind(this)}>
                                     </TextField>
 
+                                    {/* show subclass cpc codes */}
+                                    {
+                                        cpcCodesSubclass.size !== 0 &&
+                                        <div className="subclass">
+
+                                            The Subclass CPC codes parsed are:
+                                        {[...cpcCodesSubclass].map(d => (
+                                            " " + d + ";"
+                                        ))}
+
+                                        </div>
+                                    }
+
                                     {/*  select leaf node number */}
                                     <Typography className="slider-label" gutterBottom>
                                         Number of predicted subclass-level codes
