@@ -11,23 +11,19 @@ import {
 } from "react-router-dom";
 
 class App extends Component {
-  // function App() {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <Router>
         <div>
           <Switch>
-            {/* <Route path="/">
+            <Route path="/test">
               <HomePage />
             </Route>
-            <Route path="/home">
-              <HomePage />
-            </Route> */}
-            <Route path="/users">
+            <Route path="/user">
               <UserPage />
+            </Route>
+            <Route path="/">
+              <HomePage />
             </Route>
           </Switch>
         </div>

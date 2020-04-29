@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import * as d3 from "d3";
 
 require('./recallCurve.css')
+
+const TOPK = 10
+
 class RecallCurve extends Component {
 
     constructor(props) {
@@ -19,7 +22,7 @@ class RecallCurve extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.descLabels !== prevProps.descLabels ||
             this.props.trueCodeSet !== prevProps.trueCodeSet) {
-                this.draw()
+            this.draw()
         }
     }
 
@@ -33,16 +36,17 @@ class RecallCurve extends Component {
 
         let size = 0
         for (let item of trueCodeSet) {
-            if(item.length == 4) size += 1
+            if (item.length === 4) size += 1
         }
 
         let data = [{ 'recallAt': 0, 'value': 0 }]
         let count = 0
-        for (let i = 0; i < Math.min(descLabels.length, 15); i++) {
-            const label = descLabels[i].replace('@','').replace('@','')
+        for (let i = 0; i < Math.min(descLabels.length, TOPK); i++) {
+            const label = descLabels[i].replace('@', '').replace('@', '')
             if (trueCodeSet.has(label)) count += 1
             data.push({ 'recallAt': i + 1, 'value': parseFloat(count) / size })
         }
+        console.log('recallCurve data length, ', data.length)
         return data
     }
 
