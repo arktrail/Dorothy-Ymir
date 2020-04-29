@@ -10,9 +10,9 @@ class DataList extends Component {
     }
 
     render() {
-        const { treeData, cpcCodes } = this.props;
-        console.log("datalist: treeData", treeData)
-        console.log("datalist: cpcCodes", cpcCodes)
+        const { treeData, descLabels, leafNodesNum, descriptionDict } = this.props;
+        const sliceLabels = descLabels.slice(0, leafNodesNum)
+        console.log("datalist: type of treeData", typeof treeData)
 
         return (
             // <div className="options">
@@ -23,12 +23,19 @@ class DataList extends Component {
             //     ))}
             // </div>
             <div>
-                {treeData.map((d, idx) => (
-                    <div>
-                        {d.data.label}
-                    </div>
+                {
+                    sliceLabels.map((d, idx) => (
+                        <div key={idx}>
+                            <div className="list-label-name">
+                                {d}:
+                            </div>
+                            <div className="list-label-content">
+                                {eval(`descriptionDict.${d}`)}
+                            </div>
+                        </div>
+                    ))
+                }
 
-                ))}
             </div>
         )
     }

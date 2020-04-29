@@ -13,10 +13,11 @@ import match from 'autosuggest-highlight/match';
 
 require('./homepage.css')
 
-const PREDICTED_NODES_MIN = 3
-const PREDICTED_NODES_MAX = 6
+const PREDICTED_NODES_MIN = 1
+const PREDICTED_NODES_MAX = 10
 const TREE_HEIGHT = 600
 const TREE_WIDTH = 800
+const DEFAULT_NODES = 3
 
 class HomePage extends Component {
     constructor(props) {
@@ -24,8 +25,9 @@ class HomePage extends Component {
         this.state = {
             text: '',
             cpcCodes: new Set(),
+            cpcCodesSubclass: new Set(),
             treeData: null,
-            leafNodesNum: PREDICTED_NODES_MIN,
+            leafNodesNum: DEFAULT_NODES,
             renderType: RenderType.NOT_RENDER,
             descLabels: []
         };
@@ -56,6 +58,20 @@ class HomePage extends Component {
             text: event.target.value
         })
     }
+
+    onChangeCPCCodesV2(event) {
+        let values = event.target.value.split(";")
+        let cpcCodesSubclass = new Set()
+        values.map(i => {
+            if (i.length > 0) {
+                cpcCodesSubclass.add(i.replace(/\s+/g, '').substring(0, 4))
+            }
+        })
+        this.setState({
+            cpcCodesSubclass,
+        })
+    }
+
 
     onChangeCPCCodes(event, value) {
         let cpcCodes = new Set()
@@ -93,7 +109,7 @@ class HomePage extends Component {
     }
 
     render() {
-        const { renderType, treeData, leafNodesNum, text, cpcCodes, descLabels } = this.state
+        const { renderType, treeData, leafNodesNum, text, cpcCodes, cpcCodesSubclass, descLabels } = this.state
         const marks = this.createMarks()
         return (
             <div>
@@ -120,7 +136,7 @@ class HomePage extends Component {
                         <div className="main-content">
                             {/* title */}
                             <div className="title">
-                                Real-time Free-Text CPC Codes Classification
+                                Real-time Free-Text CPC Codes Classification (Upgraded Version)
                             </div>
 
                             {/* text input */}
@@ -129,7 +145,7 @@ class HomePage extends Component {
                                 onChange={this.onChangeText.bind(this)}></TextField>
 
                             {/* cpc code select */}
-                            <Autocomplete
+                            {/* <Autocomplete
                                 multiple
                                 autoHighlight={true}
                                 options={cpcCodesDescriptions}
@@ -160,10 +176,10 @@ class HomePage extends Component {
                                         </div>
                                     );
                                 }}
-                            />
+                            /> */}
 
                             {/*  select leaf node number */}
-                            <Typography className="slider-label" gutterBottom>
+                            {/* <Typography className="slider-label" gutterBottom>
                                 Number of predicted subclass-level codes
                             </Typography>
                             <Slider
@@ -178,7 +194,7 @@ class HomePage extends Component {
                                 min={PREDICTED_NODES_MIN}
                                 max={PREDICTED_NODES_MAX}
                                 onChange={this.onChangePredictedNodesNum.bind(this)}
-                            />
+                            /> */}
 
                             {/* submit button */}
                             <div className="submit-btn-container">
@@ -198,6 +214,29 @@ class HomePage extends Component {
                             {/* RENDERED- RESULT RETRIEVED */}
                             {renderType === RenderType.RENDERED && (
                                 <div>
+
+                                    {/* cpc code copy past */}
+                                    <TextField className="text-field" fullWidth multiline={true} label="Type in the cpc-codes for analyse (optional)"
+                                        onChange={this.onChangeCPCCodesV2.bind(this)}>
+                                    </TextField>
+
+                                    {/*  select leaf node number */}
+                                    <Typography className="slider-label" gutterBottom>
+                                        Number of predicted subclass-level codes
+                                    </Typography>
+                                    <Slider
+                                        className="slider"
+                                        defaultValue={DEFAULT_NODES}
+                                        // defaultValue={leafNodesNum}
+                                        getAriaValueText={(value) => value}
+                                        aria-labelledby="discrete-slider"
+                                        valueLabelDisplay="auto"
+                                        step={1}
+                                        marks={marks}
+                                        min={PREDICTED_NODES_MIN}
+                                        max={PREDICTED_NODES_MAX}
+                                        onChange={this.onChangePredictedNodesNum.bind(this)}
+                                    />
                                     <div id="tree-graph">
                                         <Tree
                                             treeData={treeData}
@@ -205,10 +244,22 @@ class HomePage extends Component {
                                             width={TREE_WIDTH}
                                             leafNodesNum={leafNodesNum}
                                             trueCodeSet={cpcCodes}
+                                            trueCodeSetSubclass={cpcCodesSubclass}
                                         />
                                     </div>
 
-                                    {cpcCodes.size != 0 && descLabels.length != 0 &&
+                                    {cpcCodesSubclass.size !== 0 && descLabels.length !== 0 &&
+                                        <div id="recall-curve">
+                                            <RecallCurve
+                                                height={360}
+                                                width={500}
+                                                descLabels={descLabels}
+                                                trueCodeSet={cpcCodesSubclass}
+                                            // trueCodeSet={new Set(['H04B', 'H05K', 'H04W', 'H04L', 'H04M', 'Y02D'])}
+                                            />
+                                        </div>
+                                    }
+                                    {/* {cpcCodes.size != 0 && descLabels.length != 0 &&
                                         <div id="recall-curve">
                                             <RecallCurve
                                                 height={360}
@@ -218,11 +269,7 @@ class HomePage extends Component {
                                             // trueCodeSet={new Set(['H04B', 'H05K', 'H04W', 'H04L', 'H04M', 'Y02D'])}
                                             />
                                         </div>
-                                    }
-
-                                    <div id="data-list">
-                                        <DataList treeData={treeData} />
-                                    </div>
+                                    } */}
                                 </div>
                             )}
 

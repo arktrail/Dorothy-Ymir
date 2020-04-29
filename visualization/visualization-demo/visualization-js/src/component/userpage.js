@@ -13,10 +13,11 @@ import match from 'autosuggest-highlight/match';
 
 require('./homepage.css')
 
-const PREDICTED_NODES_MIN = 3
-const PREDICTED_NODES_MAX = 6
+const PREDICTED_NODES_MIN = 1
+const PREDICTED_NODES_MAX = 10
 const TREE_HEIGHT = 600
 const TREE_WIDTH = 800
+const DEFAULT_NODES = 3
 
 class UserPage extends Component {
     constructor(props) {
@@ -25,9 +26,10 @@ class UserPage extends Component {
             text: '',
             cpcCodes: new Set(),
             treeData: null,
-            leafNodesNum: PREDICTED_NODES_MIN,
+            leafNodesNum: DEFAULT_NODES,
             renderType: RenderType.NOT_RENDER,
-            descLabels: []
+            descLabels: [],
+            descriptionDict: null
         };
     }
 
@@ -46,6 +48,7 @@ class UserPage extends Component {
             this.setState({
                 treeData: res.data.tree,
                 descLabels: res.data.ordered_labels,
+                descriptionDict: res.data.description_dict,
                 renderType: RenderType.RENDERED
             });
         })
@@ -93,7 +96,7 @@ class UserPage extends Component {
     }
 
     render() {
-        const { renderType, treeData, leafNodesNum, text, cpcCodes, descLabels } = this.state
+        const { renderType, treeData, leafNodesNum, text, cpcCodes, descLabels, descriptionDict } = this.state
         const marks = this.createMarks()
         return (
             <div>
@@ -128,23 +131,6 @@ class UserPage extends Component {
                                 // helperText="The distinctive feature that you wish to patent. Required."
                                 onChange={this.onChangeText.bind(this)}></TextField>
 
-                            {/*  select leaf node number */}
-                            <Typography className="slider-label" gutterBottom>
-                                Number of predicted subclass-level codes
-                            </Typography>
-                            <Slider
-                                className="slider"
-                                defaultValue={PREDICTED_NODES_MIN}
-                                // defaultValue={leafNodesNum}
-                                getAriaValueText={(value) => value}
-                                aria-labelledby="discrete-slider"
-                                valueLabelDisplay="auto"
-                                step={1}
-                                marks={marks}
-                                min={PREDICTED_NODES_MIN}
-                                max={PREDICTED_NODES_MAX}
-                                onChange={this.onChangePredictedNodesNum.bind(this)}
-                            />
 
                             {/* submit button */}
                             <div className="submit-btn-container">
@@ -164,6 +150,23 @@ class UserPage extends Component {
                             {/* RENDERED- RESULT RETRIEVED */}
                             {renderType === RenderType.RENDERED && (
                                 <div>
+                                    {/*  select leaf node number */}
+                                    <Typography className="slider-label" gutterBottom>
+                                        Number of predicted subclass-level codes
+                            </Typography>
+                                    <Slider
+                                        className="slider"
+                                        defaultValue={DEFAULT_NODES}
+                                        // defaultValue={leafNodesNum}
+                                        getAriaValueText={(value) => value}
+                                        aria-labelledby="discrete-slider"
+                                        valueLabelDisplay="auto"
+                                        step={1}
+                                        marks={marks}
+                                        min={PREDICTED_NODES_MIN}
+                                        max={PREDICTED_NODES_MAX}
+                                        onChange={this.onChangePredictedNodesNum.bind(this)}
+                                    />
                                     <div id="tree-graph">
                                         <Tree
                                             treeData={treeData}
@@ -171,11 +174,16 @@ class UserPage extends Component {
                                             width={TREE_WIDTH}
                                             leafNodesNum={leafNodesNum}
                                             trueCodeSet={cpcCodes}
+                                            trueCodeSetSubclass={cpcCodes}
                                         />
                                     </div>
 
                                     <div id="data-list">
-                                        <DataList treeData={treeData} trueCodeSet={cpcCodes} />
+                                        <DataList
+                                            descriptionDict={descriptionDict}
+                                            treeData={treeData}
+                                            leafNodesNum={leafNodesNum}
+                                            descLabels={descLabels} />
                                     </div>
 
                                     {cpcCodes.size != 0 && descLabels.length != 0 &&

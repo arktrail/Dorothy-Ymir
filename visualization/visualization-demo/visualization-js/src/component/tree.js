@@ -76,15 +76,15 @@ class Tree extends Component {
 
     componentDidMount() {
         const { width, height } = this.state
-        const { trueCodeSet } = this.props
+        const { trueCodeSet, } = this.props
         const treeGraphPaddingLeft = 60
 
         // label container
-        d3.select("#tree-graph")
-            .append("svg")
-            .attr("id", "labels")
-            .attr("width", width)
-            .attr("height", 80)
+        // d3.select("#tree-graph")
+        //     .append("svg")
+        //     .attr("id", "labels")
+        //     .attr("width", width)
+        //     .attr("height", 80)
 
         // tree container
         d3.select("#tree-graph")
@@ -129,7 +129,6 @@ class Tree extends Component {
 
         this.update(root, root, treemap);
         this.copy(root);
-        // console.log("root after copy", root);
 
         this.setState({
             root,
@@ -195,7 +194,7 @@ class Tree extends Component {
     }
 
     update(source, root, treemap) {
-        const { trueCodeSet } = this.props
+        const { trueCodeSet, trueCodeSetSubclass } = this.props
 
         var svg = d3.select("g#nodes");
         const duration = 750;
@@ -228,12 +227,12 @@ class Tree extends Component {
             .attr("class", "node")
             .attr("transform", function (d) {
                 return "translate(" + source.y0 + "," + source.x0 + ")";
-            })
-            // .attr("text-anchor", d => d._children ? "end" : "start")
-            .on("click", function (d) {
-                this_.removePrecedentNodesDescription(d);
-                this_.showPrecedentNodesDescription(d);
             });
+        // .attr("text-anchor", d => d._children ? "end" : "start")
+        // .on("click", function (d) {
+        //     this_.removePrecedentNodesDescription(d);
+        //     this_.showPrecedentNodesDescription(d);
+        // });
         // .on('click', click);
 
         // Add Circle for the nodes
@@ -259,6 +258,9 @@ class Tree extends Component {
             })
             .text(function (d) {
                 return d.data.symbol;
+            })
+            .attr("class", function (d) {
+                return trueCodeSetSubclass.has(d.data.symbol) ? "trueNodeText" : "nodeText"
             });
 
         var tooltip = d3.select("#tree-graph")
@@ -285,7 +287,17 @@ class Tree extends Component {
             .attr("class", function (d) {
                 return trueCodeSet.has(d.data.symbol) ? "node truenode" : "node falsenode"
             })
+            // .attr("class", function (d) {
+            //     return trueCodeSetSubclass.has(d.data.symbol) ? "trueNodeText" : "nodeText"
+            // })
             .attr("cursor", "pointer");
+
+        nodeUpdate
+            .select("foreignObject")
+            .attr("class", function (d) {
+                return trueCodeSetSubclass.has(d.data.symbol) ? "trueNodeText" : "nodeText"
+            });
+
 
         // Remove any exiting nodes
         var nodeExit = node

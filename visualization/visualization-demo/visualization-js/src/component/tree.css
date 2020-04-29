@@ -5,6 +5,14 @@
   -webkit-text-stroke-width: 0.5px;
 }
 
+.trueNodeText {
+  color: #5555ff
+}
+
+.NodeText {
+  -webkit-text-stroke-color: black;
+}
+
 .description {
   font-family: Montserrat;
   font-size: 14px;
@@ -44,7 +52,7 @@
   font: 14px Montserrat;
   /*letter-spacing: 0.06875em;*/
   -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
+  /* -webkit-text-stroke-color: black; */
 
   width: 200px;
   overflow: hidden;

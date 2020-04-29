@@ -187,3 +187,11 @@ body {
     margin-top: 4em;
     margin-left: 100px;
 }
+
+.list-label-name {
+    font-weight: bold;
+}
+
+.list-label-content {
+    margin-left:50px;
+}
