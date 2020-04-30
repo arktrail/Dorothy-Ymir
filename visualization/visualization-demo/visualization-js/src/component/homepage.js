@@ -18,6 +18,7 @@ const PREDICTED_NODES_MAX = 10
 const TREE_HEIGHT = 600
 const TREE_WIDTH = 800
 const DEFAULT_NODES = 3
+const DEFAULT_PROB = 0.03
 
 class HomePage extends Component {
     constructor(props) {
@@ -33,6 +34,11 @@ class HomePage extends Component {
             descriptionDict: null
 
         };
+    }
+
+    calculateNodeNumber = (treeData) => {
+        console.log("calcualteNodeNumber, ", treeData)
+        return DEFAULT_NODES
     }
 
     handleSubmit = () => {
@@ -51,7 +57,9 @@ class HomePage extends Component {
                 treeData: res.data.tree,
                 descLabels: res.data.ordered_labels,
                 descriptionDict: res.data.description_dict,
-                renderType: RenderType.RENDERED
+                renderType: RenderType.RENDERED,
+                leafNodesNum: DEFAULT_NODES,
+                cpcCodesSubclass: new Set()
             });
         })
     }
@@ -242,8 +250,8 @@ class HomePage extends Component {
                                     </Typography>
                                     <Slider
                                         className="slider"
-                                        defaultValue={DEFAULT_NODES}
-                                        // defaultValue={leafNodesNum}
+                                        defaultValue={this.calculateNodeNumber(treeData)}
+                                        // defaultValue={DEFAULT_NODES}
                                         getAriaValueText={(value) => value}
                                         aria-labelledby="discrete-slider"
                                         valueLabelDisplay="auto"
