@@ -52,7 +52,7 @@ class RecallCurve extends Component {
 
     createBasics() {
         const { height, width } = this.props
-        var margin = { top: 40, right: 150, bottom: 30, left: 120 },
+        var margin = { top: 40, right: 150, bottom: 30, left: 50 },
             w = width - margin.left - margin.right,
             h = height - margin.top - margin.bottom;
 
@@ -122,23 +122,23 @@ class RecallCurve extends Component {
         // title
         svg.append("text")
             .attr("x", (width / 2))
-            .attr("y", -28)
+            .attr("y", -20)
             .attr("text-anchor", "middle")
             .style("font-size", "16px")
-            .text("Chart: Classification Results Analysis Curve");
+            .text("Chart: Classification Results Recall Curve");
 
         // x axis
         svg.append("text")
-            .attr("x", -120)
-            .attr("y", -7)
-            .style("font-size", "12px")
-            .text("% of correct classifications captured");
+            .attr("x", -20)
+            .attr("y", -20)
+            .style("font-size", "13px")
+            .text("Recall");
 
         // y axis
         svg.append("text")
             .attr("x", 520)
-            .attr("y", 365)
-            .style("font-size", "12px")
+            .attr("y", 370)
+            .style("font-size", "13px")
             .text("Top @");
     }
 

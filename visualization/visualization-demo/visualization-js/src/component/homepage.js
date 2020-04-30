@@ -29,7 +29,9 @@ class HomePage extends Component {
             treeData: null,
             leafNodesNum: DEFAULT_NODES,
             renderType: RenderType.NOT_RENDER,
-            descLabels: []
+            descLabels: [],
+            descriptionDict: null
+
         };
     }
 
@@ -48,6 +50,7 @@ class HomePage extends Component {
             this.setState({
                 treeData: res.data.tree,
                 descLabels: res.data.ordered_labels,
+                descriptionDict: res.data.description_dict,
                 renderType: RenderType.RENDERED
             });
         })
@@ -109,7 +112,7 @@ class HomePage extends Component {
     }
 
     render() {
-        const { renderType, treeData, leafNodesNum, text, cpcCodes, cpcCodesSubclass, descLabels } = this.state
+        const { renderType, treeData, leafNodesNum, text, cpcCodes, cpcCodesSubclass, descLabels, descriptionDict } = this.state
         const marks = this.createMarks()
         return (
             <div>
@@ -259,6 +262,13 @@ class HomePage extends Component {
                                             trueCodeSet={cpcCodes}
                                             trueCodeSetSubclass={cpcCodesSubclass}
                                         />
+                                    </div>
+                                    <div id="data-list">
+                                        <DataList
+                                            descriptionDict={descriptionDict}
+                                            treeData={treeData}
+                                            leafNodesNum={leafNodesNum}
+                                            descLabels={descLabels} />
                                     </div>
 
                                     {cpcCodesSubclass.size !== 0 && descLabels.length !== 0 &&
