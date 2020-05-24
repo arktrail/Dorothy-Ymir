@@ -6,6 +6,9 @@ from collections import defaultdict
 
 import numpy as np
 import scipy.sparse as sp
+import json
+import dill
+import pickle
 
 import cnn_train
 import data_helper
@@ -98,20 +101,21 @@ def main():
     model_type = sys.argv[5]
     tree_file_path = sys.argv[6]
     use_words = int(sys.argv[7])
+    label_name = sys.argv[8]
+    input_text_name = sys.argv[9]
 
     train_lines = open(train, "r")
-    # train_lines = f_train.readlines()
     test_lines = open(test, "r")
-    # test_lines = f_test.readlines()
     valid_lines = open(validation, "r")
-    # valid_lines = f_valid.readlines()
     
 
     # Building Hierarchical information
     # =========================================================
     category_hie_info_dic = make_labels_hie_info_dic(tree_file_path)
-    input_data_dic = data_helper.data_load(train_lines, valid_lines, test_lines, category_hie_info_dic, use_words)
+    input_data_dic = data_helper.data_load(train_lines, valid_lines, test_lines, category_hie_info_dic, use_words, label_name, input_text_name)
     category_hie_list_dic = make_labels_hie_list_dic(list(input_data_dic["catgy"].keys()), category_hie_info_dic)
+    
+
 
     train_lines.close()
     test_lines.close()
@@ -121,6 +125,7 @@ def main():
     print ("-"*50)
     print ("Loading Word embedings...")
     embedding_weight = data_helper.embedding_weights_load(input_data_dic["vocab"], embedding_weight_path)
+    
 
     # Conditions of each model
     # =========================================================
@@ -146,6 +151,12 @@ def main():
         print ("-"*50)
         print ("Pre-process for hierarchical categorization...")
         Tree = make_tree(tree_file_path)
+        # save vocab to vocab.json
+        with open('vocab.pkl', 'w') as fp:
+            json.dump(input_data_dic["vocab"], fp)
+        # save layerTo catgy to catgy.json
+        with open('catgy.pkl', 'wb') as fp:
+            pickle.dump(category_hie_list_dic, fp)
         layer = 1
         depth = data_helper.order_n(1)
         upper_depth = None

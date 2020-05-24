@@ -42,22 +42,23 @@ def convert_format(label):
     new_labels = [labels[0]]
     for i in range(1, len(labels)):
         prev_len = len(labels[i-1])
-        new_labels.append(new_labels[i-1] + "@" + labels[i][prev_len:])
+        new_labels.append(new_labels[i-1] + "@" + labels[i][prev_len:].strip())
     return new_labels
 # read data from text file
 # =========================================================
-def  make_data_list(data, kind_of_data, tree_info, max_sen_len, vocab, catgy, article_id, useWords):
+def  make_data_list(data, kind_of_data, tree_info, max_sen_len, vocab, catgy, article_id, useWords, label_name, input_text_name):
     
     data_list = []
+    count = 0
     for line in tqdm(data,desc="Loading " + kind_of_data + " data"):
         tmp_dict = dict()
         line_data = json.loads(line)
-        label_list = line_data["doc_label"]
+        label_list = line_data[label_name]
         new_label_list = []
         for label in label_list:
             new_label_list.extend(convert_format(label))
-        text_list = line_data["doc_token"]
         
+        text_list = line_data[input_text_name]
         tmp_dict['text'] = ' '.join(text_list[:useWords])
         [vocab[word] for word in tmp_dict['text'].split(" ")]
         tmp_dict['num_words'] = len(tmp_dict['text'].split(" "))
@@ -69,35 +70,25 @@ def  make_data_list(data, kind_of_data, tree_info, max_sen_len, vocab, catgy, ar
         tmp_dict['id'] = str(article_id)
         article_id += 1
         data_list.append(tmp_dict)
-        # tmp_dict = dict()
-        # line = line[:-1]
-        # tmp_dict['text'] = ' '.join(clean_str(' '.join(line.split("\t")[1].split(" "))).split(" ")[:useWords])
-        # [vocab[word] for word in tmp_dict['text'].split(" ")]
-        # tmp_dict['num_words'] = len(tmp_dict['text'].split(" "))
-        # max_sen_len = max(max_sen_len, tmp_dict['num_words'])
-        # tmp_dict['split'] = kind_of_data
-        # tmp_dict['hie_info'] = list(set([tree_info[cat] for cat in line.split("\t")[0].split(",")]))
-        # tmp_dict['catgy'] = [cat for cat in line.split("\t")[0].split(",")]
-        # [catgy[cat] for cat in line.split("\t")[0].split(",")]
-        # tmp_dict['id'] = str(article_id)
-        # article_id += 1
-        # data_list.append(tmp_dict)
         del tmp_dict
+        count += 1
+    print("Load " + str(count) + " lines of " + kind_of_data + " data")
     return data_list, max_sen_len, vocab, catgy, article_id
 
 # read data
 # =========================================================
-def data_load(train, valid, test, tree_info, use_words):
+def data_load(train, valid, test, tree_info, use_words, label_name, input_text_name):
     vocab = defaultdict( lambda: len(vocab) )
     catgy = defaultdict( lambda: len(catgy) )
     article_id = 0
     max_sen_len = 0
 
-    train_list, max_sen_len, vocab, catgy, article_id = make_data_list(train, 'train', tree_info, max_sen_len, vocab, catgy, article_id, use_words) 
-    valid_list, max_sen_len, vocab, catgy, article_id = make_data_list(valid, 'valid', tree_info, max_sen_len, vocab, catgy, article_id, use_words) 
-    test_list, max_sen_len, vocab, catgy, article_id = make_data_list(test, 'test', tree_info, max_sen_len, vocab, catgy, article_id, use_words) 
+    train_list, max_sen_len, vocab, catgy, article_id = make_data_list(train, 'train', tree_info, max_sen_len, vocab, catgy, article_id, use_words, label_name, input_text_name) 
+    valid_list, max_sen_len, vocab, catgy, article_id = make_data_list(valid, 'valid', tree_info, max_sen_len, vocab, catgy, article_id, use_words, label_name, input_text_name) 
+    test_list, max_sen_len, vocab, catgy, article_id = make_data_list(test, 'test', tree_info, max_sen_len, vocab, catgy, article_id, use_words, label_name, input_text_name) 
     class_dim = len(catgy)
-
+    # add unknown word in vocab
+    vocab["UNK"] = len(vocab.keys())
     data = {}
     data['train'] = train_list
     data['test'] = test_list
