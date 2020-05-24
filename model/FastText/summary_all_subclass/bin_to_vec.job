@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --partition=LM
+#SBATCH --mem=200GB
+#SBATCH --nodes=1
+#SBATCH --ntasks=4
+#SBATCH -o bin_to_vec.out
+#SBATCH -t 4:00:00
+
+# where we store data,
+cd /pylon5/sez3a3p/yyn1228/Dorothy-Ymir/model/FastText/summary_all_subclass
+
+# source env, use our own venv
+source $SCRATCH/env/dorothy/bin/activate
+
+# run program
+python3 -u ../bin_to_vec.py fasttext_model.bin subclass.vec
+
+# deactive the venv
+deactivate

@@ -1,0 +1,7 @@
+Read 4913M words
+Number of words:  2826557
+Number of labels: 232469
+Progress: 100.0% words/sec/thread:  402805 lr:  0.000000 avg.loss:  7.351418 ETA:   0h 0m 0s
+N	490231
+P@1	0.287
+R@1	0.053

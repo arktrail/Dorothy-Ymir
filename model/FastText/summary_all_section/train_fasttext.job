@@ -1,0 +1,18 @@
+#!/bin/bash
+#SBATCH --partition=RM-small
+#SBATCH --nodes=1
+#SBATCH --ntasks=12
+#SBATCH -o train_fasttext.out
+#SBATCH -t 8:00:00
+
+# where we store data,
+cd /pylon5/sez3a3p/yyn1228/Dorothy-Ymir/model/FastText/summary_all_section
+
+# source env, use our own venv
+source $SCRATCH/env/dorothy/bin/activate
+
+# run program
+python3 -u train.py
+
+# deactive the venv
+deactivate
