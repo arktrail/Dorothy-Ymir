@@ -22,16 +22,6 @@ import tree
 import json 
 import pickle
 
-MODEL_PARAMS = {"cudnn": 'never',
-                  "out_channels": 128,
-                  "row_dim": 300,
-                  "batch_size": 64,
-                  "hidden_dim": 1024,
-                  "n_classes": len(learning_categories),
-                  "embedding_weight": embedding_weight,
-                  'mode': 'test-predict',
-                  'load_param_node_name': depth
-                  }
 
 def load_my_test_json(test, vocab_dic, use_words):
     data_list = []
@@ -113,7 +103,16 @@ def main():
     x_tst = build_input_sentence_data(tst_padded)
 
 
-    cnn_params = MODEL_PARAMS
+    cnn_params = {"cudnn": 'never',
+                  "out_channels": 128,
+                  "row_dim": 300,
+                  "batch_size": 64,
+                  "hidden_dim": 1024,
+                  "n_classes": len(learning_categories),
+                  "embedding_weight": embedding_weight,
+                  'mode': 'test-predict',
+                  'load_param_node_name': depth
+                  }
     model = cnn_model.CNN(**cnn_params)
     model.to_gpu()
 
