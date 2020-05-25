@@ -1,0 +1,116 @@
+Skip dict generation. Use existing dict.
+Final dict to be used:
+Size of doc_label dict is 658
+Size of doc_token dict is 1214645
+Size of doc_char dict is 314
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Final dict to be used:
+Size of doc_label dict is 658
+Size of doc_token dict is 1214645
+Size of doc_char dict is 314
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Final dict to be used:
+Size of doc_label dict is 658
+Size of doc_token dict is 1214645
+Size of doc_char dict is 314
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Final dict to be used:
+Size of doc_label dict is 658
+Size of doc_token dict is 1214645
+Size of doc_char dict is 314
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Train performance at epoch 1 is precision: 0.242596, recall: 0.620970, fscore: 0.348890, macro-fscore: 0.183750, right: 315375, predict: 1300000, standard: 507875.
+Loss is: 0.023866.
+Validate performance at epoch 1 is precision: 0.237720, recall: 0.608439, fscore: 0.341870, macro-fscore: 0.165545, right: 47544, predict: 200000, standard: 78141.
+Loss is: 0.024091.
+test performance at epoch 1 is precision: 0.237870, recall: 0.608244, fscore: 0.341994, macro-fscore: 0.166688, right: 71361, predict: 300000, standard: 117323.
+Loss is: 0.023998.
+Epoch 1 cost time: 784 second
+Train performance at epoch 2 is precision: 0.280513, recall: 0.718025, fscore: 0.403421, macro-fscore: 0.312076, right: 364667, predict: 1300000, standard: 507875.
+Loss is: 0.019040.
+Validate performance at epoch 2 is precision: 0.269895, recall: 0.690790, fscore: 0.388141, macro-fscore: 0.264433, right: 53979, predict: 200000, standard: 78141.
+Loss is: 0.019532.
+test performance at epoch 2 is precision: 0.269733, recall: 0.689720, fscore: 0.387805, macro-fscore: 0.267626, right: 80920, predict: 300000, standard: 117323.
+Loss is: 0.019453.
+Epoch 2 cost time: 786 second
+Train performance at epoch 3 is precision: 0.299115, recall: 0.765639, fscore: 0.430172, macro-fscore: 0.408447, right: 388849, predict: 1300000, standard: 507875.
+Loss is: 0.016290.
+Validate performance at epoch 3 is precision: 0.280650, recall: 0.718317, fscore: 0.403608, macro-fscore: 0.318610, right: 56130, predict: 200000, standard: 78141.
+Loss is: 0.017063.
+test performance at epoch 3 is precision: 0.281140, recall: 0.718887, fscore: 0.404205, macro-fscore: 0.314993, right: 84342, predict: 300000, standard: 117323.
+Loss is: 0.017013.
+Epoch 3 cost time: 789 second
+Train performance at epoch 4 is precision: 0.315176, recall: 0.806752, fscore: 0.453271, macro-fscore: 0.471375, right: 409729, predict: 1300000, standard: 507875.
+Loss is: 0.014485.
+Validate performance at epoch 4 is precision: 0.287975, recall: 0.737065, fscore: 0.414142, macro-fscore: 0.342238, right: 57595, predict: 200000, standard: 78141.
+Loss is: 0.015583.
+test performance at epoch 4 is precision: 0.288967, recall: 0.738900, fscore: 0.415458, macro-fscore: 0.345847, right: 86690, predict: 300000, standard: 117323.
+Loss is: 0.015535.
+Epoch 4 cost time: 789 second
+Train performance at epoch 5 is precision: 0.327541, recall: 0.838401, fscore: 0.471054, macro-fscore: 0.516129, right: 425803, predict: 1300000, standard: 507875.
+Loss is: 0.012705.
+Validate performance at epoch 5 is precision: 0.290410, recall: 0.743297, fscore: 0.417644, macro-fscore: 0.356518, right: 58082, predict: 200000, standard: 78141.
+Loss is: 0.014229.
+test performance at epoch 5 is precision: 0.290857, recall: 0.743733, fscore: 0.418175, macro-fscore: 0.350261, right: 87257, predict: 300000, standard: 117323.
+Loss is: 0.014181.
+Epoch 5 cost time: 787 second
+Train performance at epoch 6 is precision: 0.336623, recall: 0.861649, fscore: 0.484115, macro-fscore: 0.558748, right: 437610, predict: 1300000, standard: 507875.
+Loss is: 0.010906.
+Validate performance at epoch 6 is precision: 0.289410, recall: 0.740738, fscore: 0.416206, macro-fscore: 0.368675, right: 57882, predict: 200000, standard: 78141.
+Loss is: 0.012843.
+test performance at epoch 6 is precision: 0.289820, recall: 0.741082, fscore: 0.416684, macro-fscore: 0.358643, right: 86946, predict: 300000, standard: 117323.
+Loss is: 0.012825.
+Epoch 6 cost time: 789 second
+Train performance at epoch 7 is precision: 0.345693, recall: 0.884865, fscore: 0.497159, macro-fscore: 0.580751, right: 449401, predict: 1300000, standard: 507875.
+Loss is: 0.009771.
+Validate performance at epoch 7 is precision: 0.288415, recall: 0.738191, fscore: 0.414775, macro-fscore: 0.362560, right: 57683, predict: 200000, standard: 78141.
+Loss is: 0.012201.
+test performance at epoch 7 is precision: 0.288940, recall: 0.738832, fscore: 0.415419, macro-fscore: 0.348486, right: 86682, predict: 300000, standard: 117323.
+Loss is: 0.012185.
+Epoch 7 cost time: 793 second
+Train performance at epoch 8 is precision: 0.352979, recall: 0.903516, fscore: 0.507638, macro-fscore: 0.604375, right: 458873, predict: 1300000, standard: 507875.
+Loss is: 0.008138.
+Validate performance at epoch 8 is precision: 0.287090, recall: 0.734800, fscore: 0.412870, macro-fscore: 0.358433, right: 57418, predict: 200000, standard: 78141.
+Loss is: 0.011053.
+test performance at epoch 8 is precision: 0.287677, recall: 0.735602, fscore: 0.413603, macro-fscore: 0.347813, right: 86303, predict: 300000, standard: 117323.
+Loss is: 0.011037.
+Epoch 8 cost time: 797 second
+Train performance at epoch 9 is precision: 0.358577, recall: 0.917844, fscore: 0.515688, macro-fscore: 0.632615, right: 466150, predict: 1300000, standard: 507875.
+Loss is: 0.007261.
+Validate performance at epoch 9 is precision: 0.286245, recall: 0.732637, fscore: 0.411655, macro-fscore: 0.366774, right: 57249, predict: 200000, standard: 78141.
+Loss is: 0.010653.
+test performance at epoch 9 is precision: 0.286760, recall: 0.733258, fscore: 0.412285, macro-fscore: 0.360497, right: 86028, predict: 300000, standard: 117323.
+Loss is: 0.010648.
+Epoch 9 cost time: 799 second
+Train performance at epoch 10 is precision: 0.363469, recall: 0.930367, fscore: 0.522724, macro-fscore: 0.628322, right: 472510, predict: 1300000, standard: 507875.
+Loss is: 0.006590.
+Validate performance at epoch 10 is precision: 0.283985, recall: 0.726853, fscore: 0.408404, macro-fscore: 0.353958, right: 56797, predict: 200000, standard: 78141.
+Loss is: 0.010450.
+test performance at epoch 10 is precision: 0.284770, recall: 0.728169, fscore: 0.409424, macro-fscore: 0.346817, right: 85431, predict: 300000, standard: 117323.
+Loss is: 0.010431.
+Epoch 10 cost time: 800 second
+Best test performance at epoch 5 is precision: 0.290857, recall: 0.743733, fscore: 0.418175, macro-fscore: 0.350261, right: 87257, predict: 300000, standard: 117323.
+Loss is: 0.014181.
+Final dict to be used:
+Size of doc_label dict is 658
+Size of doc_token dict is 1214645
+Size of doc_char dict is 314
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Final dict to be used:
+Size of doc_label dict is 658
+Size of doc_token dict is 1214645
+Size of doc_char dict is 314
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Performance is precision: 0.290857, recall: 0.743733, fscore: 0.418175, right: 87257, predict: 300000, standard: 117323.

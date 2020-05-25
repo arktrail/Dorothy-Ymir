@@ -1,0 +1,80 @@
+Use dataset to generate dict.
+Size of doc_label dict is 665
+Size of doc_token dict is 9832872
+Size of doc_char dict is 344
+Size of doc_token_ngram dict is 0
+Size of doc_keyword dict is 0
+Size of doc_topic dict is 0
+Shrink dict over.
+Size of doc_label dict is 665
+Size of doc_token dict is 2000000
+Size of doc_char dict is 344
+Size of doc_token_ngram dict is 0
+Size of doc_keyword dict is 0
+Size of doc_topic dict is 0
+Final dict to be used:
+Size of doc_label dict is 665
+Size of doc_token dict is 2000000
+Size of doc_char dict is 344
+Size of doc_token_ngram dict is 0
+Size of doc_keyword dict is 0
+Size of doc_topic dict is 0
+Final dict to be used:
+Size of doc_label dict is 0
+Size of doc_token dict is 0
+Size of doc_char dict is 0
+Size of doc_token_ngram dict is 0
+Size of doc_keyword dict is 0
+Size of doc_topic dict is 0
+Final dict to be used:
+Size of doc_label dict is 0
+Size of doc_token dict is 0
+Size of doc_char dict is 0
+Size of doc_token_ngram dict is 0
+Size of doc_keyword dict is 0
+Size of doc_topic dict is 0
+Final dict to be used:
+Size of doc_label dict is 0
+Size of doc_token dict is 0
+Size of doc_char dict is 0
+Size of doc_token_ngram dict is 0
+Size of doc_keyword dict is 0
+Size of doc_topic dict is 0
+Train performance at epoch 1 is precision: 0.298103, recall: 0.787120, fscore: 0.432433, macro-fscore: 0.430814, right: 5059821, predict: 16973385, standard: 6428270.
+Loss is: 0.013917.
+Validate performance at epoch 1 is precision: 0.304305, recall: 0.778861, fscore: 0.437627, macro-fscore: 0.412136, right: 60861, predict: 200000, standard: 78141.
+Loss is: 0.013719.
+test performance at epoch 1 is precision: 0.304883, recall: 0.779600, fscore: 0.438342, macro-fscore: 0.407098, right: 91465, predict: 300000, standard: 117323.
+Loss is: 0.013656.
+Epoch 1 cost time: 7219 second
+Train performance at epoch 2 is precision: 0.302070, recall: 0.797594, fscore: 0.438187, macro-fscore: 0.448372, right: 5127148, predict: 16973385, standard: 6428270.
+Loss is: 0.012814.
+Validate performance at epoch 2 is precision: 0.307840, recall: 0.787909, fscore: 0.442711, macro-fscore: 0.431200, right: 61568, predict: 200000, standard: 78141.
+Loss is: 0.012649.
+test performance at epoch 2 is precision: 0.308293, recall: 0.788319, fscore: 0.443244, macro-fscore: 0.430344, right: 92488, predict: 300000, standard: 117323.
+Loss is: 0.012606.
+Epoch 2 cost time: 8259 second
+Train performance at epoch 3 is precision: 0.303372, recall: 0.801031, fscore: 0.440075, macro-fscore: 0.447788, right: 5149242, predict: 16973385, standard: 6428270.
+Loss is: 0.012144.
+Validate performance at epoch 3 is precision: 0.309535, recall: 0.792247, fscore: 0.445148, macro-fscore: 0.424990, right: 61907, predict: 200000, standard: 78141.
+Loss is: 0.012025.
+test performance at epoch 3 is precision: 0.309737, recall: 0.792010, fscore: 0.445319, macro-fscore: 0.427035, right: 92921, predict: 300000, standard: 117323.
+Loss is: 0.011970.
+Epoch 3 cost time: 8585 second
+Best test performance at epoch 3 is precision: 0.309737, recall: 0.792010, fscore: 0.445319, macro-fscore: 0.427035, right: 92921, predict: 300000, standard: 117323.
+Loss is: 0.011970.
+Final dict to be used:
+Size of doc_label dict is 0
+Size of doc_token dict is 0
+Size of doc_char dict is 0
+Size of doc_token_ngram dict is 0
+Size of doc_keyword dict is 0
+Size of doc_topic dict is 0
+Final dict to be used:
+Size of doc_label dict is 0
+Size of doc_token dict is 0
+Size of doc_char dict is 0
+Size of doc_token_ngram dict is 0
+Size of doc_keyword dict is 0
+Size of doc_topic dict is 0
+Performance is precision: 0.309737, recall: 0.792010, fscore: 0.445319, right: 92921, predict: 300000, standard: 117323.

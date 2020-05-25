@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH --partition=GPU-AI
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:volta16:1
+#SBATCH -o train_eval.out
+#SBATCH -t 12:00:00
+
+#echo commands to stdout, pls don't for large output
+#set -x
+
+
+# go to the new directory created for this specific model
+cd $SCRATCH/Dorothy-Ymir/model/NeuralClassifier/output/RCNN_summary
+
+# source env, use our own venv
+source $SCRATCH/env/dorothy/bin/activate
+
+# load cuda
+module load cuda/10.1
+
+# run program
+python3 -u ../../NeuralNLP-NeuralClassifier-master/train.py train.json
+python3 -u ../../NeuralNLP-NeuralClassifier-master/eval.py train.json
+
+# deactive the venv
+deactivate

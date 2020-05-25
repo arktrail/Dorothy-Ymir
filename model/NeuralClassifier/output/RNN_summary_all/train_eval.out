@@ -1,0 +1,67 @@
+Skip dict generation. Use existing dict.
+Final dict to be used:
+Size of doc_label dict is 665
+Size of doc_token dict is 2000003
+Size of doc_char dict is 347
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Final dict to be used:
+Size of doc_label dict is 665
+Size of doc_token dict is 2000003
+Size of doc_char dict is 347
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Final dict to be used:
+Size of doc_label dict is 665
+Size of doc_token dict is 2000003
+Size of doc_char dict is 347
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Final dict to be used:
+Size of doc_label dict is 665
+Size of doc_token dict is 2000003
+Size of doc_char dict is 347
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Train performance at epoch 1 is precision: 0.305171, recall: 0.805782, fscore: 0.442686, macro-fscore: 0.427082, right: 5179787, predict: 16973385, standard: 6428270.
+Loss is: 0.011942.
+Validate performance at epoch 1 is precision: 0.304450, recall: 0.796691, fscore: 0.440548, macro-fscore: 0.406257, right: 91335, predict: 300000, standard: 114643.
+Loss is: 0.011989.
+test performance at epoch 1 is precision: 0.302577, recall: 0.800030, fscore: 0.439088, macro-fscore: 0.410669, right: 90773, predict: 300000, standard: 113462.
+Loss is: 0.011926.
+Epoch 1 cost time: 10974 second
+Train performance at epoch 2 is precision: 0.318340, recall: 0.840553, fscore: 0.461788, macro-fscore: 0.463740, right: 5403301, predict: 16973385, standard: 6428270.
+Loss is: 0.010196.
+Validate performance at epoch 2 is precision: 0.314073, recall: 0.821873, fscore: 0.454473, macro-fscore: 0.441933, right: 94222, predict: 300000, standard: 114643.
+Loss is: 0.010420.
+test performance at epoch 2 is precision: 0.312163, recall: 0.825378, fscore: 0.452999, macro-fscore: 0.445560, right: 93649, predict: 300000, standard: 113462.
+Loss is: 0.010324.
+Epoch 2 cost time: 12320 second
+Train performance at epoch 3 is precision: 0.326390, recall: 0.861810, fscore: 0.473466, macro-fscore: 0.480023, right: 5539945, predict: 16973385, standard: 6428270.
+Loss is: 0.009537.
+Validate performance at epoch 3 is precision: 0.317850, recall: 0.831756, fscore: 0.459938, macro-fscore: 0.445770, right: 95355, predict: 300000, standard: 114643.
+Loss is: 0.009981.
+test performance at epoch 3 is precision: 0.315403, recall: 0.833944, fscore: 0.457701, macro-fscore: 0.443562, right: 94621, predict: 300000, standard: 113462.
+Loss is: 0.009913.
+Epoch 3 cost time: 12237 second
+Best test performance at epoch 3 is precision: 0.315403, recall: 0.833944, fscore: 0.457701, macro-fscore: 0.443562, right: 94621, predict: 300000, standard: 113462.
+Loss is: 0.009913.
+Final dict to be used:
+Size of doc_label dict is 665
+Size of doc_token dict is 2000003
+Size of doc_char dict is 347
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Final dict to be used:
+Size of doc_label dict is 665
+Size of doc_token dict is 2000003
+Size of doc_char dict is 347
+Size of doc_token_ngram dict is 3
+Size of doc_keyword dict is 3
+Size of doc_topic dict is 3
+Performance is precision: 0.315403, recall: 0.833944, fscore: 0.457701, right: 94621, predict: 300000, standard: 113462.
