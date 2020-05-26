@@ -110,3 +110,19 @@ The detailed evaluation is saved in [notebooks/prob_evaluate.ipynb](https://gith
 
 
 ## Web app <a id="webapp"></a>
+Inorder to obtain an intuitive feeling of the result, we built an web app that could predict the corresponding CPC code given by any text in real time, and generate an tree plot. 
+
+The backend for our Web app is Django, the frontend is built by React and the project is deployed on the AWS. The user could easily type in any text the describe one tech utility, and the predicted cpc codes will be render in the form of tree in secondes. 
+
+For the backend, we load the model and make the prediction in [`models.py `](https://github.com/yyn19951228/Dorothy-Ymir/blob/visualization/visualization/visualization-demo/backend/demo/models.py) at the very first time of the prediction, so for the following predictions, we can get rid of loading the giant model file too much times. 
+But the prediction also need to be structed and parsed into the format that could be used for frontend, and this part of work is done by [`treebuilders.py`](https://github.com/yyn19951228/Dorothy-Ymir/blob/visualization/visualization/visualization-demo/backend/demo/treebuilder.py) and [`views.py`](https://github.com/yyn19951228/Dorothy-Ymir/blob/visualization/visualization/visualization-demo/backend/demo/views.py).
+Also, in the backend, we need to rank the predcitions according to their confidence scores made by our model for the frontend render work, so the total data we return back to front is :
+```
+res = {'tree': tree, 'ordered_labels': ordered_labels}
+```
+where `tree` is the parsed predictions in tree structure format, and `ordered_labels` is the prediction labels ranked by their confidence scores.
+
+In the front end, we use these two data to render a tree chart, and we also provide an adjust bar that could change the tree leafnode numbers for analyse.
+
+
+The implementation is well documented, so it is easy for further integration.  
