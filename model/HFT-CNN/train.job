@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --partition=GPU-AI
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:volta16:1
+#SBATCH -o subclass.out
+# where we store data,
+cd $SCRATCH
+
+# source env, use our own venv
+source $SCRATCH/env/dorothy/bin/activate
+
+cd $SCRATCH/Dorothy-Ymir/model/HFT-CNN
+
+# load cuda
+module load cuda/10.1
+
+
+# run program
+bash train.sh
+
+# deactive the venv
+deactivate
