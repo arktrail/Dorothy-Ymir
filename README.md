@@ -143,7 +143,7 @@ For subgroup:
 This notebook at [notebooks/visualization.ipynb](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/notebooks/visualization.ipynb) includes visualizations of patent embeddings and word embeddings. The patent embedding figure is the one used in the presentation. The word embedding figure does not show very clear clusters, because the word lists and categories we choose are too general. The notebook includes all the code to generate the word embeddings and the word lists can be changed easily. If more representative word lists and categories are found, change the word lists and rerun the word embedding part in the notebook to get the word embedding visualization.
 
 ## Web app <a id="webapp"></a>
-Inorder to obtain an intuitive feeling of the result, we built an web app that could predict the corresponding CPC code given by any text in real time, and generate an tree plot. 
+Inorder to obtain an intuitive feeling of the result, we built an web app that could predict the corresponding CPC code given by any text in real time, and generate an tree plot. One thing to note is that the WebApp is under the `visualization`  branch, and the model impl is under `master` branch.
 
 The backend for our Web app is Django, the frontend is built by React and the project is deployed on the AWS. The user could easily type in any text the describe one tech utility, and the predicted cpc codes will be render in the form of tree in secondes. 
 
