@@ -20,7 +20,7 @@ Step 1: We generate our dataset from all granted patents up to September 2019, t
 $ ???
 ```
 
-Step 2: We parse the cpc field into labels we need (section, classs, subclass, etc.), convert the text into a list of tokens, and split the data into train, valid, and test datasets by the ratio of 7:1:1. This step also removes all punctuations and convert all uppercase letters into lower case. This can be done by running the file [data_preprocess/text_preprocess.py](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/data_preprocess/text_preprocess.py), for example:
+Step 2: We parse the cpc field into labels we need (section, classs, subclass, etc.), convert the text into a list of tokens, and split the data into train, valid, and test datasets by the ratio of 8:1:1. This step also removes all punctuations and convert all uppercase letters into lower case. This can be done by running the file [data_preprocess/text_preprocess.py](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/data_preprocess/text_preprocess.py), for example:
 
 ```sh
 $ python3 -u data_preprocess/text_preprocess.py \
