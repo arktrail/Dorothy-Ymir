@@ -1,5 +1,5 @@
 #! /bin/bash
-My_Test=../processed_data/test.json
+My_Test=../../../data/processed_data/test.json
 
 ## Embedding Weights Type (fastText .bin)
 EmbeddingWeightsPath=./Word_embedding/
@@ -14,4 +14,4 @@ VocabPath=./vocab.pkl
 CatgyPath=./catgy.pkl
 OutputProbPath=./test.csv
 
-python3.5 test.py ${My_Test} ${EmbeddingWeightsPath} ${TreefilePath} ${USE_WORDS} ${LabelName} ${InputTextName} ${VocabPath} ${CatgyPath} ${OutputProbPath}
+python test.py ${My_Test} ${EmbeddingWeightsPath} ${TreefilePath} ${USE_WORDS} ${LabelName} ${InputTextName} ${VocabPath} ${CatgyPath} ${OutputProbPath}
