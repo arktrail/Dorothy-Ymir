@@ -102,7 +102,7 @@ Because there are many hyperparameters to tune, we include a summary of all the 
 
 
 ### HFT-CNN <a id="hftcnn"></a>
-We also use [the HFT-CNN library](https://github.com/ShimShim46/HFT-CNN) to train another model. The idea is to train a CNN model on each level, which pass word embeddings and parameters in early layers to the CNN model on the next level. We add some code to support multi-GPU training. Follow the [instructions](https://github.com/ShimShim46/HFT-CNN) here to train the model.
+We also use [the HFT-CNN library](https://github.com/ShimShim46/HFT-CNN) to train another model. The idea is to train a CNN model on each level, which pass word embeddings and parameters in early layers to the CNN model on the next level. We add some code to support multi-GPU training. Follow the [README.md](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/model/HFT-CNN/README.md) here to train the model.
 
 ## Evaluation <a id="eval"></a>
 
