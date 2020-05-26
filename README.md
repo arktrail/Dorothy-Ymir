@@ -11,12 +11,16 @@ This github repository includes code for Dorothy AI Patent Classifier
 * [Evaluation](#eval)
 * [Visualization](#visual)
 * [Web app](#webapp)
+* [Other](#other)
 
-## Data generation and preprocess <a id="sys-arc"></a>
+## Data generation and preprocess <a id="data"></a>
 
-First we generate our dataset from all granted patents up to September 2019, the total number of patent in the dataset is 4,363,544. In order to further train our model, we split our dataset into training set, validation set and testing set by the ratio of 7:2:1.
+Step 1: We generate our dataset from all granted patents up to September 2019, the total number of patents in the dataset is 4,363,544. (ADD: how to get files in /pylon5/sez3a3p/yyn1228/data/json_reparse)
+```sh
+$ ???
+```
 
-Step 2: We parse the cpc field into labels we need (section, classs, subclass, etc.), convert the text into a list of tokens, and split the data into train, valid, and test datasets. This step also removes all punctuations and convert all uppercase letters into lower case. This can be done by running the file [data_preprocess/text_preprocess.py](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/data_preprocess/text_preprocess.py), for example:
+Step 2: We parse the cpc field into labels we need (section, classs, subclass, etc.), convert the text into a list of tokens, and split the data into train, valid, and test datasets by the ratio of 7:1:1. This step also removes all punctuations and convert all uppercase letters into lower case. This can be done by running the file [data_preprocess/text_preprocess.py](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/data_preprocess/text_preprocess.py), for example:
 
 ```sh
 $ python3 -u data_preprocess/text_preprocess.py \
@@ -27,7 +31,7 @@ $ python3 -u data_preprocess/text_preprocess.py \
 Step 3: We further preprocess the data into a format that can be used by the machine learning libraries. This can be done by running the file [data_preprocess/create_training_data.py](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/data_preprocess/create_training_data.py). Note that the file takes 6 arguments:
 * input directory
 * output directory
-* text field: 'title', 'abstraction', 'claims', 'brief_summary', 'description'
+* text field: 'title', 'abstraction', 'claims', 'brief_summary' ('description' is too large to include)
 * level name: 'section', 'class', 'subclass', 'main_group', 'subgroup'
 * whether to remove stop words: True means remove stop words
 * whether to follow fasttext format: True means FastText format, False means Tecent format
@@ -75,7 +79,7 @@ Smaller datasets initially used for testing purposes. Note that these data were 
 ```
 
 ## Machine learning model <a id="ml"></a>
-This section introduces how we use various libraries to train machine learning models.
+This section introduces how we use various libraries to train machine learning models. All the models are trained using the brief summary text field.
 ### FastText <a id="fasttext"></a>
 We use [Facebook's FastText library](https://github.com/facebookresearch/fastText/tree/master/python) to train the well-known FastText model. This method first converts words into word embeddings and then average word embeddings to create the document embedding. Note that this does not consider the order of the words. To keep some information regarding the order, it includes 2-grams into the vocabulary. Because this model is relatively simple and Facebook uses a lot of tricks to speed up the training, the training can be done by using CPUs instead of GPUs in a couple of hours. To account for the hierarchical information, we borrow the idea from HFT-CNN: we first train the section level and pass the word embeddings into the next word as pretrained word embeddings.
 
@@ -93,7 +97,7 @@ We use [Tencent's NeuralClassifier library](https://github.com/Tencent/NeuralNLP
 
 A detailed README on how to train the model using NeuralClassifier is saved here: [README.md](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/model/NeuralClassifier/README.md). All models are saved in the "/pylon5/sez3a3p/yyn1228/Dorothy-Ymir/model/NeuralClassifier/output/xxx/checkpoint_dir_cpc" folders on PSC.
 
-Because there are many hyperparameters to tune, we include a summary of some of the best models we trained with the corresponding hyperparameters we used:
+Because there are many hyperparameters to tune, we include a summary of all the models we trained with their corresponding hyperparameters:
 ![tencent models](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/tencent.png)
 
 
@@ -102,12 +106,38 @@ We also use [the HFT-CNN library](https://github.com/ShimShim46/HFT-CNN) to trai
 
 ## Evaluation <a id="eval"></a>
 
-The detailed evaluation is saved in [notebooks/prob_evaluate.ipynb](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/notebooks/prob_evaluate.ipynb). It also includes methods to ensemble different models. See below a summary of the model results below. The best recall at n ≈ 5 is 91.5%.
+The detailed evaluation is saved in [notebooks/prob_evaluate.ipynb](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/notebooks/prob_evaluate.ipynb). It also includes methods to ensemble different models. See below a summary of the model results below. The best recall at n ≈ 5 is 91.6%.
 ![evaluation](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/eval.png)
+
+To see how the model works on other text fields, we also evaluate the model using title, abstract, and claims, although the model is trained using brief summary. Note that we have not used description to evaluate the model because it would explode the storage, but it is worth trying to evaluate the model using the first 1,000 tokens of the description. Also note that these evaluations only use the FastText model.
+| Text Field | Precision @ 1 | Recall @ 1 | Precision @ 5 | Recall @ 5 |
+| ------ | ------ | ------ | ------ | ------ |
+| Title | 0.107	|0.568	|0.098	|0.603
+| Abstract | 0.675	|0.401	|0.190	|0.709
+| Claims|0.699	|0.379	|0.247|	0.710
+| Title + Abstract + Claims|0.749|	0.403|	0.251|	0.755
+| Brief Summary |0.851|	0.453|	0.216|	0.856
+
+We also train FastText models at all the 5 levels. Note that it is only plausible to use the FastText model to train for group and subgroup because there are too many labels. At the subclass level, there are 666 labels and it takes hours to train a non-FastText model; at the subgroup level, there are 200,000 labels, which means if we still use the same model, it would take weeks to finish the training. For group and subgroup, we use the "hierarchical softmax loss" in the FastText model, which is a trick developed by Facebook and significantly shortens training time but lowers the performance a little bit.  
+| Level | Precision @ 1 | Recall @ 1 | Precision @ 5 | Recall @ 5 |
+| ------ | ------ | ------ | ------ | ------ |
+| Section |  0.921	|0.623	|0.271	|0.992
+| Class | 0.886	|0.535	|0.257	|0.929
+| Subclass|0.851|	0.453|	0.216|	0.856
+
+For the group:
+| Level | Recall @ 1 | Recall @ 10 | Recall @ 100 
+| ------ | ------ | ------ | ------ |
+| Group |  TBD	|TBD	|TBD
+
+For subgroup:
+| Level | Recall @ 1 | Recall @ 10 | Recall @ 100 | Recall @ 1000 |
+| ------ | ------ | ------ | ------ | ------ |
+| Subgroup |  0.054	|0.208	|0.468	|TBD
 
 ## Visualization <a id="visual"></a>
 
-
+This notebook at [notebooks/visualization.ipynb](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/notebooks/visualization.ipynb) includes visualizations of patent embeddings and word embeddings. The patent embedding figure is the one used in the presentation. The word embedding figure does not show very clear clusters, because the word lists and categories we choose are too general. The notebook includes all the code to generate the word embeddings and the word lists can be changed easily. If more representative word lists and categories are found, change the word lists and rerun the word embedding part in the notebook to get the word embedding visualization.
 
 ## Web app <a id="webapp"></a>
 Inorder to obtain an intuitive feeling of the result, we built an web app that could predict the corresponding CPC code given by any text in real time, and generate an tree plot. 
@@ -126,3 +156,8 @@ In the front end, we use these two data to render a tree chart, and we also prov
 
 
 The implementation is well documented, so it is easy for further integration.  
+
+## Other <a id="other"></a>
+* [notebooks/CPC_Preliminary_Data_Analysis.ipynb](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/notebooks/CPC_Preliminary_Data_Analysis.ipynb): this notebook includes some preliminary data analysis of the CPC MCF data (e.g. average number of labels, duplicate issues, number of labels at each level, etc.)
+* [notebooks/CPC_Text_Data.ipynb](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/notebooks/CPC_Text_Data.ipynb): this notebook has some preliminary data analysis of the CPC text data (e.g. average number of tokens of each text field)
+* [notebooks/evaluate.ipynb](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/notebooks/evaluate.ipynb): this notebook has some old evaluation methods (e.g. macro and micro F1, precision and recall at different percentiles, etc.)
