@@ -18,10 +18,17 @@ This github repository includes code for Dorothy AI Patent Classifier
 Step 1: We generate our dataset from all granted patents up to September 2019, the total number of patents in the dataset is 4,363,544. To regenerate this dataset, such command could be used
 ```sh
 $ sbatch /pylon5/sez3a3p/yyn1228/json_process_jobs/json_process_sin_*.job
-or 
-mannuly sbatch from /pylon5/sez3a3p/yyn1228/json_process_jobs/json_process_sin_a.job to /pylon5/sez3a3p/yyn1228/json_process_jobs/json_process_sin_h.job
 ```
-The extracted dataset is stored in the `/pylon5/sez3a3p/yyn1228/data/json_reparse`, this path is defined in the file [`database_reparse.py`](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/data_preprocess/database_reparse.py).
+or mannuly sbatch from 
+```sh
+/pylon5/sez3a3p/yyn1228/json_process_jobs/json_process_sin_a.job
+```
+to 
+```sh
+/pylon5/sez3a3p/yyn1228/json_process_jobs/json_process_sin_h.job
+```
+
+The extracted dataset is stored in the `/pylon5/sez3a3p/yyn1228/data/json_reparse`, this path is defined in the file [database_reparse.py](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/data_preprocess/database_reparse.py).
 
 Step 2: We parse the cpc field into labels we need (section, classs, subclass, etc.), convert the text into a list of tokens, and split the data into train, valid, and test datasets by the ratio of 8:1:1. This step also removes all punctuations and convert all uppercase letters into lower case. This can be done by running the file [data_preprocess/text_preprocess.py](https://github.com/yyn19951228/Dorothy-Ymir/blob/master/data_preprocess/text_preprocess.py), for example:
 
@@ -70,7 +77,7 @@ Processed data after Step 3 for brief summary and all levels, in FastText's form
 ```sh
 /pylon5/sez3a3p/yyn1228/data/all_summary_fasttext_section
 /pylon5/sez3a3p/yyn1228/data/all_summary_fasttext_class
-/pylon5/sez3a3p/yyn1228/data/all_summary_fasttext (this is for subclass)
+/pylon5/sez3a3p/yyn1228/data/all_summary_fasttext (this is subclass)
 /pylon5/sez3a3p/yyn1228/data/all_summary_fasttext_group
 /pylon5/sez3a3p/yyn1228/data/all_summary_fasttext_subgroup
 ```
@@ -131,12 +138,12 @@ We also train FastText models at all the 5 levels. Note that it is only plausibl
 For the group:
 | Level | Recall @ 1 | Recall @ 10 | Recall @ 100 
 | ------ | ------ | ------ | ------ |
-| Group |  TBD	|TBD	|TBD
+| Group |  0.220	|0.661	|0.912
 
 For subgroup:
 | Level | Recall @ 1 | Recall @ 10 | Recall @ 100 | Recall @ 1000 |
 | ------ | ------ | ------ | ------ | ------ |
-| Subgroup |  0.054	|0.208	|0.468	|TBD
+| Subgroup |  0.054	|0.208	|0.468	|0.750
 
 ## Visualization <a id="visual"></a>
 
