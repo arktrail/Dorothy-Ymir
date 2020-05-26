@@ -17,7 +17,7 @@ def extract_labels(subgroup_labels, level_number):
     labels = set()
     for subgroup_label in subgroup_labels:
         subgroup_label_splits = subgroup_label.split("--")
-        labels.add("--".join(subgroup_label_splits[:level_number]))
+        labels.add("--".join(subgroup_label_splits[:level_number]).replace(" ", "_"))
     return list(labels)
 
 def create_training_data(input_path, output_path, text_field, level_name, remove_stop_words = True, fasttext = False):

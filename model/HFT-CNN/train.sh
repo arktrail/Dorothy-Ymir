@@ -1,5 +1,5 @@
 #! /bin/bash
-DataDIR=./summary_only_nonstop
+DataDIR=../../../data/summary_only_nonstop
 Train=${DataDIR}/train.json
 Test=${DataDIR}/test.json
 Valid=${DataDIR}/valid.json
@@ -25,8 +25,8 @@ mkdir -p ${OutputDIR}/RESULT
 mkdir -p Word_embedding
 
 ### Preprocess 
-python3.5 train.py ${Train} ${Test} ${Valid} ${EmbeddingWeightsPath} ${ModelType} ${TreefilePath} ${USE_WORDS} ${LabelName} ${InputTextName}
+python train.py ${Train} ${Test} ${Valid} ${EmbeddingWeightsPath} ${ModelType} ${TreefilePath} ${USE_WORDS} ${LabelName} ${InputTextName}
 ### Training model
 ## Network Type (XML-CNN,  CNN-Flat,  CNN-Hierarchy,  CNN-fine-tuning or Pre-process)
 ModelType=CNN-Hierarchy
-python3.5 train.py ${Train} ${Test} ${Valid} ${EmbeddingWeightsPath} ${ModelType} ${TreefilePath} ${USE_WORDS} ${LabelName} ${InputTextName}
+python train.py ${Train} ${Test} ${Valid} ${EmbeddingWeightsPath} ${ModelType} ${TreefilePath} ${USE_WORDS} ${LabelName} ${InputTextName}

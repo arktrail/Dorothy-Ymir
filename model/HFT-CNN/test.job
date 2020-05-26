@@ -1,0 +1,23 @@
+#!/bin/bash
+#SBATCH --partition=GPU
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:p100:2
+#SBATCH -o test.out
+
+#SBATCH -t 12:00:00
+
+# where we store data,
+cd $SCRATCH/Dorothy-Ymir/model/HFT-CNN
+
+# source env, use our own venv
+source $SCRATCH/env/dorothy/bin/activate
+
+# load cuda
+module load cuda/10.1
+
+# run program
+# nvidia-smi
+bash test.sh
+
+# deactive the venv
+deactivate
