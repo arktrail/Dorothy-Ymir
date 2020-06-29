@@ -22,6 +22,7 @@ import tree
 import json 
 import pickle
 
+TEST_LAYER = 3
 
 def load_my_test_json(test, vocab_dic, use_words, input_text_name):
     data_list = []
@@ -72,8 +73,7 @@ def main():
         vocab_dic, embedding_weight_path)
 
 
-    layer = 3
-    depth = order_n(layer)
+    depth = order_n(TEST_LAYER)
     print("-"*50)
     print("Testing of " + depth + " layer")
     learning_categories = sorted(category_hie_list_dic[layer])
