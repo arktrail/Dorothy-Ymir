@@ -23,11 +23,11 @@ import json
 import pickle
 
 
-def load_my_test_json(test, vocab_dic, use_words):
+def load_my_test_json(test, vocab_dic, use_words, input_text_name):
     data_list = []
     for line in tqdm(test, desc="Loading " + "my_test" + " data"):
         line_data = json.loads(line)
-        text_list = line_data["doc_token"][:use_words]
+        text_list = line_data[input_text_name][:use_words]
         tmp_text_list = []
         for word in text_list:
             if word in vocab_dic:
@@ -37,26 +37,6 @@ def load_my_test_json(test, vocab_dic, use_words):
         data_list.append(tmp_text_list)
         del tmp_text_list
     return data_list
-
-
-def build_vocab(train, valid, test, use_words):
-    vocab = defaultdict( lambda: len(vocab) )
-    catgy = defaultdict( lambda: len(catgy) )
-
-    for line in tqdm(train, desc="Loading " + "train" + " data"):
-        line_data = json.loads(line)
-        text_list = line_data["brief_summary"]
-        [vocab[word] for word in text_list[:use_words]]
-    for line in tqdm(valid, desc="Loading " + "valid" + " data"):
-        line_data = json.loads(line)
-        text_list = line_data["doc_token"]
-        [vocab[word] for word in text_list[:use_words]]
-    for line in tqdm(test, desc="Loading " + "test" + " data"):
-        line_data = json.loads(line)
-        text_list = line_data[doc_token]
-        [vocab[word] for word in text_list[:use_words]]
-
-    return vocab
 
 
 def main():
@@ -80,7 +60,7 @@ def main():
     catgy_file.close()
 
     my_test_lines = open(my_test, "r")
-    test_text = load_my_test_json(my_test_lines, vocab_dic, use_words)
+    test_text = load_my_test_json(my_test_lines, vocab_dic, use_words, input_text_name)
     my_test_lines.close()
 
 
